@@ -1,0 +1,36 @@
+{
+    "name": "wire4-php-authenticator/mx-wire4",
+    "description": "",
+    "keywords": [
+        "authenticator",
+        "php",
+        "sdk",
+        "api"
+    ],
+    "homepage": "http://wire4.mx",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "arturo.zuniga",
+            "email": "arturo.zuniga@tcpip.tech"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "mx\\wire4\\" : "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "mx\\wire4\\" : "src/"
+        },
+        "classmap": [
+            "src/"
+        ]
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "require": {
+        "wire4-php-client/mx-wire4": "dev-master"
+    }
+}
