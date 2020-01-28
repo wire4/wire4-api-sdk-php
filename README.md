@@ -90,34 +90,34 @@ Todos los URIs son relativos a *https://sandbox-api.wire4.mx/wire4/1.0.0* en el 
 
 Clase | Metodo | HTTP request | Descripción
 ------------ | ------------- | ------------- | -------------
-*ComprobanteElectrnicoDePagoCEPApi* | [**obtainTransactionCepUsingPOST**](docs/Api/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
-*ContactoApi* | [**sendContactUsingPOST**](docs/Api/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
-*CuentasDeBeneficiariosSPEIApi* | [**deleteAccountUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
-*CuentasDeBeneficiariosSPEIApi* | [**getAvailableRelationshipsMonexUsingGET**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
-*CuentasDeBeneficiariosSPEIApi* | [**getBeneficiariesForAccountUsingGET**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
-*CuentasDeBeneficiariosSPEIApi* | [**preRegisterAccountsUsingPOST**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
-*CuentasDeBeneficiariosSPEIApi* | [**removeBeneficiariesPendingUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
-*CuentasDeBeneficiariosSPEIApi* | [**updateAmountLimitAccountUsingPUT**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
-*CuentasDeBeneficiariosSPIDApi* | [**preRegisterAccountsUsingPOST1**](docs/Api/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
-*DepositantesApi* | [**getDepositantsUsingGET**](docs/Api/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
+*ComprobanteElectrnicoDePagoCEPApi* | [**obtainTransactionCepUsingPOST**](sdk-client/docs/Api/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
+*ContactoApi* | [**sendContactUsingPOST**](sdk-client/docs/Api/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
+*CuentasDeBeneficiariosSPEIApi* | [**deleteAccountUsingDELETE**](sdk-client/docs/Api/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
+*CuentasDeBeneficiariosSPEIApi* | [**getAvailableRelationshipsMonexUsingGET**](sdk-client/docs/Api/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
+*CuentasDeBeneficiariosSPEIApi* | [**getBeneficiariesForAccountUsingGET**](sdk-client/docs/Api/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
+*CuentasDeBeneficiariosSPEIApi* | [**preRegisterAccountsUsingPOST**](sdk-client/docs/Api/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
+*CuentasDeBeneficiariosSPEIApi* | [**removeBeneficiariesPendingUsingDELETE**](sdk-client/docs/Api/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
+*CuentasDeBeneficiariosSPEIApi* | [**updateAmountLimitAccountUsingPUT**](sdk-client/docs/Api/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+*CuentasDeBeneficiariosSPIDApi* | [**preRegisterAccountsUsingPOST1**](sdk-client/docs/Api/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
+*DepositantesApi* | [**getDepositantsUsingGET**](sdk-client/docs/Api/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
 *DepositantesApi* | [**registerDepositantsUsingPOST**](docs/Api/DepositantesApi.md#registerdepositantsusingpost) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
-*FacturasApi* | [**billingsReportByIdUsingGET**](docs/Api/FacturasApi.md#billingsreportbyidusingget) | **GET** /billings/{id} | Consulta de facturas por identificador
-*FacturasApi* | [**billingsReportUsingGET**](docs/Api/FacturasApi.md#billingsreportusingget) | **GET** /billings | Consulta de facturas
-*InstitucionesApi* | [**getAllInstitutionsUsingGET**](docs/Api/InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
-*SaldoApi* | [**getBalanceUsingGET**](docs/Api/SaldoApi.md#getbalanceusingget) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
-*SuscripcionesApi* | [**preEnrollmentMonexUserUsingPOST**](docs/Api/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | registra una pre-suscripción
-*SuscripcionesApi* | [**removeEnrollmentUserUsingDELETE**](docs/Api/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimna una suscripción por id
-*SuscripcionesApi* | [**removeSubscriptionPendingStatusUsingDELETE**](docs/Api/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
-*TransferenciasSPEIApi* | [**dropTransactionsPendingUsingDELETE**](docs/Api/TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
-*TransferenciasSPEIApi* | [**incomingSpeiTransactionsReportUsingGET**](docs/Api/TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
-*TransferenciasSPEIApi* | [**outCommingSpeiRequestIdTransactionsReportUsingGET**](docs/Api/TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
-*TransferenciasSPEIApi* | [**outgoingSpeiTransactionsReportUsingGET**](docs/Api/TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
-*TransferenciasSPEIApi* | [**registerOutgoingSpeiTransactionUsingPOST**](docs/Api/TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
-*TransferenciasSPIDApi* | [**getSpidClassificationsUsingGET**](docs/Api/TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
-*TransferenciasSPIDApi* | [**registerOutgoingSpidTransactionUsingPOST**](docs/Api/TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID
-*WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
-*WebhooksApi* | [**getWebhooks**](docs/Api/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta de Webhooks
-*WebhooksApi* | [**registerWebhook**](docs/Api/WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
+*FacturasApi* | [**billingsReportByIdUsingGET**](sdk-client/docs/Api/FacturasApi.md#billingsreportbyidusingget) | **GET** /billings/{id} | Consulta de facturas por identificador
+*FacturasApi* | [**billingsReportUsingGET**](sdk-client/docs/Api/FacturasApi.md#billingsreportusingget) | **GET** /billings | Consulta de facturas
+*InstitucionesApi* | [**getAllInstitutionsUsingGET**](sdk-client/docs/Api/InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
+*SaldoApi* | [**getBalanceUsingGET**](sdk-client/docs/Api/SaldoApi.md#getbalanceusingget) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
+*SuscripcionesApi* | [**preEnrollmentMonexUserUsingPOST**](sdk-client/docs/Api/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | registra una pre-suscripción
+*SuscripcionesApi* | [**removeEnrollmentUserUsingDELETE**](sdk-client/docs/Api/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimna una suscripción por id
+*SuscripcionesApi* | [**removeSubscriptionPendingStatusUsingDELETE**](sdk-client/docs/Api/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
+*TransferenciasSPEIApi* | [**dropTransactionsPendingUsingDELETE**](sdk-client/docs/Api/TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
+*TransferenciasSPEIApi* | [**incomingSpeiTransactionsReportUsingGET**](sdk-client/docs/Api/TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
+*TransferenciasSPEIApi* | [**outCommingSpeiRequestIdTransactionsReportUsingGET**](sdk-client/docs/Api/TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
+*TransferenciasSPEIApi* | [**outgoingSpeiTransactionsReportUsingGET**](sdk-client/docs/Api/TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
+*TransferenciasSPEIApi* | [**registerOutgoingSpeiTransactionUsingPOST**](sdk-client/docs/Api/TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
+*TransferenciasSPIDApi* | [**getSpidClassificationsUsingGET**](sdk-client/docs/Api/TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
+*TransferenciasSPIDApi* | [**registerOutgoingSpidTransactionUsingPOST**](sdk-client/docs/Api/TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID
+*WebhooksApi* | [**getWebhook**](sdk-client/docs/Api/WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
+*WebhooksApi* | [**getWebhooks**](sdk-client/docs/Api/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta de Webhooks
+*WebhooksApi* | [**registerWebhook**](sdk-client/docs/Api/WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
 
 ## Documentación para los modelos
 
