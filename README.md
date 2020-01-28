@@ -121,7 +121,7 @@ Clase | Metodo | HTTP request | Descripción
 
 ## Documentación para los modelos
 
- - [Account](docs/Model/Account.md)
+ - [Account](sdk-client/docs/Model/Account.md)
  - [AccountRequest](docs/Model/AccountRequest.md)
  - [AccountResponse](docs/Model/AccountResponse.md)
  - [AccountSpid](docs/Model/AccountSpid.md)
