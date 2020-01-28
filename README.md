@@ -19,11 +19,11 @@ Para instalar via [Composer](http://getcomposer.org/), agrega lo siguiente a `co
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/wire4/wire4-php-client/mx-wire4.git"
+      "url": "https://github.com/wire4/wire4-api-sdk-php.git"
     }
   ],
   "require": {
-    "wire4-php-client/mx-wire4": "*@dev"
+    "sdk-client/mx-wire4": "*@dev"
   }
 }
 ```
