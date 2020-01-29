@@ -10,12 +10,12 @@
             "email": "arturo.zuniga@tcpip.tech"
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "dev-package": {
             "type": "path",
             "url": "authenticator"
         }
-    ],
+    } ,
     "require": {
         "php": ">=5.5",
         "ext-curl": "*",
