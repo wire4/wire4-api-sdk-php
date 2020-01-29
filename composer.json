@@ -1,0 +1,31 @@
+{
+    "name": "arturo.zuniga/wire4-api-sdk-php",
+    "description": "Cliente sdk para trabajar con el api de wire4<br>Wire4 es una API - Fintech de Banco Monex con la que podrás administrar transferencias *SPEI",
+    "type": "library",
+    "license": "propietary",
+    "authors": [
+        {
+            "name": "arturo.zuniga",
+            "email": "arturo.zuniga@tcpip.tech"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2",
+        "wire4-php-authenticator/mx-wire4": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~1.12"
+    },
+    "autoload": {
+        "psr-4": { "mx\\wire4\\" : "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "mx\\wire4\\" : "test/" }
+    }
+}
