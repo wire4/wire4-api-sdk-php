@@ -1,5 +1,6 @@
 {
     "name": "wire4/wire4-php-authenticator",
+    "version": "1.0.0",
     "description": "Autenticador de peticiones para sdk php de la api wire4",
     "keywords": [
         "authenticator",
