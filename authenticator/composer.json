@@ -16,6 +16,7 @@
             "email": "arturo.zuniga@tcpip.tech"
         }
     ],
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": { "mx\\wire4\\" : "src/" }
     },
