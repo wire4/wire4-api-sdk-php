@@ -1,6 +1,5 @@
 {
     "name": "wire4/wire4-php-authenticator",
-    "version": "1.0.0",
     "description": "Autenticador de peticiones para sdk php de la api wire4",
     "keywords": [
         "authenticator",
@@ -33,6 +32,6 @@
         "phpunit/phpunit": "^7"
     },
     "require": {
-        "wire4-php-client/mx-wire4": "dev-master"
+        "wire4/wire4-api-sdk-php": "dev-master"
     }
 }
