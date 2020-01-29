@@ -10,13 +10,19 @@
             "email": "arturo.zuniga@tcpip.tech"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./authenticator"
+        }
+    ],
     "require": {
         "php": ">=5.5",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^6.2",
-        "wire4-php-authenticator/mx-wire4": "*"
+        "authenticator": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
@@ -24,8 +30,7 @@
         "friendsofphp/php-cs-fixer": "~1.12"
     },
     "autoload": {
-        "psr-4": { "mx\\wire4\\" : "sdk-client/src",
-            "mx\\wire4\\" : "authenticator/src"
+        "psr-4": { "mx\\wire4\\" : "sdk-client/src"
         }
     },
     "autoload-dev": {
