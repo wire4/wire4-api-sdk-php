@@ -13,7 +13,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "authenticator"
+            "url": "wire4/wire4-php-authenticator/authenticator"
         }
     ],
     "require": {
