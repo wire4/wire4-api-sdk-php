@@ -16,7 +16,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^6.2",
-        "wire4-php-authenticator/mx-wire4": "dev-master"
+        "wire4-php-authenticator/mx-wire4": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
