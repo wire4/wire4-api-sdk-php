@@ -18,7 +18,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^6.2",
-        "wire4/wire4-php-authenticator": "*"
+        "wire4/sdk-client": "*"
     },
 
     "require-dev": {
@@ -37,7 +37,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "./authenticator"
+            "url": "./sdk-client"
         }
     ],
     "minimum-stability": "dev"
