@@ -36,7 +36,8 @@
             "mx\\wire4\\" : "sdk-client/test",
             "mx\\wire4\\" : "authenticator/test"
         }
-    }
+    },
+    "minimum-stability": "dev"
 
 
 }
