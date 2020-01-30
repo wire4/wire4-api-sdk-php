@@ -9,7 +9,7 @@
  * You shall not disclose such Confidential Information and shall use it only
  * in accordance with the company policy.
  */
-namespace mx\wire4;
+namespace mx\wire4\auth;
 
 class OAuthWire4 {
 
