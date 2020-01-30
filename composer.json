@@ -14,7 +14,7 @@
     "repositories": [
         {
             "name": "wire4/wire4-php-authenticator",
-            "type": "path",
+            "type": "git",
             "url": "authenticator"
         }
     ],
