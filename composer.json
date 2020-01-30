@@ -4,7 +4,6 @@
     "type": "library",
     "license": "proprietary",
     "homepage": "https://wire4.mx",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "arturo.zuniga",
@@ -14,18 +13,20 @@
     "repositories": [
         {
             "name": "wire4/wire4-php-authenticator",
-            "type": "git",
-            "url": "authenticator"
+            "type": "path",
+            "url": "./authenticator"
         }
     ],
+
     "require": {
         "php": ">=5.5",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^6.2",
-        "wire4/wire4-php-authenticator": "dev-master"
+        "wire4/wire4-php-authenticator": "*"
     },
+    "minimum-stability": "dev",
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "squizlabs/php_codesniffer": "~2.6",
