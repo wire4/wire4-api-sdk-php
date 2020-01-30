@@ -6,7 +6,7 @@
  * Time: 20:05
  */
 
-namespace mx\wire4;
+namespace mx\wire4\auth;
 
 
 class Environment {

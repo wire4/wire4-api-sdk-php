@@ -9,7 +9,7 @@
  * in accordance with the company policy.
  */
 
-namespace mx\wire4\webhooks\sign;
+namespace mx\wire4\auth\webhooks\sign;
 
 
 class UtilsCompute {
