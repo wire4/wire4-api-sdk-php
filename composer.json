@@ -28,7 +28,7 @@
     "autoload": {
         "psr-4": {
             "mx\\wire4\\" : "sdk-client/src",
-            "mx\\wire4\\" : "authenticator/src"
+            "mx\\wire4\\auth" : "authenticator/src"
         }
     },
     "autoload-dev": {
