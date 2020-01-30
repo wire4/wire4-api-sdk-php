@@ -4,6 +4,7 @@
     "type": "library",
     "license": "proprietary",
     "homepage": "https://wire4.mx",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "arturo.zuniga",
