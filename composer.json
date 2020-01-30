@@ -17,8 +17,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2",
-        "wire4/sdk-client": "*"
+        "guzzlehttp/guzzle": "^6.2"
     },
 
     "require-dev": {
@@ -27,18 +26,17 @@
         "friendsofphp/php-cs-fixer": "~1.12"
     },
     "autoload": {
-        "psr-4": { "mx\\wire4\\" : "sdk-client/src"
+        "psr-4": {
+            "mx\\wire4\\" : "sdk-client/src",
+            "mx\\wire4\\" : "authenticator/src"
         }
     },
     "autoload-dev": {
-        "psr-4": { "mx\\wire4\\" : "test/" }
-    },
-
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./sdk-client"
+        "psr-4": {
+            "mx\\wire4\\" : "sdk-client/test",
+            "mx\\wire4\\" : "authenticator/test"
         }
-    ],
-    "minimum-stability": "dev"
+    }
+
+
 }

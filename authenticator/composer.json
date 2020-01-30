@@ -30,8 +30,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7"
-    },
-    "require": {
-        "wire4/wire4-api-sdk-php": "dev-master"
     }
+
 }
