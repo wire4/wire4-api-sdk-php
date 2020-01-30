@@ -10,19 +10,20 @@
             "email": "arturo.zuniga@tcpip.tech"
         }
     ],
-    "repositories": {
-        "dev-package": {
+    "repositories": [
+        {
+            "name": "wire4/wire4-php-authenticator",
             "type": "path",
             "url": "authenticator"
         }
-    } ,
+    ],
     "require": {
         "php": ">=5.5",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^6.2",
-        "wire4/wire4-php-authenticator": "*"
+        "wire4/wire4-php-authenticator": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
