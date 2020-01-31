@@ -91,6 +91,7 @@ class TransferenciasSPEIApi
      *
      * Eliminación de transferencias SPEI® pendientes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
@@ -98,9 +99,9 @@ class TransferenciasSPEIApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function dropTransactionsPendingUsingDELETE($request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription)
     {
-        $this->dropTransactionsPendingUsingDELETEWithHttpInfo($request_id, $subscription);
+        $this->dropTransactionsPendingUsingDELETEWithHttpInfo($authorization, $request_id, $subscription);
     }
 
     /**
@@ -108,6 +109,7 @@ class TransferenciasSPEIApi
      *
      * Eliminación de transferencias SPEI® pendientes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
@@ -115,10 +117,10 @@ class TransferenciasSPEIApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function dropTransactionsPendingUsingDELETEWithHttpInfo($request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETEWithHttpInfo($authorization, $request_id, $subscription)
     {
         $returnType = '';
-        $request = $this->dropTransactionsPendingUsingDELETERequest($request_id, $subscription);
+        $request = $this->dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -162,15 +164,16 @@ class TransferenciasSPEIApi
      *
      * Eliminación de transferencias SPEI® pendientes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dropTransactionsPendingUsingDELETEAsync($request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETEAsync($authorization, $request_id, $subscription)
     {
-        return $this->dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($request_id, $subscription)
+        return $this->dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($authorization, $request_id, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -183,16 +186,17 @@ class TransferenciasSPEIApi
      *
      * Eliminación de transferencias SPEI® pendientes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($authorization, $request_id, $subscription)
     {
         $returnType = '';
-        $request = $this->dropTransactionsPendingUsingDELETERequest($request_id, $subscription);
+        $request = $this->dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -220,14 +224,21 @@ class TransferenciasSPEIApi
     /**
      * Create request for operation 'dropTransactionsPendingUsingDELETE'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function dropTransactionsPendingUsingDELETERequest($request_id, $subscription)
+    protected function dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling dropTransactionsPendingUsingDELETE'
+            );
+        }
         // verify the required parameter 'request_id' is set
         if ($request_id === null || (is_array($request_id) && count($request_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -248,6 +259,10 @@ class TransferenciasSPEIApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($request_id !== null) {
@@ -309,10 +324,6 @@ class TransferenciasSPEIApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -339,15 +350,16 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias recibidas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\Deposit[]
      */
-    public function incomingSpeiTransactionsReportUsingGET($subscription)
+    public function incomingSpeiTransactionsReportUsingGET($authorization, $subscription)
     {
-        list($response) = $this->incomingSpeiTransactionsReportUsingGETWithHttpInfo($subscription);
+        list($response) = $this->incomingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription);
         return $response;
     }
 
@@ -356,16 +368,17 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias recibidas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\Deposit[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function incomingSpeiTransactionsReportUsingGETWithHttpInfo($subscription)
+    public function incomingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\Deposit[]';
-        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($subscription);
+        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -463,14 +476,15 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias recibidas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function incomingSpeiTransactionsReportUsingGETAsync($subscription)
+    public function incomingSpeiTransactionsReportUsingGETAsync($authorization, $subscription)
     {
-        return $this->incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($subscription)
+        return $this->incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -483,15 +497,16 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias recibidas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($subscription)
+    public function incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\Deposit[]';
-        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($subscription);
+        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -533,13 +548,20 @@ class TransferenciasSPEIApi
     /**
      * Create request for operation 'incomingSpeiTransactionsReportUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function incomingSpeiTransactionsReportUsingGETRequest($subscription)
+    protected function incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling incomingSpeiTransactionsReportUsingGET'
+            );
+        }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
@@ -554,6 +576,10 @@ class TransferenciasSPEIApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -607,10 +633,6 @@ class TransferenciasSPEIApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -637,6 +659,7 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias de salida por identificador de petición
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de la petición a buscar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
@@ -644,9 +667,9 @@ class TransferenciasSPEIApi
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\PaymentsRequestId
      */
-    public function outCommingSpeiRequestIdTransactionsReportUsingGET($request_id, $subscription)
+    public function outCommingSpeiRequestIdTransactionsReportUsingGET($authorization, $request_id, $subscription)
     {
-        list($response) = $this->outCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo($request_id, $subscription);
+        list($response) = $this->outCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo($authorization, $request_id, $subscription);
         return $response;
     }
 
@@ -655,6 +678,7 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias de salida por identificador de petición
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de la petición a buscar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
@@ -662,10 +686,10 @@ class TransferenciasSPEIApi
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\PaymentsRequestId, HTTP status code, HTTP response headers (array of strings)
      */
-    public function outCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo($request_id, $subscription)
+    public function outCommingSpeiRequestIdTransactionsReportUsingGETWithHttpInfo($authorization, $request_id, $subscription)
     {
         $returnType = '\mx\wire4\client\model\PaymentsRequestId';
-        $request = $this->outCommingSpeiRequestIdTransactionsReportUsingGETRequest($request_id, $subscription);
+        $request = $this->outCommingSpeiRequestIdTransactionsReportUsingGETRequest($authorization, $request_id, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -771,15 +795,16 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias de salida por identificador de petición
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de la petición a buscar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outCommingSpeiRequestIdTransactionsReportUsingGETAsync($request_id, $subscription)
+    public function outCommingSpeiRequestIdTransactionsReportUsingGETAsync($authorization, $request_id, $subscription)
     {
-        return $this->outCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo($request_id, $subscription)
+        return $this->outCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $request_id, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -792,16 +817,17 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias de salida por identificador de petición
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de la petición a buscar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo($request_id, $subscription)
+    public function outCommingSpeiRequestIdTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $request_id, $subscription)
     {
         $returnType = '\mx\wire4\client\model\PaymentsRequestId';
-        $request = $this->outCommingSpeiRequestIdTransactionsReportUsingGETRequest($request_id, $subscription);
+        $request = $this->outCommingSpeiRequestIdTransactionsReportUsingGETRequest($authorization, $request_id, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -843,14 +869,21 @@ class TransferenciasSPEIApi
     /**
      * Create request for operation 'outCommingSpeiRequestIdTransactionsReportUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de la petición a buscar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function outCommingSpeiRequestIdTransactionsReportUsingGETRequest($request_id, $subscription)
+    protected function outCommingSpeiRequestIdTransactionsReportUsingGETRequest($authorization, $request_id, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling outCommingSpeiRequestIdTransactionsReportUsingGET'
+            );
+        }
         // verify the required parameter 'request_id' is set
         if ($request_id === null || (is_array($request_id) && count($request_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -871,6 +904,10 @@ class TransferenciasSPEIApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($request_id !== null) {
@@ -932,10 +969,6 @@ class TransferenciasSPEIApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -962,6 +995,7 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias realizadas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $order_id Identificador de la orden a buscar (optional)
      *
@@ -969,9 +1003,9 @@ class TransferenciasSPEIApi
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\Payment[]
      */
-    public function outgoingSpeiTransactionsReportUsingGET($subscription, $order_id = null)
+    public function outgoingSpeiTransactionsReportUsingGET($authorization, $subscription, $order_id = null)
     {
-        list($response) = $this->outgoingSpeiTransactionsReportUsingGETWithHttpInfo($subscription, $order_id);
+        list($response) = $this->outgoingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription, $order_id);
         return $response;
     }
 
@@ -980,6 +1014,7 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias realizadas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $order_id Identificador de la orden a buscar (optional)
      *
@@ -987,10 +1022,10 @@ class TransferenciasSPEIApi
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\Payment[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function outgoingSpeiTransactionsReportUsingGETWithHttpInfo($subscription, $order_id = null)
+    public function outgoingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription, $order_id = null)
     {
         $returnType = '\mx\wire4\client\model\Payment[]';
-        $request = $this->outgoingSpeiTransactionsReportUsingGETRequest($subscription, $order_id);
+        $request = $this->outgoingSpeiTransactionsReportUsingGETRequest($authorization, $subscription, $order_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1088,15 +1123,16 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias realizadas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $order_id Identificador de la orden a buscar (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outgoingSpeiTransactionsReportUsingGETAsync($subscription, $order_id = null)
+    public function outgoingSpeiTransactionsReportUsingGETAsync($authorization, $subscription, $order_id = null)
     {
-        return $this->outgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($subscription, $order_id)
+        return $this->outgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription, $order_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1109,16 +1145,17 @@ class TransferenciasSPEIApi
      *
      * Consulta de transferencias realizadas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $order_id Identificador de la orden a buscar (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function outgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($subscription, $order_id = null)
+    public function outgoingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription, $order_id = null)
     {
         $returnType = '\mx\wire4\client\model\Payment[]';
-        $request = $this->outgoingSpeiTransactionsReportUsingGETRequest($subscription, $order_id);
+        $request = $this->outgoingSpeiTransactionsReportUsingGETRequest($authorization, $subscription, $order_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1160,14 +1197,21 @@ class TransferenciasSPEIApi
     /**
      * Create request for operation 'outgoingSpeiTransactionsReportUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $order_id Identificador de la orden a buscar (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function outgoingSpeiTransactionsReportUsingGETRequest($subscription, $order_id = null)
+    protected function outgoingSpeiTransactionsReportUsingGETRequest($authorization, $subscription, $order_id = null)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling outgoingSpeiTransactionsReportUsingGET'
+            );
+        }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
@@ -1185,6 +1229,10 @@ class TransferenciasSPEIApi
         // query params
         if ($order_id !== null) {
             $queryParams['order_id'] = ObjectSerializer::toQueryValue($order_id);
+        }
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
         }
 
         // path params
@@ -1239,10 +1287,6 @@ class TransferenciasSPEIApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1270,15 +1314,16 @@ class TransferenciasSPEIApi
      * Registro de transferencias
      *
      * @param  \mx\wire4\client\model\TransactionsOutgoingRegister $body Información de las transferencias SPEI de salida (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\TokenRequiredResponse
      */
-    public function registerOutgoingSpeiTransactionUsingPOST($body, $subscription)
+    public function registerOutgoingSpeiTransactionUsingPOST($body, $authorization, $subscription)
     {
-        list($response) = $this->registerOutgoingSpeiTransactionUsingPOSTWithHttpInfo($body, $subscription);
+        list($response) = $this->registerOutgoingSpeiTransactionUsingPOSTWithHttpInfo($body, $authorization, $subscription);
         return $response;
     }
 
@@ -1288,16 +1333,17 @@ class TransferenciasSPEIApi
      * Registro de transferencias
      *
      * @param  \mx\wire4\client\model\TransactionsOutgoingRegister $body Información de las transferencias SPEI de salida (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\TokenRequiredResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerOutgoingSpeiTransactionUsingPOSTWithHttpInfo($body, $subscription)
+    public function registerOutgoingSpeiTransactionUsingPOSTWithHttpInfo($body, $authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
-        $request = $this->registerOutgoingSpeiTransactionUsingPOSTRequest($body, $subscription);
+        $request = $this->registerOutgoingSpeiTransactionUsingPOSTRequest($body, $authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1396,14 +1442,15 @@ class TransferenciasSPEIApi
      * Registro de transferencias
      *
      * @param  \mx\wire4\client\model\TransactionsOutgoingRegister $body Información de las transferencias SPEI de salida (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerOutgoingSpeiTransactionUsingPOSTAsync($body, $subscription)
+    public function registerOutgoingSpeiTransactionUsingPOSTAsync($body, $authorization, $subscription)
     {
-        return $this->registerOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo($body, $subscription)
+        return $this->registerOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1417,15 +1464,16 @@ class TransferenciasSPEIApi
      * Registro de transferencias
      *
      * @param  \mx\wire4\client\model\TransactionsOutgoingRegister $body Información de las transferencias SPEI de salida (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo($body, $subscription)
+    public function registerOutgoingSpeiTransactionUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
-        $request = $this->registerOutgoingSpeiTransactionUsingPOSTRequest($body, $subscription);
+        $request = $this->registerOutgoingSpeiTransactionUsingPOSTRequest($body, $authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1468,17 +1516,24 @@ class TransferenciasSPEIApi
      * Create request for operation 'registerOutgoingSpeiTransactionUsingPOST'
      *
      * @param  \mx\wire4\client\model\TransactionsOutgoingRegister $body Información de las transferencias SPEI de salida (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function registerOutgoingSpeiTransactionUsingPOSTRequest($body, $subscription)
+    protected function registerOutgoingSpeiTransactionUsingPOSTRequest($body, $authorization, $subscription)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling registerOutgoingSpeiTransactionUsingPOST'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling registerOutgoingSpeiTransactionUsingPOST'
             );
         }
         // verify the required parameter 'subscription' is set
@@ -1495,6 +1550,10 @@ class TransferenciasSPEIApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -1551,10 +1610,6 @@ class TransferenciasSPEIApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

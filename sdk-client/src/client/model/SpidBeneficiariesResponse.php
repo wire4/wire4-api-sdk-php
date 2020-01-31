@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageSubscription
+ * SpidBeneficiariesResponse
  *
  * PHP version 5
  *
@@ -32,15 +32,14 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * MessageSubscription Class Doc Comment
+ * SpidBeneficiariesResponse Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información del la suscripción a esta a esta API
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MessageSubscription implements ModelInterface, ArrayAccess
+class SpidBeneficiariesResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'MessageSubscription';
+    protected static $swaggerModelName = 'SpidBeneficiariesResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +56,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'contract' => 'string',
-'masked_contract' => 'string',
-'subscription' => 'string',
-'user' => 'string',
-'user_key' => 'string',
-'user_secret' => 'string'    ];
+        'beneficiaries' => '\mx\wire4\client\model\SpidBeneficiaryResponse[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -70,12 +64,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'contract' => null,
-'masked_contract' => null,
-'subscription' => null,
-'user' => null,
-'user_key' => null,
-'user_secret' => null    ];
+        'beneficiaries' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -104,12 +93,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'contract' => 'contract',
-'masked_contract' => 'masked_contract',
-'subscription' => 'subscription',
-'user' => 'user',
-'user_key' => 'user_key',
-'user_secret' => 'user_secret'    ];
+        'beneficiaries' => 'beneficiaries'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -117,12 +101,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'contract' => 'setContract',
-'masked_contract' => 'setMaskedContract',
-'subscription' => 'setSubscription',
-'user' => 'setUser',
-'user_key' => 'setUserKey',
-'user_secret' => 'setUserSecret'    ];
+        'beneficiaries' => 'setBeneficiaries'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -130,12 +109,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'contract' => 'getContract',
-'masked_contract' => 'getMaskedContract',
-'subscription' => 'getSubscription',
-'user' => 'getUser',
-'user_key' => 'getUserKey',
-'user_secret' => 'getUserSecret'    ];
+        'beneficiaries' => 'getBeneficiaries'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -195,12 +169,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['masked_contract'] = isset($data['masked_contract']) ? $data['masked_contract'] : null;
-        $this->container['subscription'] = isset($data['subscription']) ? $data['subscription'] : null;
-        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
-        $this->container['user_key'] = isset($data['user_key']) ? $data['user_key'] : null;
-        $this->container['user_secret'] = isset($data['user_secret']) ? $data['user_secret'] : null;
+        $this->container['beneficiaries'] = isset($data['beneficiaries']) ? $data['beneficiaries'] : null;
     }
 
     /**
@@ -228,145 +197,25 @@ class MessageSubscription implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets contract
+     * Gets beneficiaries
      *
-     * @return string
+     * @return \mx\wire4\client\model\SpidBeneficiaryResponse[]
      */
-    public function getContract()
+    public function getBeneficiaries()
     {
-        return $this->container['contract'];
+        return $this->container['beneficiaries'];
     }
 
     /**
-     * Sets contract
+     * Sets beneficiaries
      *
-     * @param string $contract Contrato Monex, con el cual se suscribió el cliente Monex en Wire4
+     * @param \mx\wire4\client\model\SpidBeneficiaryResponse[] $beneficiaries Lista de beneficiarios obtenidos
      *
      * @return $this
      */
-    public function setContract($contract)
+    public function setBeneficiaries($beneficiaries)
     {
-        $this->container['contract'] = $contract;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_contract
-     *
-     * @return string
-     */
-    public function getMaskedContract()
-    {
-        return $this->container['masked_contract'];
-    }
-
-    /**
-     * Sets masked_contract
-     *
-     * @param string $masked_contract Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4
-     *
-     * @return $this
-     */
-    public function setMaskedContract($masked_contract)
-    {
-        $this->container['masked_contract'] = $masked_contract;
-
-        return $this;
-    }
-
-    /**
-     * Gets subscription
-     *
-     * @return string
-     */
-    public function getSubscription()
-    {
-        return $this->container['subscription'];
-    }
-
-    /**
-     * Sets subscription
-     *
-     * @param string $subscription Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción
-     *
-     * @return $this
-     */
-    public function setSubscription($subscription)
-    {
-        $this->container['subscription'] = $subscription;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param string $user Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4
-     *
-     * @return $this
-     */
-    public function setUser($user)
-    {
-        $this->container['user'] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_key
-     *
-     * @return string
-     */
-    public function getUserKey()
-    {
-        return $this->container['user_key'];
-    }
-
-    /**
-     * Sets user_key
-     *
-     * @param string $user_key Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción
-     *
-     * @return $this
-     */
-    public function setUserKey($user_key)
-    {
-        $this->container['user_key'] = $user_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_secret
-     *
-     * @return string
-     */
-    public function getUserSecret()
-    {
-        return $this->container['user_secret'];
-    }
-
-    /**
-     * Sets user_secret
-     *
-     * @param string $user_secret Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción
-     *
-     * @return $this
-     */
-    public function setUserSecret($user_secret)
-    {
-        $this->container['user_secret'] = $user_secret;
+        $this->container['beneficiaries'] = $beneficiaries;
 
         return $this;
     }

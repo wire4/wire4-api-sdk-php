@@ -1,18 +1,18 @@
 {
     "name": "wire4/sdk-client",
-    "description": "Cliente sdk para trabajar con el api de wire4<br>Wire4 es una API - Fintech de Banco Monex con la que podrás administrar transferencias *SPEI",
+    "description": "",
     "keywords": [
         "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "https://wire4.mx",
+    "homepage": "http://swagger.io",
     "license": "proprietary",
     "authors": [
         {
-            "name": "arturo.zuniga",
-            "email": "arturo.zuniga@tcpip.tech"
+            "name": "Swagger and contributors",
+            "homepage": "https://github.com/swagger-api/swagger-codegen"
         }
     ],
     "require": {
@@ -33,5 +33,4 @@
     "autoload-dev": {
         "psr-4": { "mx\\wire4\\" : "test/" }
     }
-
 }

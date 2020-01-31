@@ -71,6 +71,16 @@ class CuentasDeBeneficiariosSPIDApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getSpidBeneficiariesForAccount
+     *
+     * Consulta los beneficiarios SPID registrados.
+     *
+     */
+    public function testGetSpidBeneficiariesForAccount()
+    {
+    }
+
+    /**
      * Test case for preRegisterAccountsUsingPOST1
      *
      * Pre-registro de cuentas de beneficiarios SPID.

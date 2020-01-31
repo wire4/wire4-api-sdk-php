@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**updateAmountLimitAccountUsingPUT**](CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
 
 # **deleteAccountUsingDELETE**
-> deleteAccountUsingDELETE($account, $subscription)
+> deleteAccountUsingDELETE($authorization, $account, $subscription)
 
 Elimina la cuenta del beneficiario
 
@@ -23,41 +23,20 @@ Borra la cuenta de beneficiario proporcionada relacionada al contrato pertenecie
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-    try {
-
-        // Create the authenticator to obtain access token
-    
-        $oauth = new mx\wire4\OAuthWire4(
-            Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR CONSUMER_KEY
-            Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR CONSUMER_SECRET
-            \mx\wire4\Environment::SANDBOX);
-    
-        // Obtain an access token use application flow and scope "general"
-        $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
-            Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
-            "spei_admin");
-    
-    } catch(OAuthException $e) {
-        echo "Respuesta: ". $e->lastResponse . "\n";
-    }
-    
-    // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-    $config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
-    
-    $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-        new GuzzleHttp\Client(),
-        $config
-    );
-    $account = "112680000156896531"; // string | La cuenta del beneciario que será eliminada
-    $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
-    
-    try {
-        $apiInstance->deleteAccountUsingDELETE($account, $subscription);
-    } catch (Exception $e) {
-        echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->deleteAccountUsingDELETE: ', $e->getMessage(), PHP_EOL;
-    }
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$account = "account_example"; // string | La cuenta del beneciario que será eliminada
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+
+try {
+    $apiInstance->deleteAccountUsingDELETE($authorization, $account, $subscription);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->deleteAccountUsingDELETE: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -65,6 +44,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
  **account** | **string**| La cuenta del beneciario que será eliminada |
  **subscription** | **string**| El identificador de la suscripción a esta API |
 
@@ -74,7 +54,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -84,7 +64,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAvailableRelationshipsMonexUsingGET**
-> \mx\wire4\client\model\RelationshipsResponse getAvailableRelationshipsMonexUsingGET($subscription)
+> \mx\wire4\client\model\RelationshipsResponse getAvailableRelationshipsMonexUsingGET($authorization, $subscription)
 
 Consulta de relaciones
 
@@ -95,40 +75,20 @@ Obtiene las posibles relaciones existentes para registrar beneficiarios en Monex
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-    try {
-
-        // Create the authenticator to obtain access token
-
-        $oauth = new mx\wire4\OAuthWire4(
-            Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR CONSUMER_KEY
-            Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR CONSUMER_SECRET
-            \mx\wire4\Environment::SANDBOX);
-
-        // Obtain an access token use application flow and scope "general"
-        $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY,
-            Wire4ApiTest::SECRET_KEY,"spei_admin");
-
-    } catch(OAuthException $e) {
-        echo "Respuesta: ". $e->lastResponse . "\n";
-    }
-
-    // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-    $config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
-
-    $apiInstance = new \mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-        new GuzzleHttp\Client(),
-        $config
-    );
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | Identificador de la suscripción a esta API
 
-    // SUBSCRIPTION es un Identificador de la suscripción a esta API
-    try {
-        $result = $apiInstance->getAvailableRelationshipsMonexUsingGET(Wire4ApiTest::SUBSCRIPTION);
-        print_r($result);
-    } catch (Exception $e) {
-        echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->getAvailableRelationshipsMonexUsingGET: ', $e->getMessage(), PHP_EOL;
-    }
+try {
+    $result = $apiInstance->getAvailableRelationshipsMonexUsingGET($authorization, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->getAvailableRelationshipsMonexUsingGET: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -136,6 +96,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
  **subscription** | **string**| Identificador de la suscripción a esta API |
 
 ### Return type
@@ -144,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -154,7 +115,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBeneficiariesForAccountUsingGET**
-> \mx\wire4\client\model\BeneficiariesResponse getBeneficiariesForAccountUsingGET($subscription, $rfc)
+> \mx\wire4\client\model\BeneficiariesResponse getBeneficiariesForAccountUsingGET($authorization, $subscription, $account, $rfc)
 
 Consulta los beneficiarios registrados
 
@@ -165,42 +126,22 @@ Obtiene los beneficiarios registrados al contrato relacionado con la suscripció
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-    try {
-
-        // Create the authenticator to obtain access token
-
-        $oauth = new mx\wire4\OAuthWire4(
-            Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR CONSUMER_KEY
-            Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR CONSUMER_SECRET
-            \mx\wire4\Environment::SANDBOX);
-
-        // Obtain an access token use application flow and scope "spei_admin"
-        $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY,//REPLACE THIS WITH YOUR DATA
-            Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
-            "spei_admin");
-
-    } catch(OAuthException $e) {
-        echo "Respuesta: ". $e->lastResponse . "\n";
-    }
-
-    // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-    $config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
-
-    $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-        new GuzzleHttp\Client(),
-        $config
-    );
-    $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
-    $rfc = ""; // string | RFC del beneficiario
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$account = "account_example"; // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+$rfc = "rfc_example"; // string | RFC del beneficiario
 
-    try {
-        $result = $apiInstance->getBeneficiariesForAccountUsingGET($subscription, $rfc);
-        print_r($result);
-    } catch (Exception $e) {
-        echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->getBeneficiariesForAccountUsingGET: ', $e->getMessage(), PHP_EOL;
-    }
+try {
+    $result = $apiInstance->getBeneficiariesForAccountUsingGET($authorization, $subscription, $account, $rfc);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->getBeneficiariesForAccountUsingGET: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -208,7 +149,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
  **subscription** | **string**| El identificador de la suscripción a esta API |
+ **account** | **string**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional]
  **rfc** | **string**| RFC del beneficiario | [optional]
 
 ### Return type
@@ -217,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -227,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **preRegisterAccountsUsingPOST**
-> \mx\wire4\client\model\TokenRequiredResponse preRegisterAccountsUsingPOST($body, $subscription)
+> \mx\wire4\client\model\TokenRequiredResponse preRegisterAccountsUsingPOST($body, $authorization, $subscription)
 
 Pre-registro de cuentas de beneficiarios.
 
@@ -238,67 +181,21 @@ Pre-registra una o más cuentas de beneficiario en la plataforma, proporcionando
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-    try {
-
-        // Create the authenticator to obtain access token
-
-        $oauth = new mx\wire4\OAuthWire4(
-            Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR CONSUMER_KEY
-            Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR CONSUMER_SECRET
-            \mx\wire4\Environment::SANDBOX);
-
-        // Obtain an access token use application flow and scope "general"
-        $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
-            Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
-            "spei_admin");
-
-    } catch(OAuthException $e) {
-        echo "Respuesta: ". $e->lastResponse . "\n";
-    }
-
-    // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-    $config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
-
-    $apiInstance = new \mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-        new GuzzleHttp\Client(),
-        $config
-    );
-    $requestDto = new \mx\wire4\client\model\AccountRequest(); // \mx\wire4\client\model\AccountRequest | Información de la cuenta del beneficiario
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\AccountRequest(); // \mx\wire4\client\model\AccountRequest | Información de la cuenta del beneficiario
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 
-
-    $requestDto->setReturnUrl("https://your-app-url.mx/return");
-    $requestDto->setCancelReturnUrl("https://your-app-url.mx/cancel");
-
-    $account = new \mx\wire4\client\model\Account();
-    $account->setAmountLimit(10000.00);
-    $account->setbeneficiaryAccount("112680000156896531");
-
-    $account->setEmail(array("beneficiary@wire4.mx"));
-    $account->setKindOfRelationship("RECURRENTE");
-    $account->setNumericReferenceSpei("1234567");
-    $account->setPaymentConceptSpei("concept spei");
-
-    $person = new \mx\wire4\client\model\Person();
-    $person->setName("Bartolomeo");
-    $person->setMiddleName("Jay");
-    $person->setLastName("Simpson");
-    $account->setPerson($person);
-
-    $account->setRelationship("ACREEDOR");
-    $account->setRfc("SJBA920125AB1");
-
-    $requestDto->setAccounts(array($account));
-
-    $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
-
-    try {
-        $result = $apiInstance->preRegisterAccountsUsingPOST($requestDto, $subscription);
-        print_r($result);
-    } catch (Exception $e) {
-        echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->preRegisterAccountsUsingPOST: ', $e->getMessage(), PHP_EOL;
-    }
+try {
+    $result = $apiInstance->preRegisterAccountsUsingPOST($body, $authorization, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->preRegisterAccountsUsingPOST: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -307,6 +204,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\mx\wire4\client\model\AccountRequest**](../Model/AccountRequest.md)| Información de la cuenta del beneficiario |
+ **authorization** | **string**| Header para token |
  **subscription** | **string**| El identificador de la suscripción a esta API |
 
 ### Return type
@@ -315,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -325,7 +223,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **removeBeneficiariesPendingUsingDELETE**
-> removeBeneficiariesPendingUsingDELETE($request_id, $subscription)
+> removeBeneficiariesPendingUsingDELETE($authorization, $request_id, $subscription)
 
 Eliminación de beneficiarios SPEI® sin confirmar
 
@@ -336,41 +234,20 @@ Elimina un conjunto de beneficiarios a registrar en la cuenta del cliente Monex 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-    try {
-
-        // Create the authenticator to obtain access token
-
-        $oauth = new mx\wire4\OAuthWire4(
-            Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR CONSUMER_KEY
-            Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR CONSUMER_SECRET
-            \mx\wire4\Environment::SANDBOX);
-
-        // Obtain an access token use application flow and scope "spei_admin"
-        $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
-            Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
-            "spei_admin");
-
-    } catch(OAuthException $e) {
-        echo "Respuesta: ". $e->lastResponse . "\n";
-    }
-
-    // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-    $config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
-
-    $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-        new GuzzleHttp\Client(),
-        $config
-    );
-    $request_id = "ac24c501-021d-4eff-8310-262119d5c5da"; // string | Identificador de los beneficiarios a eliminar
-    $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$request_id = "request_id_example"; // string | Identificador de los beneficiarios a eliminar
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 
-    try {
-        $apiInstance->removeBeneficiariesPendingUsingDELETE($request_id, $subscription);
-    } catch (Exception $e) {
-        echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->removeBeneficiariesPendingUsingDELETE: ', $e->getMessage(), PHP_EOL;
-    }
+try {
+    $apiInstance->removeBeneficiariesPendingUsingDELETE($authorization, $request_id, $subscription);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->removeBeneficiariesPendingUsingDELETE: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -378,6 +255,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
  **request_id** | **string**| Identificador de los beneficiarios a eliminar |
  **subscription** | **string**| El identificador de la suscripción a esta API |
 
@@ -387,7 +265,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 
@@ -397,7 +275,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAmountLimitAccountUsingPUT**
-> updateAmountLimitAccountUsingPUT($body, $account, $subscription)
+> updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription)
 
 Actualiza el monto límite
 
@@ -408,45 +286,21 @@ Actualiza el monto límite a la cuenta de beneficiario proporcionada relacionada
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-    try {
-
-        // Create the authenticator to obtain access token
-
-        $oauth = new mx\wire4\OAuthWire4(
-            Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
-            Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
-            \mx\wire4\Environment::SANDBOX);
-
-        // Obtain an access token use application flow and scope "spei_admin"
-        $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
-            Wire4ApiTest::SECRET_KEY,//REPLACE THIS WITH YOUR DATA
-            "spei_admin");
-
-    } catch(OAuthException $e) {
-        echo "Respuesta: ". $e->lastResponse . "\n";
-    }
-
-    // Configure OAuth2 access token for authorization: wire4_aut_app_user_spei
-    $config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken($accessToken);
-
-    $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-        new GuzzleHttp\Client(),
-        $config
-    );
-    $body = new \mx\wire4\client\model\AmountRequest(); // \mx\wire4\client\model\AmountRequest | Información de la cuenta y el monto límite a actualizar
-    $body->setAmountLimit(80000.00);
-    $body->setCurrencyCode("MXP");
-    $body->setPreviousAmountLimit(10000.00);
-    $account = "112680000156896531"; // string | Cuenta a actualizar
-    $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\AmountRequest(); // \mx\wire4\client\model\AmountRequest | Información de la cuenta y el monto límite a actualizar
+$authorization = "authorization_example"; // string | Header para token
+$account = "account_example"; // string | Cuenta a actualizar
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 
-    try {
-        $apiInstance->updateAmountLimitAccountUsingPUT($body, $account, $subscription);
-    } catch (Exception $e) {
-        echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->updateAmountLimitAccountUsingPUT: ', $e->getMessage(), PHP_EOL;
-    }
+try {
+    $apiInstance->updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->updateAmountLimitAccountUsingPUT: ', $e->getMessage(), PHP_EOL;
+}
 ?>
 ```
 
@@ -455,6 +309,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\mx\wire4\client\model\AmountRequest**](../Model/AmountRequest.md)| Información de la cuenta y el monto límite a actualizar |
+ **authorization** | **string**| Header para token |
  **account** | **string**| Cuenta a actualizar |
  **subscription** | **string**| El identificador de la suscripción a esta API |
 
@@ -464,7 +319,7 @@ void (empty response body)
 
 ### Authorization
 
-[wire4_aut_app_user_spei](../../README.md#wire4_aut_app_user_spei)
+No authorization required
 
 ### HTTP request headers
 

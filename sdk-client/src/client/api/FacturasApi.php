@@ -91,15 +91,16 @@ class FacturasApi
      *
      * Consulta de facturas por identificador
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador de la factura (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\Billing
      */
-    public function billingsReportByIdUsingGET($id)
+    public function billingsReportByIdUsingGET($authorization, $id)
     {
-        list($response) = $this->billingsReportByIdUsingGETWithHttpInfo($id);
+        list($response) = $this->billingsReportByIdUsingGETWithHttpInfo($authorization, $id);
         return $response;
     }
 
@@ -108,16 +109,17 @@ class FacturasApi
      *
      * Consulta de facturas por identificador
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador de la factura (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\Billing, HTTP status code, HTTP response headers (array of strings)
      */
-    public function billingsReportByIdUsingGETWithHttpInfo($id)
+    public function billingsReportByIdUsingGETWithHttpInfo($authorization, $id)
     {
         $returnType = '\mx\wire4\client\model\Billing';
-        $request = $this->billingsReportByIdUsingGETRequest($id);
+        $request = $this->billingsReportByIdUsingGETRequest($authorization, $id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -223,14 +225,15 @@ class FacturasApi
      *
      * Consulta de facturas por identificador
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador de la factura (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function billingsReportByIdUsingGETAsync($id)
+    public function billingsReportByIdUsingGETAsync($authorization, $id)
     {
-        return $this->billingsReportByIdUsingGETAsyncWithHttpInfo($id)
+        return $this->billingsReportByIdUsingGETAsyncWithHttpInfo($authorization, $id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -243,15 +246,16 @@ class FacturasApi
      *
      * Consulta de facturas por identificador
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador de la factura (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function billingsReportByIdUsingGETAsyncWithHttpInfo($id)
+    public function billingsReportByIdUsingGETAsyncWithHttpInfo($authorization, $id)
     {
         $returnType = '\mx\wire4\client\model\Billing';
-        $request = $this->billingsReportByIdUsingGETRequest($id);
+        $request = $this->billingsReportByIdUsingGETRequest($authorization, $id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -293,13 +297,20 @@ class FacturasApi
     /**
      * Create request for operation 'billingsReportByIdUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador de la factura (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function billingsReportByIdUsingGETRequest($id)
+    protected function billingsReportByIdUsingGETRequest($authorization, $id)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling billingsReportByIdUsingGET'
+            );
+        }
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -314,6 +325,10 @@ class FacturasApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($id !== null) {
@@ -367,10 +382,6 @@ class FacturasApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -397,15 +408,16 @@ class FacturasApi
      *
      * Consulta de facturas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $period Filtro de fecha yyyy-MM (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\Billing[]
      */
-    public function billingsReportUsingGET($period = null)
+    public function billingsReportUsingGET($authorization, $period = null)
     {
-        list($response) = $this->billingsReportUsingGETWithHttpInfo($period);
+        list($response) = $this->billingsReportUsingGETWithHttpInfo($authorization, $period);
         return $response;
     }
 
@@ -414,16 +426,17 @@ class FacturasApi
      *
      * Consulta de facturas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $period Filtro de fecha yyyy-MM (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\Billing[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function billingsReportUsingGETWithHttpInfo($period = null)
+    public function billingsReportUsingGETWithHttpInfo($authorization, $period = null)
     {
         $returnType = '\mx\wire4\client\model\Billing[]';
-        $request = $this->billingsReportUsingGETRequest($period);
+        $request = $this->billingsReportUsingGETRequest($authorization, $period);
 
         try {
             $options = $this->createHttpClientOption();
@@ -529,14 +542,15 @@ class FacturasApi
      *
      * Consulta de facturas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $period Filtro de fecha yyyy-MM (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function billingsReportUsingGETAsync($period = null)
+    public function billingsReportUsingGETAsync($authorization, $period = null)
     {
-        return $this->billingsReportUsingGETAsyncWithHttpInfo($period)
+        return $this->billingsReportUsingGETAsyncWithHttpInfo($authorization, $period)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -549,15 +563,16 @@ class FacturasApi
      *
      * Consulta de facturas
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $period Filtro de fecha yyyy-MM (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function billingsReportUsingGETAsyncWithHttpInfo($period = null)
+    public function billingsReportUsingGETAsyncWithHttpInfo($authorization, $period = null)
     {
         $returnType = '\mx\wire4\client\model\Billing[]';
-        $request = $this->billingsReportUsingGETRequest($period);
+        $request = $this->billingsReportUsingGETRequest($authorization, $period);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -599,13 +614,20 @@ class FacturasApi
     /**
      * Create request for operation 'billingsReportUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $period Filtro de fecha yyyy-MM (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function billingsReportUsingGETRequest($period = null)
+    protected function billingsReportUsingGETRequest($authorization, $period = null)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling billingsReportUsingGET'
+            );
+        }
 
         $resourcePath = '/billings';
         $formParams = [];
@@ -617,6 +639,10 @@ class FacturasApi
         // query params
         if ($period !== null) {
             $queryParams['period'] = ObjectSerializer::toQueryValue($period);
+        }
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
         }
 
 
@@ -663,10 +689,6 @@ class FacturasApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

@@ -91,15 +91,16 @@ class WebhooksApi
      *
      * Consulta de Webhook
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador del webhook (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\WebhookResponse
      */
-    public function getWebhook($id)
+    public function getWebhook($authorization, $id)
     {
-        list($response) = $this->getWebhookWithHttpInfo($id);
+        list($response) = $this->getWebhookWithHttpInfo($authorization, $id);
         return $response;
     }
 
@@ -108,16 +109,17 @@ class WebhooksApi
      *
      * Consulta de Webhook
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador del webhook (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\WebhookResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebhookWithHttpInfo($id)
+    public function getWebhookWithHttpInfo($authorization, $id)
     {
         $returnType = '\mx\wire4\client\model\WebhookResponse';
-        $request = $this->getWebhookRequest($id);
+        $request = $this->getWebhookRequest($authorization, $id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -223,14 +225,15 @@ class WebhooksApi
      *
      * Consulta de Webhook
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador del webhook (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWebhookAsync($id)
+    public function getWebhookAsync($authorization, $id)
     {
-        return $this->getWebhookAsyncWithHttpInfo($id)
+        return $this->getWebhookAsyncWithHttpInfo($authorization, $id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -243,15 +246,16 @@ class WebhooksApi
      *
      * Consulta de Webhook
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador del webhook (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWebhookAsyncWithHttpInfo($id)
+    public function getWebhookAsyncWithHttpInfo($authorization, $id)
     {
         $returnType = '\mx\wire4\client\model\WebhookResponse';
-        $request = $this->getWebhookRequest($id);
+        $request = $this->getWebhookRequest($authorization, $id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -293,13 +297,20 @@ class WebhooksApi
     /**
      * Create request for operation 'getWebhook'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $id Identificador del webhook (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getWebhookRequest($id)
+    protected function getWebhookRequest($authorization, $id)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling getWebhook'
+            );
+        }
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -314,6 +325,10 @@ class WebhooksApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($id !== null) {
@@ -367,10 +382,6 @@ class WebhooksApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -397,14 +408,15 @@ class WebhooksApi
      *
      * Consulta de Webhooks
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\WebhooksList
      */
-    public function getWebhooks()
+    public function getWebhooks($authorization)
     {
-        list($response) = $this->getWebhooksWithHttpInfo();
+        list($response) = $this->getWebhooksWithHttpInfo($authorization);
         return $response;
     }
 
@@ -413,15 +425,16 @@ class WebhooksApi
      *
      * Consulta de Webhooks
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\WebhooksList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebhooksWithHttpInfo()
+    public function getWebhooksWithHttpInfo($authorization)
     {
         $returnType = '\mx\wire4\client\model\WebhooksList';
-        $request = $this->getWebhooksRequest();
+        $request = $this->getWebhooksRequest($authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -527,13 +540,14 @@ class WebhooksApi
      *
      * Consulta de Webhooks
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWebhooksAsync()
+    public function getWebhooksAsync($authorization)
     {
-        return $this->getWebhooksAsyncWithHttpInfo()
+        return $this->getWebhooksAsyncWithHttpInfo($authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -546,14 +560,15 @@ class WebhooksApi
      *
      * Consulta de Webhooks
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWebhooksAsyncWithHttpInfo()
+    public function getWebhooksAsyncWithHttpInfo($authorization)
     {
         $returnType = '\mx\wire4\client\model\WebhooksList';
-        $request = $this->getWebhooksRequest();
+        $request = $this->getWebhooksRequest($authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -595,12 +610,19 @@ class WebhooksApi
     /**
      * Create request for operation 'getWebhooks'
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getWebhooksRequest()
+    protected function getWebhooksRequest($authorization)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling getWebhooks'
+            );
+        }
 
         $resourcePath = '/webhooks';
         $formParams = [];
@@ -609,6 +631,10 @@ class WebhooksApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
 
         // body params
@@ -654,10 +680,6 @@ class WebhooksApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -685,14 +707,15 @@ class WebhooksApi
      * Alta de Webhook
      *
      * @param  \mx\wire4\client\model\WebhookRequest $body Información para registrar un Webhook (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\WebhookResponse
      */
-    public function registerWebhook($body)
+    public function registerWebhook($body, $authorization)
     {
-        list($response) = $this->registerWebhookWithHttpInfo($body);
+        list($response) = $this->registerWebhookWithHttpInfo($body, $authorization);
         return $response;
     }
 
@@ -702,15 +725,16 @@ class WebhooksApi
      * Alta de Webhook
      *
      * @param  \mx\wire4\client\model\WebhookRequest $body Información para registrar un Webhook (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\WebhookResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerWebhookWithHttpInfo($body)
+    public function registerWebhookWithHttpInfo($body, $authorization)
     {
         $returnType = '\mx\wire4\client\model\WebhookResponse';
-        $request = $this->registerWebhookRequest($body);
+        $request = $this->registerWebhookRequest($body, $authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -809,13 +833,14 @@ class WebhooksApi
      * Alta de Webhook
      *
      * @param  \mx\wire4\client\model\WebhookRequest $body Información para registrar un Webhook (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerWebhookAsync($body)
+    public function registerWebhookAsync($body, $authorization)
     {
-        return $this->registerWebhookAsyncWithHttpInfo($body)
+        return $this->registerWebhookAsyncWithHttpInfo($body, $authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -829,14 +854,15 @@ class WebhooksApi
      * Alta de Webhook
      *
      * @param  \mx\wire4\client\model\WebhookRequest $body Información para registrar un Webhook (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerWebhookAsyncWithHttpInfo($body)
+    public function registerWebhookAsyncWithHttpInfo($body, $authorization)
     {
         $returnType = '\mx\wire4\client\model\WebhookResponse';
-        $request = $this->registerWebhookRequest($body);
+        $request = $this->registerWebhookRequest($body, $authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -879,16 +905,23 @@ class WebhooksApi
      * Create request for operation 'registerWebhook'
      *
      * @param  \mx\wire4\client\model\WebhookRequest $body Información para registrar un Webhook (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function registerWebhookRequest($body)
+    protected function registerWebhookRequest($body, $authorization)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling registerWebhook'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling registerWebhook'
             );
         }
 
@@ -899,6 +932,10 @@ class WebhooksApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
 
         // body params
@@ -947,10 +984,6 @@ class WebhooksApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

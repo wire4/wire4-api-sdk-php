@@ -91,15 +91,16 @@ class DepositantesApi
      *
      * Consulta de cuentas de depositantes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\GetDepositants
      */
-    public function getDepositantsUsingGET($subscription)
+    public function getDepositantsUsingGET($authorization, $subscription)
     {
-        list($response) = $this->getDepositantsUsingGETWithHttpInfo($subscription);
+        list($response) = $this->getDepositantsUsingGETWithHttpInfo($authorization, $subscription);
         return $response;
     }
 
@@ -108,16 +109,17 @@ class DepositantesApi
      *
      * Consulta de cuentas de depositantes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\GetDepositants, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDepositantsUsingGETWithHttpInfo($subscription)
+    public function getDepositantsUsingGETWithHttpInfo($authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\GetDepositants';
-        $request = $this->getDepositantsUsingGETRequest($subscription);
+        $request = $this->getDepositantsUsingGETRequest($authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -215,14 +217,15 @@ class DepositantesApi
      *
      * Consulta de cuentas de depositantes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDepositantsUsingGETAsync($subscription)
+    public function getDepositantsUsingGETAsync($authorization, $subscription)
     {
-        return $this->getDepositantsUsingGETAsyncWithHttpInfo($subscription)
+        return $this->getDepositantsUsingGETAsyncWithHttpInfo($authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -235,15 +238,16 @@ class DepositantesApi
      *
      * Consulta de cuentas de depositantes
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDepositantsUsingGETAsyncWithHttpInfo($subscription)
+    public function getDepositantsUsingGETAsyncWithHttpInfo($authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\GetDepositants';
-        $request = $this->getDepositantsUsingGETRequest($subscription);
+        $request = $this->getDepositantsUsingGETRequest($authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -285,13 +289,20 @@ class DepositantesApi
     /**
      * Create request for operation 'getDepositantsUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getDepositantsUsingGETRequest($subscription)
+    protected function getDepositantsUsingGETRequest($authorization, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling getDepositantsUsingGET'
+            );
+        }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
@@ -306,6 +317,10 @@ class DepositantesApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -359,10 +374,6 @@ class DepositantesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -390,15 +401,16 @@ class DepositantesApi
      * Registra un nuevo depositante
      *
      * @param  \mx\wire4\client\model\DepositantsRegister $body Depositant info (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\DepositantsResponse
      */
-    public function registerDepositantsUsingPOST($body, $subscription)
+    public function registerDepositantsUsingPOST($body, $authorization, $subscription)
     {
-        list($response) = $this->registerDepositantsUsingPOSTWithHttpInfo($body, $subscription);
+        list($response) = $this->registerDepositantsUsingPOSTWithHttpInfo($body, $authorization, $subscription);
         return $response;
     }
 
@@ -408,16 +420,17 @@ class DepositantesApi
      * Registra un nuevo depositante
      *
      * @param  \mx\wire4\client\model\DepositantsRegister $body Depositant info (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\DepositantsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerDepositantsUsingPOSTWithHttpInfo($body, $subscription)
+    public function registerDepositantsUsingPOSTWithHttpInfo($body, $authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\DepositantsResponse';
-        $request = $this->registerDepositantsUsingPOSTRequest($body, $subscription);
+        $request = $this->registerDepositantsUsingPOSTRequest($body, $authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -516,14 +529,15 @@ class DepositantesApi
      * Registra un nuevo depositante
      *
      * @param  \mx\wire4\client\model\DepositantsRegister $body Depositant info (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerDepositantsUsingPOSTAsync($body, $subscription)
+    public function registerDepositantsUsingPOSTAsync($body, $authorization, $subscription)
     {
-        return $this->registerDepositantsUsingPOSTAsyncWithHttpInfo($body, $subscription)
+        return $this->registerDepositantsUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -537,15 +551,16 @@ class DepositantesApi
      * Registra un nuevo depositante
      *
      * @param  \mx\wire4\client\model\DepositantsRegister $body Depositant info (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerDepositantsUsingPOSTAsyncWithHttpInfo($body, $subscription)
+    public function registerDepositantsUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\DepositantsResponse';
-        $request = $this->registerDepositantsUsingPOSTRequest($body, $subscription);
+        $request = $this->registerDepositantsUsingPOSTRequest($body, $authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -588,17 +603,24 @@ class DepositantesApi
      * Create request for operation 'registerDepositantsUsingPOST'
      *
      * @param  \mx\wire4\client\model\DepositantsRegister $body Depositant info (required)
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function registerDepositantsUsingPOSTRequest($body, $subscription)
+    protected function registerDepositantsUsingPOSTRequest($body, $authorization, $subscription)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling registerDepositantsUsingPOST'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling registerDepositantsUsingPOST'
             );
         }
         // verify the required parameter 'subscription' is set
@@ -615,6 +637,10 @@ class DepositantesApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -671,10 +697,6 @@ class DepositantesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

@@ -92,14 +92,15 @@ class ComprobanteElectrnicoDePagoCEPApi
      * Consulta de CEP
      *
      * @param  \mx\wire4\client\model\CepSearchBanxico $body Información para buscar un CEP (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\CepResponse
      */
-    public function obtainTransactionCepUsingPOST($body)
+    public function obtainTransactionCepUsingPOST($body, $authorization)
     {
-        list($response) = $this->obtainTransactionCepUsingPOSTWithHttpInfo($body);
+        list($response) = $this->obtainTransactionCepUsingPOSTWithHttpInfo($body, $authorization);
         return $response;
     }
 
@@ -109,15 +110,16 @@ class ComprobanteElectrnicoDePagoCEPApi
      * Consulta de CEP
      *
      * @param  \mx\wire4\client\model\CepSearchBanxico $body Información para buscar un CEP (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\CepResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function obtainTransactionCepUsingPOSTWithHttpInfo($body)
+    public function obtainTransactionCepUsingPOSTWithHttpInfo($body, $authorization)
     {
         $returnType = '\mx\wire4\client\model\CepResponse';
-        $request = $this->obtainTransactionCepUsingPOSTRequest($body);
+        $request = $this->obtainTransactionCepUsingPOSTRequest($body, $authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -216,13 +218,14 @@ class ComprobanteElectrnicoDePagoCEPApi
      * Consulta de CEP
      *
      * @param  \mx\wire4\client\model\CepSearchBanxico $body Información para buscar un CEP (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function obtainTransactionCepUsingPOSTAsync($body)
+    public function obtainTransactionCepUsingPOSTAsync($body, $authorization)
     {
-        return $this->obtainTransactionCepUsingPOSTAsyncWithHttpInfo($body)
+        return $this->obtainTransactionCepUsingPOSTAsyncWithHttpInfo($body, $authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -236,14 +239,15 @@ class ComprobanteElectrnicoDePagoCEPApi
      * Consulta de CEP
      *
      * @param  \mx\wire4\client\model\CepSearchBanxico $body Información para buscar un CEP (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function obtainTransactionCepUsingPOSTAsyncWithHttpInfo($body)
+    public function obtainTransactionCepUsingPOSTAsyncWithHttpInfo($body, $authorization)
     {
         $returnType = '\mx\wire4\client\model\CepResponse';
-        $request = $this->obtainTransactionCepUsingPOSTRequest($body);
+        $request = $this->obtainTransactionCepUsingPOSTRequest($body, $authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -286,16 +290,23 @@ class ComprobanteElectrnicoDePagoCEPApi
      * Create request for operation 'obtainTransactionCepUsingPOST'
      *
      * @param  \mx\wire4\client\model\CepSearchBanxico $body Información para buscar un CEP (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function obtainTransactionCepUsingPOSTRequest($body)
+    protected function obtainTransactionCepUsingPOSTRequest($body, $authorization)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling obtainTransactionCepUsingPOST'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling obtainTransactionCepUsingPOST'
             );
         }
 
@@ -306,6 +317,10 @@ class ComprobanteElectrnicoDePagoCEPApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
 
         // body params
@@ -354,10 +369,6 @@ class ComprobanteElectrnicoDePagoCEPApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

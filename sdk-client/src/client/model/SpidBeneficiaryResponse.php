@@ -1,6 +1,6 @@
 <?php
 /**
- * AccountSpid
+ * SpidBeneficiaryResponse
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * AccountSpid Class Doc Comment
+ * SpidBeneficiaryResponse Class Doc Comment
  *
  * @category Class
- * @description Objeto que contiene información de la cuenta
+ * @description Objeto que contiene información de la cuenta de beneficiario SPID
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AccountSpid implements ModelInterface, ArrayAccess
+class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class AccountSpid implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'AccountSpid';
+    protected static $swaggerModelName = 'SpidBeneficiaryResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,16 +58,14 @@ class AccountSpid implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'amount_limit' => 'float',
-'bank_code_banxico' => 'string',
+'bank' => '\mx\wire4\client\model\Institution',
 'beneficiary_account' => 'string',
-'cancel_return_url' => 'string',
 'email' => 'string[]',
 'institution' => '\mx\wire4\client\model\BeneficiaryInstitution',
 'kind_of_relationship' => 'string',
-'numeric_reference' => 'string',
-'payment_concept' => 'string',
+'numeric_reference_spid' => 'string',
+'payment_concept_spid' => 'string',
 'relationship' => 'string',
-'return_url' => 'string',
 'rfc' => 'string'    ];
 
     /**
@@ -77,16 +75,14 @@ class AccountSpid implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'amount_limit' => null,
-'bank_code_banxico' => null,
+'bank' => null,
 'beneficiary_account' => null,
-'cancel_return_url' => null,
 'email' => null,
 'institution' => null,
 'kind_of_relationship' => null,
-'numeric_reference' => null,
-'payment_concept' => null,
+'numeric_reference_spid' => null,
+'payment_concept_spid' => null,
 'relationship' => null,
-'return_url' => null,
 'rfc' => null    ];
 
     /**
@@ -117,16 +113,14 @@ class AccountSpid implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'amount_limit' => 'amount_limit',
-'bank_code_banxico' => 'bank_code_banxico',
+'bank' => 'bank',
 'beneficiary_account' => 'beneficiary_account',
-'cancel_return_url' => 'cancel_return_url',
 'email' => 'email',
 'institution' => 'institution',
 'kind_of_relationship' => 'kind_of_relationship',
-'numeric_reference' => 'numeric_reference',
-'payment_concept' => 'payment_concept',
+'numeric_reference_spid' => 'numeric_reference_spid',
+'payment_concept_spid' => 'payment_concept_spid',
 'relationship' => 'relationship',
-'return_url' => 'return_url',
 'rfc' => 'rfc'    ];
 
     /**
@@ -136,16 +130,14 @@ class AccountSpid implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'amount_limit' => 'setAmountLimit',
-'bank_code_banxico' => 'setBankCodeBanxico',
+'bank' => 'setBank',
 'beneficiary_account' => 'setBeneficiaryAccount',
-'cancel_return_url' => 'setCancelReturnUrl',
 'email' => 'setEmail',
 'institution' => 'setInstitution',
 'kind_of_relationship' => 'setKindOfRelationship',
-'numeric_reference' => 'setNumericReference',
-'payment_concept' => 'setPaymentConcept',
+'numeric_reference_spid' => 'setNumericReferenceSpid',
+'payment_concept_spid' => 'setPaymentConceptSpid',
 'relationship' => 'setRelationship',
-'return_url' => 'setReturnUrl',
 'rfc' => 'setRfc'    ];
 
     /**
@@ -155,16 +147,14 @@ class AccountSpid implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'amount_limit' => 'getAmountLimit',
-'bank_code_banxico' => 'getBankCodeBanxico',
+'bank' => 'getBank',
 'beneficiary_account' => 'getBeneficiaryAccount',
-'cancel_return_url' => 'getCancelReturnUrl',
 'email' => 'getEmail',
 'institution' => 'getInstitution',
 'kind_of_relationship' => 'getKindOfRelationship',
-'numeric_reference' => 'getNumericReference',
-'payment_concept' => 'getPaymentConcept',
+'numeric_reference_spid' => 'getNumericReferenceSpid',
+'payment_concept_spid' => 'getPaymentConceptSpid',
 'relationship' => 'getRelationship',
-'return_url' => 'getReturnUrl',
 'rfc' => 'getRfc'    ];
 
     /**
@@ -226,16 +216,14 @@ class AccountSpid implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount_limit'] = isset($data['amount_limit']) ? $data['amount_limit'] : null;
-        $this->container['bank_code_banxico'] = isset($data['bank_code_banxico']) ? $data['bank_code_banxico'] : null;
+        $this->container['bank'] = isset($data['bank']) ? $data['bank'] : null;
         $this->container['beneficiary_account'] = isset($data['beneficiary_account']) ? $data['beneficiary_account'] : null;
-        $this->container['cancel_return_url'] = isset($data['cancel_return_url']) ? $data['cancel_return_url'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['institution'] = isset($data['institution']) ? $data['institution'] : null;
         $this->container['kind_of_relationship'] = isset($data['kind_of_relationship']) ? $data['kind_of_relationship'] : null;
-        $this->container['numeric_reference'] = isset($data['numeric_reference']) ? $data['numeric_reference'] : null;
-        $this->container['payment_concept'] = isset($data['payment_concept']) ? $data['payment_concept'] : null;
+        $this->container['numeric_reference_spid'] = isset($data['numeric_reference_spid']) ? $data['numeric_reference_spid'] : null;
+        $this->container['payment_concept_spid'] = isset($data['payment_concept_spid']) ? $data['payment_concept_spid'] : null;
         $this->container['relationship'] = isset($data['relationship']) ? $data['relationship'] : null;
-        $this->container['return_url'] = isset($data['return_url']) ? $data['return_url'] : null;
         $this->container['rfc'] = isset($data['rfc']) ? $data['rfc'] : null;
     }
 
@@ -303,25 +291,25 @@ class AccountSpid implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets bank_code_banxico
+     * Gets bank
      *
-     * @return string
+     * @return \mx\wire4\client\model\Institution
      */
-    public function getBankCodeBanxico()
+    public function getBank()
     {
-        return $this->container['bank_code_banxico'];
+        return $this->container['bank'];
     }
 
     /**
-     * Sets bank_code_banxico
+     * Sets bank
      *
-     * @param string $bank_code_banxico Código banxico con una longitud de 5 dígitos, es requerido en caso de que la cuenta del beneficiario sea un número de celular
+     * @param \mx\wire4\client\model\Institution $bank bank
      *
      * @return $this
      */
-    public function setBankCodeBanxico($bank_code_banxico)
+    public function setBank($bank)
     {
-        $this->container['bank_code_banxico'] = $bank_code_banxico;
+        $this->container['bank'] = $bank;
 
         return $this;
     }
@@ -346,30 +334,6 @@ class AccountSpid implements ModelInterface, ArrayAccess
     public function setBeneficiaryAccount($beneficiary_account)
     {
         $this->container['beneficiary_account'] = $beneficiary_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets cancel_return_url
-     *
-     * @return string
-     */
-    public function getCancelReturnUrl()
-    {
-        return $this->container['cancel_return_url'];
-    }
-
-    /**
-     * Sets cancel_return_url
-     *
-     * @param string $cancel_return_url Url a la que se redirigira en caso no exitoso
-     *
-     * @return $this
-     */
-    public function setCancelReturnUrl($cancel_return_url)
-    {
-        $this->container['cancel_return_url'] = $cancel_return_url;
 
         return $this;
     }
@@ -447,49 +411,49 @@ class AccountSpid implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets numeric_reference
+     * Gets numeric_reference_spid
      *
      * @return string
      */
-    public function getNumericReference()
+    public function getNumericReferenceSpid()
     {
-        return $this->container['numeric_reference'];
+        return $this->container['numeric_reference_spid'];
     }
 
     /**
-     * Sets numeric_reference
+     * Sets numeric_reference_spid
      *
-     * @param string $numeric_reference Referencia numérica
+     * @param string $numeric_reference_spid Referencia numérica
      *
      * @return $this
      */
-    public function setNumericReference($numeric_reference)
+    public function setNumericReferenceSpid($numeric_reference_spid)
     {
-        $this->container['numeric_reference'] = $numeric_reference;
+        $this->container['numeric_reference_spid'] = $numeric_reference_spid;
 
         return $this;
     }
 
     /**
-     * Gets payment_concept
+     * Gets payment_concept_spid
      *
      * @return string
      */
-    public function getPaymentConcept()
+    public function getPaymentConceptSpid()
     {
-        return $this->container['payment_concept'];
+        return $this->container['payment_concept_spid'];
     }
 
     /**
-     * Sets payment_concept
+     * Sets payment_concept_spid
      *
-     * @param string $payment_concept Concepto de pago
+     * @param string $payment_concept_spid Concepto de pago
      *
      * @return $this
      */
-    public function setPaymentConcept($payment_concept)
+    public function setPaymentConceptSpid($payment_concept_spid)
     {
-        $this->container['payment_concept'] = $payment_concept;
+        $this->container['payment_concept_spid'] = $payment_concept_spid;
 
         return $this;
     }
@@ -514,30 +478,6 @@ class AccountSpid implements ModelInterface, ArrayAccess
     public function setRelationship($relationship)
     {
         $this->container['relationship'] = $relationship;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_url
-     *
-     * @return string
-     */
-    public function getReturnUrl()
-    {
-        return $this->container['return_url'];
-    }
-
-    /**
-     * Sets return_url
-     *
-     * @param string $return_url Url a la que se redireccionara en caso exitoso
-     *
-     * @return $this
-     */
-    public function setReturnUrl($return_url)
-    {
-        $this->container['return_url'] = $return_url;
 
         return $this;
     }

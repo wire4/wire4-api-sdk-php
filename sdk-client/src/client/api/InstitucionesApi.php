@@ -91,14 +91,15 @@ class InstitucionesApi
      *
      * Información de instituciones bancarias.
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\InstitutionsList
      */
-    public function getAllInstitutionsUsingGET()
+    public function getAllInstitutionsUsingGET($authorization)
     {
-        list($response) = $this->getAllInstitutionsUsingGETWithHttpInfo();
+        list($response) = $this->getAllInstitutionsUsingGETWithHttpInfo($authorization);
         return $response;
     }
 
@@ -107,15 +108,16 @@ class InstitucionesApi
      *
      * Información de instituciones bancarias.
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\InstitutionsList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllInstitutionsUsingGETWithHttpInfo()
+    public function getAllInstitutionsUsingGETWithHttpInfo($authorization)
     {
         $returnType = '\mx\wire4\client\model\InstitutionsList';
-        $request = $this->getAllInstitutionsUsingGETRequest();
+        $request = $this->getAllInstitutionsUsingGETRequest($authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -213,13 +215,14 @@ class InstitucionesApi
      *
      * Información de instituciones bancarias.
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllInstitutionsUsingGETAsync()
+    public function getAllInstitutionsUsingGETAsync($authorization)
     {
-        return $this->getAllInstitutionsUsingGETAsyncWithHttpInfo()
+        return $this->getAllInstitutionsUsingGETAsyncWithHttpInfo($authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -232,14 +235,15 @@ class InstitucionesApi
      *
      * Información de instituciones bancarias.
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllInstitutionsUsingGETAsyncWithHttpInfo()
+    public function getAllInstitutionsUsingGETAsyncWithHttpInfo($authorization)
     {
         $returnType = '\mx\wire4\client\model\InstitutionsList';
-        $request = $this->getAllInstitutionsUsingGETRequest();
+        $request = $this->getAllInstitutionsUsingGETRequest($authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -281,12 +285,19 @@ class InstitucionesApi
     /**
      * Create request for operation 'getAllInstitutionsUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAllInstitutionsUsingGETRequest()
+    protected function getAllInstitutionsUsingGETRequest($authorization)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling getAllInstitutionsUsingGET'
+            );
+        }
 
         $resourcePath = '/institutions';
         $formParams = [];
@@ -295,6 +306,10 @@ class InstitucionesApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
 
         // body params
@@ -340,10 +355,6 @@ class InstitucionesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

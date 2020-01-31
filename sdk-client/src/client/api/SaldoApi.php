@@ -91,15 +91,16 @@ class SaldoApi
      *
      * Consulta los saldo de una cuenta
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\BalanceListResponse
      */
-    public function getBalanceUsingGET($subscription)
+    public function getBalanceUsingGET($authorization, $subscription)
     {
-        list($response) = $this->getBalanceUsingGETWithHttpInfo($subscription);
+        list($response) = $this->getBalanceUsingGETWithHttpInfo($authorization, $subscription);
         return $response;
     }
 
@@ -108,16 +109,17 @@ class SaldoApi
      *
      * Consulta los saldo de una cuenta
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\BalanceListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBalanceUsingGETWithHttpInfo($subscription)
+    public function getBalanceUsingGETWithHttpInfo($authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\BalanceListResponse';
-        $request = $this->getBalanceUsingGETRequest($subscription);
+        $request = $this->getBalanceUsingGETRequest($authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -215,14 +217,15 @@ class SaldoApi
      *
      * Consulta los saldo de una cuenta
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBalanceUsingGETAsync($subscription)
+    public function getBalanceUsingGETAsync($authorization, $subscription)
     {
-        return $this->getBalanceUsingGETAsyncWithHttpInfo($subscription)
+        return $this->getBalanceUsingGETAsyncWithHttpInfo($authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -235,15 +238,16 @@ class SaldoApi
      *
      * Consulta los saldo de una cuenta
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBalanceUsingGETAsyncWithHttpInfo($subscription)
+    public function getBalanceUsingGETAsyncWithHttpInfo($authorization, $subscription)
     {
         $returnType = '\mx\wire4\client\model\BalanceListResponse';
-        $request = $this->getBalanceUsingGETRequest($subscription);
+        $request = $this->getBalanceUsingGETRequest($authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -285,13 +289,20 @@ class SaldoApi
     /**
      * Create request for operation 'getBalanceUsingGET'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getBalanceUsingGETRequest($subscription)
+    protected function getBalanceUsingGETRequest($authorization, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling getBalanceUsingGET'
+            );
+        }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
@@ -306,6 +317,10 @@ class SaldoApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -359,10 +374,6 @@ class SaldoApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

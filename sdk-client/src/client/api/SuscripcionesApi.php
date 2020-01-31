@@ -92,14 +92,15 @@ class SuscripcionesApi
      * registra una pre-suscripción
      *
      * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\PreEnrollmentResponse
      */
-    public function preEnrollmentMonexUserUsingPOST($body)
+    public function preEnrollmentMonexUserUsingPOST($body, $authorization)
     {
-        list($response) = $this->preEnrollmentMonexUserUsingPOSTWithHttpInfo($body);
+        list($response) = $this->preEnrollmentMonexUserUsingPOSTWithHttpInfo($body, $authorization);
         return $response;
     }
 
@@ -109,15 +110,16 @@ class SuscripcionesApi
      * registra una pre-suscripción
      *
      * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\PreEnrollmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function preEnrollmentMonexUserUsingPOSTWithHttpInfo($body)
+    public function preEnrollmentMonexUserUsingPOSTWithHttpInfo($body, $authorization)
     {
         $returnType = '\mx\wire4\client\model\PreEnrollmentResponse';
-        $request = $this->preEnrollmentMonexUserUsingPOSTRequest($body);
+        $request = $this->preEnrollmentMonexUserUsingPOSTRequest($body, $authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -216,13 +218,14 @@ class SuscripcionesApi
      * registra una pre-suscripción
      *
      * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preEnrollmentMonexUserUsingPOSTAsync($body)
+    public function preEnrollmentMonexUserUsingPOSTAsync($body, $authorization)
     {
-        return $this->preEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo($body)
+        return $this->preEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo($body, $authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -236,14 +239,15 @@ class SuscripcionesApi
      * registra una pre-suscripción
      *
      * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo($body)
+    public function preEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo($body, $authorization)
     {
         $returnType = '\mx\wire4\client\model\PreEnrollmentResponse';
-        $request = $this->preEnrollmentMonexUserUsingPOSTRequest($body);
+        $request = $this->preEnrollmentMonexUserUsingPOSTRequest($body, $authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -286,16 +290,23 @@ class SuscripcionesApi
      * Create request for operation 'preEnrollmentMonexUserUsingPOST'
      *
      * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function preEnrollmentMonexUserUsingPOSTRequest($body)
+    protected function preEnrollmentMonexUserUsingPOSTRequest($body, $authorization)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling preEnrollmentMonexUserUsingPOST'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling preEnrollmentMonexUserUsingPOST'
             );
         }
 
@@ -306,6 +317,10 @@ class SuscripcionesApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
 
         // body params
@@ -354,10 +369,6 @@ class SuscripcionesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -384,15 +395,16 @@ class SuscripcionesApi
      *
      * Elimna una suscripción por id
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function removeEnrollmentUserUsingDELETE($subscription)
+    public function removeEnrollmentUserUsingDELETE($authorization, $subscription)
     {
-        $this->removeEnrollmentUserUsingDELETEWithHttpInfo($subscription);
+        $this->removeEnrollmentUserUsingDELETEWithHttpInfo($authorization, $subscription);
     }
 
     /**
@@ -400,16 +412,17 @@ class SuscripcionesApi
      *
      * Elimna una suscripción por id
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeEnrollmentUserUsingDELETEWithHttpInfo($subscription)
+    public function removeEnrollmentUserUsingDELETEWithHttpInfo($authorization, $subscription)
     {
         $returnType = '';
-        $request = $this->removeEnrollmentUserUsingDELETERequest($subscription);
+        $request = $this->removeEnrollmentUserUsingDELETERequest($authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -453,14 +466,15 @@ class SuscripcionesApi
      *
      * Elimna una suscripción por id
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeEnrollmentUserUsingDELETEAsync($subscription)
+    public function removeEnrollmentUserUsingDELETEAsync($authorization, $subscription)
     {
-        return $this->removeEnrollmentUserUsingDELETEAsyncWithHttpInfo($subscription)
+        return $this->removeEnrollmentUserUsingDELETEAsyncWithHttpInfo($authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -473,15 +487,16 @@ class SuscripcionesApi
      *
      * Elimna una suscripción por id
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeEnrollmentUserUsingDELETEAsyncWithHttpInfo($subscription)
+    public function removeEnrollmentUserUsingDELETEAsyncWithHttpInfo($authorization, $subscription)
     {
         $returnType = '';
-        $request = $this->removeEnrollmentUserUsingDELETERequest($subscription);
+        $request = $this->removeEnrollmentUserUsingDELETERequest($authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -509,13 +524,20 @@ class SuscripcionesApi
     /**
      * Create request for operation 'removeEnrollmentUserUsingDELETE'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function removeEnrollmentUserUsingDELETERequest($subscription)
+    protected function removeEnrollmentUserUsingDELETERequest($authorization, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling removeEnrollmentUserUsingDELETE'
+            );
+        }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
@@ -530,6 +552,10 @@ class SuscripcionesApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -583,10 +609,6 @@ class SuscripcionesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -613,15 +635,16 @@ class SuscripcionesApi
      *
      * Elimna una pre-suscripción
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function removeSubscriptionPendingStatusUsingDELETE($subscription)
+    public function removeSubscriptionPendingStatusUsingDELETE($authorization, $subscription)
     {
-        $this->removeSubscriptionPendingStatusUsingDELETEWithHttpInfo($subscription);
+        $this->removeSubscriptionPendingStatusUsingDELETEWithHttpInfo($authorization, $subscription);
     }
 
     /**
@@ -629,16 +652,17 @@ class SuscripcionesApi
      *
      * Elimna una pre-suscripción
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeSubscriptionPendingStatusUsingDELETEWithHttpInfo($subscription)
+    public function removeSubscriptionPendingStatusUsingDELETEWithHttpInfo($authorization, $subscription)
     {
         $returnType = '';
-        $request = $this->removeSubscriptionPendingStatusUsingDELETERequest($subscription);
+        $request = $this->removeSubscriptionPendingStatusUsingDELETERequest($authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -682,14 +706,15 @@ class SuscripcionesApi
      *
      * Elimna una pre-suscripción
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeSubscriptionPendingStatusUsingDELETEAsync($subscription)
+    public function removeSubscriptionPendingStatusUsingDELETEAsync($authorization, $subscription)
     {
-        return $this->removeSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo($subscription)
+        return $this->removeSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo($authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -702,15 +727,16 @@ class SuscripcionesApi
      *
      * Elimna una pre-suscripción
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo($subscription)
+    public function removeSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo($authorization, $subscription)
     {
         $returnType = '';
-        $request = $this->removeSubscriptionPendingStatusUsingDELETERequest($subscription);
+        $request = $this->removeSubscriptionPendingStatusUsingDELETERequest($authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -738,13 +764,20 @@ class SuscripcionesApi
     /**
      * Create request for operation 'removeSubscriptionPendingStatusUsingDELETE'
      *
+     * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function removeSubscriptionPendingStatusUsingDELETERequest($subscription)
+    protected function removeSubscriptionPendingStatusUsingDELETERequest($authorization, $subscription)
     {
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling removeSubscriptionPendingStatusUsingDELETE'
+            );
+        }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
@@ -759,6 +792,10 @@ class SuscripcionesApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
         // path params
         if ($subscription !== null) {
@@ -812,10 +849,6 @@ class SuscripcionesApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

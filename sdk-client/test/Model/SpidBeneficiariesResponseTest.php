@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageSubscriptionTest
+ * SpidBeneficiariesResponseTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageSubscriptionTest Class Doc Comment
+ * SpidBeneficiariesResponseTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del la suscripción a esta a esta API
+ * @description SpidBeneficiariesResponse
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageSubscriptionTest extends \PHPUnit_Framework_TestCase
+class SpidBeneficiariesResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,51 +69,16 @@ class MessageSubscriptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageSubscription"
+     * Test "SpidBeneficiariesResponse"
      */
-    public function testMessageSubscription()
+    public function testSpidBeneficiariesResponse()
     {
     }
 
     /**
-     * Test attribute "contract"
+     * Test attribute "beneficiaries"
      */
-    public function testPropertyContract()
-    {
-    }
-
-    /**
-     * Test attribute "masked_contract"
-     */
-    public function testPropertyMaskedContract()
-    {
-    }
-
-    /**
-     * Test attribute "subscription"
-     */
-    public function testPropertySubscription()
-    {
-    }
-
-    /**
-     * Test attribute "user"
-     */
-    public function testPropertyUser()
-    {
-    }
-
-    /**
-     * Test attribute "user_key"
-     */
-    public function testPropertyUserKey()
-    {
-    }
-
-    /**
-     * Test attribute "user_secret"
-     */
-    public function testPropertyUserSecret()
+    public function testPropertyBeneficiaries()
     {
     }
 }

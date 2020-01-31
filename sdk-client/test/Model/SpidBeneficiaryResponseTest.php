@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageSubscriptionTest
+ * SpidBeneficiaryResponseTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageSubscriptionTest Class Doc Comment
+ * SpidBeneficiaryResponseTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del la suscripción a esta a esta API
+ * @description Objeto que contiene información de la cuenta de beneficiario SPID
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageSubscriptionTest extends \PHPUnit_Framework_TestCase
+class SpidBeneficiaryResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,51 +69,79 @@ class MessageSubscriptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageSubscription"
+     * Test "SpidBeneficiaryResponse"
      */
-    public function testMessageSubscription()
+    public function testSpidBeneficiaryResponse()
     {
     }
 
     /**
-     * Test attribute "contract"
+     * Test attribute "amount_limit"
      */
-    public function testPropertyContract()
+    public function testPropertyAmountLimit()
     {
     }
 
     /**
-     * Test attribute "masked_contract"
+     * Test attribute "bank"
      */
-    public function testPropertyMaskedContract()
+    public function testPropertyBank()
     {
     }
 
     /**
-     * Test attribute "subscription"
+     * Test attribute "beneficiary_account"
      */
-    public function testPropertySubscription()
+    public function testPropertyBeneficiaryAccount()
     {
     }
 
     /**
-     * Test attribute "user"
+     * Test attribute "email"
      */
-    public function testPropertyUser()
+    public function testPropertyEmail()
     {
     }
 
     /**
-     * Test attribute "user_key"
+     * Test attribute "institution"
      */
-    public function testPropertyUserKey()
+    public function testPropertyInstitution()
     {
     }
 
     /**
-     * Test attribute "user_secret"
+     * Test attribute "kind_of_relationship"
      */
-    public function testPropertyUserSecret()
+    public function testPropertyKindOfRelationship()
+    {
+    }
+
+    /**
+     * Test attribute "numeric_reference_spid"
+     */
+    public function testPropertyNumericReferenceSpid()
+    {
+    }
+
+    /**
+     * Test attribute "payment_concept_spid"
+     */
+    public function testPropertyPaymentConceptSpid()
+    {
+    }
+
+    /**
+     * Test attribute "relationship"
+     */
+    public function testPropertyRelationship()
+    {
+    }
+
+    /**
+     * Test attribute "rfc"
+     */
+    public function testPropertyRfc()
     {
     }
 }

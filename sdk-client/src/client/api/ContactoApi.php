@@ -92,14 +92,15 @@ class ContactoApi
      * Solicitud de contacto
      *
      * @param  \mx\wire4\client\model\ContactRequest $body Información del contacto (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function sendContactUsingPOST($body)
+    public function sendContactUsingPOST($body, $authorization)
     {
-        $this->sendContactUsingPOSTWithHttpInfo($body);
+        $this->sendContactUsingPOSTWithHttpInfo($body, $authorization);
     }
 
     /**
@@ -108,15 +109,16 @@ class ContactoApi
      * Solicitud de contacto
      *
      * @param  \mx\wire4\client\model\ContactRequest $body Información del contacto (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendContactUsingPOSTWithHttpInfo($body)
+    public function sendContactUsingPOSTWithHttpInfo($body, $authorization)
     {
         $returnType = '';
-        $request = $this->sendContactUsingPOSTRequest($body);
+        $request = $this->sendContactUsingPOSTRequest($body, $authorization);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,13 +195,14 @@ class ContactoApi
      * Solicitud de contacto
      *
      * @param  \mx\wire4\client\model\ContactRequest $body Información del contacto (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendContactUsingPOSTAsync($body)
+    public function sendContactUsingPOSTAsync($body, $authorization)
     {
-        return $this->sendContactUsingPOSTAsyncWithHttpInfo($body)
+        return $this->sendContactUsingPOSTAsyncWithHttpInfo($body, $authorization)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -213,14 +216,15 @@ class ContactoApi
      * Solicitud de contacto
      *
      * @param  \mx\wire4\client\model\ContactRequest $body Información del contacto (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendContactUsingPOSTAsyncWithHttpInfo($body)
+    public function sendContactUsingPOSTAsyncWithHttpInfo($body, $authorization)
     {
         $returnType = '';
-        $request = $this->sendContactUsingPOSTRequest($body);
+        $request = $this->sendContactUsingPOSTRequest($body, $authorization);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -249,16 +253,23 @@ class ContactoApi
      * Create request for operation 'sendContactUsingPOST'
      *
      * @param  \mx\wire4\client\model\ContactRequest $body Información del contacto (required)
+     * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function sendContactUsingPOSTRequest($body)
+    protected function sendContactUsingPOSTRequest($body, $authorization)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $body when calling sendContactUsingPOST'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling sendContactUsingPOST'
             );
         }
 
@@ -269,6 +280,10 @@ class ContactoApi
         $httpBody = '';
         $multipart = false;
 
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
 
 
         // body params
@@ -317,10 +332,6 @@ class ContactoApi
             }
         }
 
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
