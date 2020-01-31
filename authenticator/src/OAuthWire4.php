@@ -70,7 +70,7 @@ class OAuthWire4 {
             throw $e;
         }
 
-        return $accessToken->access_token;
+        return 'Bearer '.$accessToken->access_token;
 
     }
 
@@ -117,7 +117,7 @@ class OAuthWire4 {
         }
 
 
-        return $accessToken->access_token;
+        return 'Bearer '.$accessToken->access_token;
     }
 
 }
