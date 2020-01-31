@@ -23,7 +23,7 @@ Para instalar via [Composer](http://getcomposer.org/), agrega lo siguiente a `co
     }
   ],
   "require": {
-    "sdk-client/mx-wire4": "*@dev"
+    "wire4/wire4-api-sdk-php": "dev-master"
   }
 }
 ```
@@ -34,7 +34,7 @@ Ejecuta el siguiente comando:
 
 o simplemente ejecuta desde la línea de comandos la siguiente línea:
 
-`composer require wire4-php-client/mx-wire4`
+`composer require wire4/wire4-api-sdk-php dev-master`
 
 Una vez que se instalo el cliente en tu proyecto importa el autoload.php
 
@@ -50,31 +50,28 @@ Por favor sigue el procedimiento de instalación (Instalacion y uso) y ejecuta e
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+$accessToken= "";
 try {
     // Create the authenticator to obtain access token
-    $oauth = new mx\wire4\OAuthWire4(
+    $oauth = new \mx\wire4\auth\OAuthWire4 (
         'YOUR_OAUTH_CONSUMER_KEY', //REPLACE THIS WITH YOUR DATA
         'YOUR_OAUTH_CONSUMER_SECRET', //REPLACE THIS WITH YOUR DATA
-        \mx\wire4\Environment::SANDBOX); // O \mx\wire4\Environment::PRODUCTION
+        \mx\wire4\auth\Environment::SANDBOX); // O \mx\wire4\auth\Environment::PRODUCTION
     // Obtain an access token use application flow and scope "general"
     $accessToken= $oauth->obtainAccessTokenApp("general");
 } catch(OAuthException $e) {
     echo "Respuesta: ". $e->lastResponse . "\n";
 }
 
-// Configure OAuth2 access token for authorization: wire4_aut_app
-$config = mx\wire4\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN'); // $accessToken
-
-$apiInstance = new mx\wire4\client\api\ComprobanteElectrnicoDePagoCEPApi(
+$apiInstance = new \mx\wire4\client\api\ComprobanteElectrnicoDePagoCEPApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $body = new \mx\wire4\client\model\CepSearchBanxico(); // \mx\wire4\client\model\CepSearchBanxico | Información para buscar un CEP
 
 try {
-    $result = $apiInstance->obtainTransactionCepUsingPOST($body);
+    $result = $apiInstance->obtainTransactionCepUsingPOST($body,$accessToken);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ComprobanteElectrnicoDePagoCEPApi->obtainTransactionCepUsingPOST: ', $e->getMessage(), PHP_EOL;
