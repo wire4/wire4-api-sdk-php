@@ -104,6 +104,13 @@ class DepositTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "cep"
+     */
+    public function testPropertyCep()
+    {
+    }
+
+    /**
      * Test attribute "clave_rastreo"
      */
     public function testPropertyClaveRastreo()

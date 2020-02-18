@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [PreEnrollmentResponse](docs/Model/PreEnrollmentResponse.md)
  - [Relationship](docs/Model/Relationship.md)
  - [RelationshipsResponse](docs/Model/RelationshipsResponse.md)
+ - [RequestChangedMessage](docs/Model/RequestChangedMessage.md)
  - [SpidBeneficiariesResponse](docs/Model/SpidBeneficiariesResponse.md)
  - [SpidBeneficiaryResponse](docs/Model/SpidBeneficiaryResponse.md)
  - [SpidClassificationDTO](docs/Model/SpidClassificationDTO.md)
