@@ -1,6 +1,6 @@
 <?php
 /**
- * RequestChangedMessage
+ * MessageRequestChanged
  *
  * PHP version 5
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * RequestChangedMessage Class Doc Comment
+ * MessageRequestChanged Class Doc Comment
  *
  * @category Class
  * @description El mensaje que se envía mediante (webHook) con la información acerca de algún cambio en el procesamiento de la petición a esta a esta API
@@ -40,7 +40,7 @@ use \mx\wire4\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class RequestChangedMessage implements ModelInterface, ArrayAccess
+class MessageRequestChanged implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RequestChangedMessage implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'RequestChangedMessage';
+    protected static $swaggerModelName = 'MessageRequestChanged';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

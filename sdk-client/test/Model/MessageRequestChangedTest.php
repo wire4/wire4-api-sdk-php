@@ -1,6 +1,6 @@
 <?php
 /**
- * RequestChangedMessageTest
+ * MessageRequestChangedTest
  *
  * PHP version 5
  *
@@ -29,7 +29,7 @@
 namespace mx\wire4;
 
 /**
- * RequestChangedMessageTest Class Doc Comment
+ * MessageRequestChangedTest Class Doc Comment
  *
  * @category    Class
  * @description El mensaje que se envía mediante (webHook) con la información acerca de algún cambio en el procesamiento de la petición a esta a esta API
@@ -37,7 +37,7 @@ namespace mx\wire4;
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class RequestChangedMessageTest extends \PHPUnit_Framework_TestCase
+class MessageRequestChangedTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,9 +69,9 @@ class RequestChangedMessageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "RequestChangedMessage"
+     * Test "MessageRequestChanged"
      */
-    public function testRequestChangedMessage()
+    public function testMessageRequestChanged()
     {
     }
 
