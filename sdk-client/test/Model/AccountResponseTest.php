@@ -151,4 +151,11 @@ class AccountResponseTest extends \PHPUnit_Framework_TestCase
     public function testPropertyRfc()
     {
     }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+    }
 }

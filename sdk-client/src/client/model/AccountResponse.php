@@ -67,7 +67,8 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'payment_concept_spei' => 'string',
 'person' => '\mx\wire4\client\model\Person',
 'relationship' => 'string',
-'rfc' => 'string'    ];
+'rfc' => 'string',
+'status' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -85,7 +86,8 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'payment_concept_spei' => null,
 'person' => null,
 'relationship' => null,
-'rfc' => null    ];
+'rfc' => null,
+'status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -124,7 +126,8 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'payment_concept_spei' => 'payment_concept_spei',
 'person' => 'person',
 'relationship' => 'relationship',
-'rfc' => 'rfc'    ];
+'rfc' => 'rfc',
+'status' => 'status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -142,7 +145,8 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'payment_concept_spei' => 'setPaymentConceptSpei',
 'person' => 'setPerson',
 'relationship' => 'setRelationship',
-'rfc' => 'setRfc'    ];
+'rfc' => 'setRfc',
+'status' => 'setStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -160,7 +164,8 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'payment_concept_spei' => 'getPaymentConceptSpei',
 'person' => 'getPerson',
 'relationship' => 'getRelationship',
-'rfc' => 'getRfc'    ];
+'rfc' => 'getRfc',
+'status' => 'getStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -231,6 +236,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
         $this->container['person'] = isset($data['person']) ? $data['person'] : null;
         $this->container['relationship'] = isset($data['relationship']) ? $data['relationship'] : null;
         $this->container['rfc'] = isset($data['rfc']) ? $data['rfc'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -532,6 +538,30 @@ class AccountResponse implements ModelInterface, ArrayAccess
     public function setRfc($rfc)
     {
         $this->container['rfc'] = $rfc;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status El estado (status) en el que se encuentra el registro del beneficiario
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

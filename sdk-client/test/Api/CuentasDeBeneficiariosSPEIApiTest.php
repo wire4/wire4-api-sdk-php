@@ -91,6 +91,16 @@ class CuentasDeBeneficiariosSPEIApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getBeneficiariesByRequestId
+     *
+     * Consulta los beneficiarios por el identificador de la petición de registro.
+     *
+     */
+    public function testGetBeneficiariesByRequestId()
+    {
+    }
+
+    /**
      * Test case for getBeneficiariesForAccountUsingGET
      *
      * Consulta los beneficiarios registrados.

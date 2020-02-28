@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *ContactoApi* | [**sendContactUsingPOST**](docs/Api/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
 *CuentasDeBeneficiariosSPEIApi* | [**deleteAccountUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
 *CuentasDeBeneficiariosSPEIApi* | [**getAvailableRelationshipsMonexUsingGET**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
+*CuentasDeBeneficiariosSPEIApi* | [**getBeneficiariesByRequestId**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesbyrequestid) | **GET** /subscriptions/{subscription}/beneficiaries/spei/{requestId} | Consulta los beneficiarios por el identificador de la petición de registro
 *CuentasDeBeneficiariosSPEIApi* | [**getBeneficiariesForAccountUsingGET**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
 *CuentasDeBeneficiariosSPEIApi* | [**preRegisterAccountsUsingPOST**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 *CuentasDeBeneficiariosSPEIApi* | [**removeBeneficiariesPendingUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
@@ -118,6 +119,7 @@ Class | Method | HTTP request | Description
  - [AmountRequest](docs/Model/AmountRequest.md)
  - [Balance](docs/Model/Balance.md)
  - [BalanceListResponse](docs/Model/BalanceListResponse.md)
+ - [BeneficiariesQueryRegisterStatus](docs/Model/BeneficiariesQueryRegisterStatus.md)
  - [BeneficiariesResponse](docs/Model/BeneficiariesResponse.md)
  - [BeneficiaryInstitution](docs/Model/BeneficiaryInstitution.md)
  - [Billing](docs/Model/Billing.md)
@@ -138,6 +140,7 @@ Class | Method | HTTP request | Description
  - [MessageDepositReceived](docs/Model/MessageDepositReceived.md)
  - [MessageInstitution](docs/Model/MessageInstitution.md)
  - [MessagePayment](docs/Model/MessagePayment.md)
+ - [MessageRequestChanged](docs/Model/MessageRequestChanged.md)
  - [MessageSubscription](docs/Model/MessageSubscription.md)
  - [MessageWebHook](docs/Model/MessageWebHook.md)
  - [Payment](docs/Model/Payment.md)

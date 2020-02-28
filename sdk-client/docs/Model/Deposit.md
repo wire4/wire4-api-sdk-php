@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **beneficiary_account** | **string** | La cuenta del beneficiario | [optional] 
 **beneficiary_name** | **string** | El nombre del beneficiario | [optional] 
 **beneficiary_rfc** | **string** | El RFC del beneficiario | [optional] 
+**cep** | [**\mx\wire4\client\model\MessageCEP**](MessageCEP.md) |  | [optional] 
 **clave_rastreo** | **string** | La clave de rastreo de la transferencia | [optional] 
 **confirm_date** | [**\DateTime**](\DateTime.md) | Fecha de confirmación del deposito | [optional] 
 **currency_code** | **string** | Código de moneda de la transferencia | [optional] 

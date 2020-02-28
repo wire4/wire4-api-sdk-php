@@ -61,6 +61,7 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
 'beneficiary_account' => 'string',
 'beneficiary_name' => 'string',
 'beneficiary_rfc' => 'string',
+'cep' => '\mx\wire4\client\model\MessageCEP',
 'clave_rastreo' => 'string',
 'confirm_date' => '\DateTime',
 'currency_code' => 'string',
@@ -88,6 +89,7 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
 'beneficiary_account' => null,
 'beneficiary_name' => null,
 'beneficiary_rfc' => null,
+'cep' => null,
 'clave_rastreo' => null,
 'confirm_date' => 'date-time',
 'currency_code' => null,
@@ -136,6 +138,7 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
 'beneficiary_account' => 'beneficiary_account',
 'beneficiary_name' => 'beneficiary_name',
 'beneficiary_rfc' => 'beneficiary_rfc',
+'cep' => 'cep',
 'clave_rastreo' => 'clave_rastreo',
 'confirm_date' => 'confirm_date',
 'currency_code' => 'currency_code',
@@ -163,6 +166,7 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
 'beneficiary_account' => 'setBeneficiaryAccount',
 'beneficiary_name' => 'setBeneficiaryName',
 'beneficiary_rfc' => 'setBeneficiaryRfc',
+'cep' => 'setCep',
 'clave_rastreo' => 'setClaveRastreo',
 'confirm_date' => 'setConfirmDate',
 'currency_code' => 'setCurrencyCode',
@@ -190,6 +194,7 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
 'beneficiary_account' => 'getBeneficiaryAccount',
 'beneficiary_name' => 'getBeneficiaryName',
 'beneficiary_rfc' => 'getBeneficiaryRfc',
+'cep' => 'getCep',
 'clave_rastreo' => 'getClaveRastreo',
 'confirm_date' => 'getConfirmDate',
 'currency_code' => 'getCurrencyCode',
@@ -269,6 +274,7 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         $this->container['beneficiary_account'] = isset($data['beneficiary_account']) ? $data['beneficiary_account'] : null;
         $this->container['beneficiary_name'] = isset($data['beneficiary_name']) ? $data['beneficiary_name'] : null;
         $this->container['beneficiary_rfc'] = isset($data['beneficiary_rfc']) ? $data['beneficiary_rfc'] : null;
+        $this->container['cep'] = isset($data['cep']) ? $data['cep'] : null;
         $this->container['clave_rastreo'] = isset($data['clave_rastreo']) ? $data['clave_rastreo'] : null;
         $this->container['confirm_date'] = isset($data['confirm_date']) ? $data['confirm_date'] : null;
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
@@ -403,6 +409,30 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
     public function setBeneficiaryRfc($beneficiary_rfc)
     {
         $this->container['beneficiary_rfc'] = $beneficiary_rfc;
+
+        return $this;
+    }
+
+    /**
+     * Gets cep
+     *
+     * @return \mx\wire4\client\model\MessageCEP
+     */
+    public function getCep()
+    {
+        return $this->container['cep'];
+    }
+
+    /**
+     * Sets cep
+     *
+     * @param \mx\wire4\client\model\MessageCEP $cep cep
+     *
+     * @return $this
+     */
+    public function setCep($cep)
+    {
+        $this->container['cep'] = $cep;
 
         return $this;
     }
