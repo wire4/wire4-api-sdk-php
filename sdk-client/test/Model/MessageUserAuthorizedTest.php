@@ -1,6 +1,6 @@
 <?php
 /**
- * AccountTest
+ * MessageUserAuthorizedTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * AccountTest Class Doc Comment
+ * MessageUserAuthorizedTest Class Doc Comment
  *
  * @category    Class
- * @description Objeto que contiene información de la cuenta
+ * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class AccountTest extends \PHPUnit_Framework_TestCase
+class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,86 +69,51 @@ class AccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Account"
+     * Test "MessageUserAuthorized"
      */
-    public function testAccount()
+    public function testMessageUserAuthorized()
     {
     }
 
     /**
-     * Test attribute "amount_limit"
+     * Test attribute "account"
      */
-    public function testPropertyAmountLimit()
+    public function testPropertyAccount()
     {
     }
 
     /**
-     * Test attribute "bank_key"
+     * Test attribute "masked_account"
      */
-    public function testPropertyBankKey()
+    public function testPropertyMaskedAccount()
     {
     }
 
     /**
-     * Test attribute "beneficiary_account"
+     * Test attribute "masked_name"
      */
-    public function testPropertyBeneficiaryAccount()
+    public function testPropertyMaskedName()
     {
     }
 
     /**
-     * Test attribute "email"
+     * Test attribute "masked_user_name"
      */
-    public function testPropertyEmail()
+    public function testPropertyMaskedUserName()
     {
     }
 
     /**
-     * Test attribute "institution"
+     * Test attribute "name"
      */
-    public function testPropertyInstitution()
+    public function testPropertyName()
     {
     }
 
     /**
-     * Test attribute "kind_of_relationship"
+     * Test attribute "request_id"
      */
-    public function testPropertyKindOfRelationship()
-    {
-    }
-
-    /**
-     * Test attribute "numeric_reference_spei"
-     */
-    public function testPropertyNumericReferenceSpei()
-    {
-    }
-
-    /**
-     * Test attribute "payment_concept_spei"
-     */
-    public function testPropertyPaymentConceptSpei()
-    {
-    }
-
-    /**
-     * Test attribute "person"
-     */
-    public function testPropertyPerson()
-    {
-    }
-
-    /**
-     * Test attribute "relationship"
-     */
-    public function testPropertyRelationship()
-    {
-    }
-
-    /**
-     * Test attribute "rfc"
-     */
-    public function testPropertyRfc()
+    public function testPropertyRequestId()
     {
     }
 }

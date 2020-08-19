@@ -4,11 +4,11 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/{company_id}/salespoint | Registra un punto de venta asociado a una empresa
-[**obtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/{company_id}/salespoint | Obtiene los puntos de venta asociados a una empresa
+[**createSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
+[**obtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
 
 # **createSalesPoint**
-> \mx\wire4\client\model\SalesPointRespose createSalesPoint($body, $authorization, $company_id, $name)
+> \mx\wire4\client\model\SalesPointRespose createSalesPoint($body, $authorization, $company_id)
 
 Registra un punto de venta asociado a una empresa
 
@@ -24,13 +24,12 @@ $apiInstance = new mx\wire4\client\api\PuntosDeVentaCoDiApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \mx\wire4\client\model\SalesPointRequest(); // \mx\wire4\client\model\SalesPointRequest | salesPointRequest
+$body = new \mx\wire4\client\model\SalesPointRequest(); // \mx\wire4\client\model\SalesPointRequest | Información del punto de venta CODI®
 $authorization = "authorization_example"; // string | Header para token
-$company_id = "company_id_example"; // string | company_id
-$name = "name_example"; // string | 
+$company_id = "company_id_example"; // string | El identificador de la empresa
 
 try {
-    $result = $apiInstance->createSalesPoint($body, $authorization, $company_id, $name);
+    $result = $apiInstance->createSalesPoint($body, $authorization, $company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PuntosDeVentaCoDiApi->createSalesPoint: ', $e->getMessage(), PHP_EOL;
@@ -42,10 +41,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\mx\wire4\client\model\SalesPointRequest**](../Model/SalesPointRequest.md)| salesPointRequest |
+ **body** | [**\mx\wire4\client\model\SalesPointRequest**](../Model/SalesPointRequest.md)| Información del punto de venta CODI® |
  **authorization** | **string**| Header para token |
- **company_id** | **string**| company_id |
- **name** | **string**|  | [optional]
+ **company_id** | **string**| El identificador de la empresa |
 
 ### Return type
 

@@ -4,8 +4,8 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**consultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/{sales_point_id}/charges/{order_id} | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
-[**generateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/{salesPointId}/charges | Genera un código QR para un pago mediante CODI®
+[**consultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+[**generateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
 
 # **consultCodiRequestByOrderId**
 > \mx\wire4\client\model\PaymentRequestCodiResponseDTO consultCodiRequestByOrderId($authorization, $order_id, $sales_point_id)
@@ -25,7 +25,7 @@ $apiInstance = new mx\wire4\client\api\PeticionesDePagoPorCoDiApi(
     new GuzzleHttp\Client()
 );
 $authorization = "authorization_example"; // string | Header para token
-$order_id = "order_id_example"; // string | OrderId
+$order_id = "order_id_example"; // string | Identificador del pago CODI®
 $sales_point_id = "sales_point_id_example"; // string | Identificador del punto de venta
 
 try {
@@ -42,7 +42,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
- **order_id** | **string**| OrderId |
+ **order_id** | **string**| Identificador del pago CODI® |
  **sales_point_id** | **string**| Identificador del punto de venta |
 
 ### Return type
