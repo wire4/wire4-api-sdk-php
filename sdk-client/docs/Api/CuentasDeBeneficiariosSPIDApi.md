@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**preRegisterAccountsUsingPOST1**](CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
 
 # **getSpidBeneficiariesForAccount**
-> \mx\wire4\client\model\SpidBeneficiariesResponse getSpidBeneficiariesForAccount($authorization, $subscription, $account, $rfc)
+> \mx\wire4\client\model\SpidBeneficiariesResponse getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status)
 
 Consulta los beneficiarios SPID registrados
 
@@ -27,10 +27,15 @@ $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPIDApi(
 $authorization = "authorization_example"; // string | Header para token
 $subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 $account = "account_example"; // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+$beneficiary_bank = "beneficiary_bank_example"; // string | Clave del banco beneficiario
+$beneficiary_name = "beneficiary_name_example"; // string | Nombre del beneficiario
+$end_date = "end_date_example"; // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+$init_date = "init_date_example"; // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
 $rfc = "rfc_example"; // string | RFC del beneficiario
+$status = "status_example"; // string | Estatus de la cuenta
 
 try {
-    $result = $apiInstance->getSpidBeneficiariesForAccount($authorization, $subscription, $account, $rfc);
+    $result = $apiInstance->getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CuentasDeBeneficiariosSPIDApi->getSpidBeneficiariesForAccount: ', $e->getMessage(), PHP_EOL;
@@ -45,7 +50,12 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token |
  **subscription** | **string**| El identificador de la suscripción a esta API |
  **account** | **string**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional]
+ **beneficiary_bank** | **string**| Clave del banco beneficiario | [optional]
+ **beneficiary_name** | **string**| Nombre del beneficiario | [optional]
+ **end_date** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional]
+ **init_date** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional]
  **rfc** | **string**| RFC del beneficiario | [optional]
+ **status** | **string**| Estatus de la cuenta | [optional]
 
 ### Return type
 
