@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequestCodiResponseDTOTest
+ * CodiOperationResponseDTOTest
  *
  * PHP version 5
  *
@@ -29,7 +29,7 @@
 namespace mx\wire4;
 
 /**
- * PaymentRequestCodiResponseDTOTest Class Doc Comment
+ * CodiOperationResponseDTOTest Class Doc Comment
  *
  * @category    Class
  * @description Objeto que contiene la información de solicitud de pago por CODI®.
@@ -37,7 +37,7 @@ namespace mx\wire4;
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PaymentRequestCodiResponseDTOTest extends \PHPUnit_Framework_TestCase
+class CodiOperationResponseDTOTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,9 +69,9 @@ class PaymentRequestCodiResponseDTOTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "PaymentRequestCodiResponseDTO"
+     * Test "CodiOperationResponseDTO"
      */
-    public function testPaymentRequestCodiResponseDTO()
+    public function testCodiOperationResponseDTO()
     {
     }
 
@@ -83,20 +83,6 @@ class PaymentRequestCodiResponseDTOTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "barcode_base64"
-     */
-    public function testPropertyBarcodeBase64()
-    {
-    }
-
-    /**
-     * Test attribute "barcode_url"
-     */
-    public function testPropertyBarcodeUrl()
-    {
-    }
-
-    /**
      * Test attribute "concept"
      */
     public function testPropertyConcept()
@@ -104,37 +90,23 @@ class PaymentRequestCodiResponseDTOTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "creation_date"
+     * Test attribute "id"
      */
-    public function testPropertyCreationDate()
+    public function testPropertyId()
     {
     }
 
     /**
-     * Test attribute "due_date"
+     * Test attribute "operation_date"
      */
-    public function testPropertyDueDate()
+    public function testPropertyOperationDate()
     {
     }
 
     /**
-     * Test attribute "operations"
+     * Test attribute "payment_type"
      */
-    public function testPropertyOperations()
-    {
-    }
-
-    /**
-     * Test attribute "order_id"
-     */
-    public function testPropertyOrderId()
-    {
-    }
-
-    /**
-     * Test attribute "phone_number"
-     */
-    public function testPropertyPhoneNumber()
+    public function testPropertyPaymentType()
     {
     }
 
@@ -146,9 +118,9 @@ class PaymentRequestCodiResponseDTOTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "transaction_id"
      */
-    public function testPropertyType()
+    public function testPropertyTransactionId()
     {
     }
 }
