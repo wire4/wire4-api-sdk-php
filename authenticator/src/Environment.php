@@ -13,5 +13,6 @@ class Environment {
 
     const SANDBOX = "https://sandbox-api.wire4.mx/token";
     const PRODUCTION = "https://wire4.mx/token";
+    const DEVELOP = "https://development-api.wire4.mx/token";
 
 }
