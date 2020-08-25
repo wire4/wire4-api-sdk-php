@@ -12,14 +12,20 @@
 
 class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
-    const OAUTH_CONSUMER_KEY = "wEw7JCxjgNbrWjb2yz74XuLCc7sa";
+    /*const OAUTH_CONSUMER_KEY = "wEw7JCxjgNbrWjb2yz74XuLCc7sa";
     const OAUTH_CONSUMER_SECRET = "qiPoEGpWNHTWpqUKfWCNJRuCNUsa";
     const USER_KEY = "bb5207b74dd408c8f0735e942c1d64@sandbox.wire4.mx";
     const SECRET_KEY = "0929ae15f964c98bb0be8240f7df68";
+    const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";*/
+
+    const OAUTH_CONSUMER_KEY = "vfRyDiLwEmVjweHrZt9dLmqfov0a";
+    const OAUTH_CONSUMER_SECRET = "IBPnjfZsuzJYKZRGRBDaFk7PaFca";
+    const USER_KEY = "12ce7e19e434fed95d0c0858f21632@develop.wire4.mx";
+    const SECRET_KEY = "506285a31cb43a1bfd105dcbb8640e";
     const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";
 
 
-    public function testTrueAssertsToTrue() {
+   /* public function testTrueAssertsToTrue() {
 
         $this->assertTrue(true);
     }
@@ -1169,6 +1175,297 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         } catch (Exception $e) {
             echo 'Exception when calling TransferenciasSPEIApi->outgoingSpeiTransactionsReportUsingGET: ', $e->getMessage(), PHP_EOL;
         }
+    }*/
+    // EJMEPLOS CODI
+
+
+    /*public function testregisterCompanyUsingPOST() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("codi_general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\EmpresasCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $body = new \mx\wire4\client\model\CompanyRequested(); // \mx\wire4\client\model\CompanyRequested | Información de la cuenta del beneficiario
+        $authorization = $accessToken; // string | Header para token
+        $certificadoDeBanxico = new \mx\wire4\client\model\CertificateRequest();
+
+        //Estos son datos proporcionados por Banxico o por su proveedor del servicio
+        $certificadoDeBanxico->setAlias("00000100001004030999");
+        $certificadoDeBanxico->setCertificateNumber("0000010000100002799");
+        $certificadoDeBanxico->setCheckDigit("1");
+        $certificadoDeBanxico->setCipherData("fsjIsaa/ypeS/5Il5WN1iFxwNE6PQhdC5IZoyFCNOh6MVQcx+g9nri+SHbedQXSIAU3HHk9d5CJJuVSGPvOZyoMK3wwaXJmg9LjO3Uu7RGNqharVrsj70vcJvvdy3SVoOWd6BsEFe4eiiPzC3nhvCKcMX1GaKkwUO6STuN9QqRrxGv+7tkcGZbXZMA07iO0eZo0LBHPgxY6wsRQP4scvwwLzMqZ4Orzn+ehmpWF/hx63XmgYpASy4qjcKxLkrwgPEJb3nIKRmMOodfSLF7idAchm4SKeEoYvjE2yF//7IuXh/CR15QoIyYlBggbdQbURFqKC1c1PfxMnUlSJzPCKUg==");
+        $body->setCertificate($certificadoDeBanxico);
+        $body->setBusinessName("Ejemplo Codi");
+        $body->setComercialName("Ejemplo de Empresa CODI  S.A de C.V");
+        $body->setRfc("EJEI201002AA2");
+
+        try {
+            $result = $apiInstance->registerCompanyUsingPOST($body, $authorization);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling EmpresasCoDiApi->registerCompanyUsingPOST: ', $e->getMessage(), PHP_EOL;
+        }
     }
 
+    public function testobtainCompanies() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("codi_general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\EmpresasCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $authorization = $accessToken; // string | Header para token
+
+        try {
+            $result = $apiInstance->obtainCompanies($authorization);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling EmpresasCoDiApi->obtainCompanies: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testcreateSalesPoint() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("codi_general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+        $apiInstance = new mx\wire4\client\api\PuntosDeVentaCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $body = new \mx\wire4\client\model\SalesPointRequest(); // \mx\wire4\client\model\SalesPointRequest | Información del punto de venta CODI®
+        $authorization = $accessToken; // string | Header para token
+        $company_id = "ece66431-48af-4dc9-bd7d-4c26bab3080c"; // string | El identificador de la empresa que se obtuvo al crearla
+
+        $body->setName("Sucursal Centro");
+        $body->setAccessIp("127.0.0.1");
+        $body->setAccount("030843123456789131");
+        $body->setNotificationsUrl("https://webhook.site/10761622-8035-45cd-be01-48ee4cf6cdf9");
+
+        try {
+            $result = $apiInstance->createSalesPoint($body, $authorization, $company_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling PuntosDeVentaCoDiApi->createSalesPoint: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
+    public function testobtainSalePoints() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("codi_general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\PuntosDeVentaCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $authorization = $accessToken; // string | Header para token
+        $company_id = "ece66431-48af-4dc9-bd7d-4c26bab3080c"; // string | El identificador de la empresa
+
+        try {
+            $result = $apiInstance->obtainSalePoints($authorization, $company_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling PuntosDeVentaCoDiApi->obtainSalePoints: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
+    public function testgenerateCodiCodeQR() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application user flow and scope "codi_admin"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, Wire4ApiTest::SECRET_KEY, "codi_admin");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\PeticionesDePagoPorCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $body = new \mx\wire4\client\model\CodiCodeRequestDTO(); // \mx\wire4\client\model\CodiCodeRequestDTO | Información del pago CODI®
+        $authorization = $accessToken; // string | Header para token
+        $sales_point_id = "08c17691-af35-4b5f-a748-cdf65d60c2d6"; // string | Identificador del punto de venta
+
+        $body->setAmount(888.88);
+        $body->setConcept("Ejemplo CODI SDK PHP");
+        $body->setDueDate("2020-08-25T23:59:00"); // Debe ser mayor a la fecha actual
+        $body->setOrderId(uniqid());
+        $body->setPhoneNumber(5532302648);
+        $body->setType("QR_CODE"); // los posibles valores son QR_CODE y PUSH_NOTIFICATION
+
+        try {
+            $result = $apiInstance->generateCodiCodeQR($body, $authorization, $sales_point_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling PeticionesDePagoPorCoDiApi->generateCodiCodeQR: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
+    public function testconsultCodiRequestByOrderId() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application user flow and scope "codi_admin"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, Wire4ApiTest::SECRET_KEY, "codi_admin");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\PeticionesDePagoPorCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $authorization = $accessToken; // string | Header para token
+        $order_id = "5f453e0726f6b"; // string | Identificador del pago CODI®
+        $sales_point_id = "08c17691-af35-4b5f-a748-cdf65d60c2d6"; // string | Identificador del punto de venta
+
+        try {
+            $result = $apiInstance->consultCodiRequestByOrderId($authorization, $order_id, $sales_point_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling PeticionesDePagoPorCoDiApi->consultCodiRequestByOrderId: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testconsultCodiOperations() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application report flow and scope "codi_report"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, Wire4ApiTest::SECRET_KEY, "codi_report");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\OperacionesCoDiApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $authorization = $accessToken; // string | Header para token
+        $body = new \mx\wire4\client\model\CodiOperationsFiltersRequestDTO(); // \mx\wire4\client\model\CodiOperationsFiltersRequestDTO | Filtros de busqueda
+        $company_id = "ece66431-48af-4dc9-bd7d-4c26bab3080c"; // string | Identificador de empresa CoDi
+        $page = 0; // string | Número de pago
+        $sales_point_id = "08c17691-af35-4b5f-a748-cdf65d60c2d6"; // string | Identificador del punto de venta
+        $size = "50"; // string | Tamaño de pagina
+
+        try {
+            $result = $apiInstance->consultCodiOperations($authorization, $body, $company_id, $page, $sales_point_id, $size);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling OperacionesCoDiApi->consultCodiOperations: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }*/
 }
