@@ -12,19 +12,144 @@
 
 class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
-    /*const OAUTH_CONSUMER_KEY = "wEw7JCxjgNbrWjb2yz74XuLCc7sa";
+    const OAUTH_CONSUMER_KEY = "wEw7JCxjgNbrWjb2yz74XuLCc7sa";
     const OAUTH_CONSUMER_SECRET = "qiPoEGpWNHTWpqUKfWCNJRuCNUsa";
     const USER_KEY = "bb5207b74dd408c8f0735e942c1d64@sandbox.wire4.mx";
     const SECRET_KEY = "0929ae15f964c98bb0be8240f7df68";
-    const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";*/
+    const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";
 
-    const OAUTH_CONSUMER_KEY = "vfRyDiLwEmVjweHrZt9dLmqfov0a";
+    /*const OAUTH_CONSUMER_KEY = "vfRyDiLwEmVjweHrZt9dLmqfov0a";
     const OAUTH_CONSUMER_SECRET = "IBPnjfZsuzJYKZRGRBDaFk7PaFca";
     const USER_KEY = "12ce7e19e434fed95d0c0858f21632@develop.wire4.mx";
     const SECRET_KEY = "506285a31cb43a1bfd105dcbb8640e";
-    const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";
+    const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";*/
 
+    public function testcreateAuthorizationTransactionsGroup() {
 
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
+                "spei_admin");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $body = new \mx\wire4\client\model\AuthorizationTransactionGroup(); // \mx\wire4\client\model\AuthorizationTransactionGroup | authorizationTransactionsGroupRequestDTO
+        $authorization = $accessToken; // string | Header para token
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | Identificador de la suscripcion
+
+        $urlsRedirect = new \mx\wire4\client\model\UrlsRedirect();
+        $urlsRedirect->setReturnUrl("https://sandbox.cuentasok.com");
+        $urlsRedirect->setCancelReturnUrl("https://sandbox.cuentasok.com");
+
+        $body->setTransactions(array("4d633b1d-1b36-425a-8758-2bebcb657e98"));
+        $body->setRedirectUrls($urlsRedirect);
+
+        try {
+            $result = $apiInstance->createAuthorizationTransactionsGroup($body, $authorization, $subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling TransferenciasSPEIApi->createAuthorizationTransactionsGroup: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
+    /*public function testgetSpidBeneficiariesForAccount() {
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
+                "spid_admin");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPIDApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $authorization = $accessToken; // string | Header para token
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
+        $account = ""; // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+        $beneficiary_bank = ""; // string | Clave del banco beneficiario
+        $beneficiary_name = ""; // string | Nombre del beneficiario
+        $end_date = ""; // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+        $init_date = ""; // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+        $rfc = ""; // string | RFC del beneficiario
+        $status = ""; // string | Estatus de la cuenta
+
+        try {
+            $result = $apiInstance->getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling CuentasDeBeneficiariosSPIDApi->getSpidBeneficiariesForAccount: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+    public function testauthorizeAccountsPendingPUT() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
+                "spei_admin");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $body = new \mx\wire4\client\model\UrlsRedirect(); // \mx\wire4\client\model\UrlsRedirect | Información de la cuenta del beneficiario
+        $authorization = $accessToken; // string | Header para token
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API
+        $body->setCancelReturnUrl("https://sandbox.cuentasok.com");
+        $body->setReturnUrl("https://sandbox.cuentasok.com");
+
+        try {
+            $result = $apiInstance->authorizeAccountsPendingPUT($body, $authorization, $subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->authorizeAccountsPendingPUT: ', $e->getMessage(), PHP_EOL;
+        }
+    }
     public function testTrueAssertsToTrue() {
 
         $this->assertTrue(true);
@@ -1592,6 +1717,6 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             echo 'Exception when calling ContractsDetailsApi->obtainContractDetails: ', $e->getMessage(), PHP_EOL;
         }
 
-    }
+    }*/
 
 }
