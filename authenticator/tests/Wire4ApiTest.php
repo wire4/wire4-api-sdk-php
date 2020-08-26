@@ -1247,12 +1247,12 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         $referenceString = "7c088d16a8a25f1640e95dfdce65770cb0a31dc0e71a9749bba1e4e114201efb6e78c50bea3d8d9337b8ea63b2a8abf5b1e03d0cf9dda6f8e83a509d1ac11908";
         $key = "wh_6b5cb70ab7fd489a8bd0c9d06513008e";
 
-        $signResult = \mx\wire4\webhooks\sign\UtilsCompute::toExadecimal(
-            \mx\wire4\webhooks\sign\UtilsCompute::computeHmacSha512($message, $key));
+        $signResult = \mx\wire4\auth\webhooks\sign\UtilsCompute::toExadecimal(
+            \mx\wire4\auth\webhooks\sign\UtilsCompute::computeHmacSha512($message, $key));
 
         var_dump($signResult);
 
-        if( ! \mx\wire4\webhooks\sign\UtilsCompute::compareSignatures($referenceString,$signResult) ) {
+        if( ! \mx\wire4\auth\webhooks\sign\UtilsCompute::compareSignatures($referenceString,$signResult) ) {
             echo "Las firmas no son iguales:";
 
         } else {
@@ -1304,7 +1304,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
     // EJMEPLOS CODI
 
 
-    public function testregisterCompanyUsingPOST() {
+    /*public function testregisterCompanyUsingPOST() {
 
         $accessToken = "";
         try {
@@ -1717,6 +1717,6 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             echo 'Exception when calling ContractsDetailsApi->obtainContractDetails: ', $e->getMessage(), PHP_EOL;
         }
 
-    }
+    } */
 
 }
