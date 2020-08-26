@@ -69,7 +69,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         }
     }
 
-    /*public function testgetSpidBeneficiariesForAccount() {
+    public function testgetSpidBeneficiariesForAccount() {
         $accessToken = "";
         try {
 
@@ -1717,6 +1717,6 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             echo 'Exception when calling ContractsDetailsApi->obtainContractDetails: ', $e->getMessage(), PHP_EOL;
         }
 
-    }*/
+    }
 
 }
