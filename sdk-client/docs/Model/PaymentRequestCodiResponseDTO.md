@@ -9,14 +9,10 @@ Name | Type | Description | Notes
 **concept** | **string** | Concepto de pago. | [optional] 
 **creation_date** | [**\DateTime**](\DateTime.md) | Fecha de creación. | [optional] 
 **due_date** | [**\DateTime**](\DateTime.md) | Fecha de vencimiento. | [optional] 
-**id** | **string** | Identificador de la operacion. | [optional] 
-**operation_date** | [**\DateTime**](\DateTime.md) | Fecha de la operacion. | [optional] 
-**operations** | [**\mx\wire4\client\model\PaymentRequestCodiResponseDTO[]**](PaymentRequestCodiResponseDTO.md) | Listado de pagos realizados sobre la petición. | [optional] 
+**operations** | [**\mx\wire4\client\model\CodiOperationResponseDTO[]**](CodiOperationResponseDTO.md) | Listado de pagos realizados sobre la petición. | [optional] 
 **order_id** | **string** | OrderId asignada a la solicitud. | [optional] 
-**payment_type** | **string** | Tipo de pago. | [optional] 
 **phone_number** | **string** | Numero de teléfono. | [optional] 
 **status** | **string** | Estatus de la orden de pago. | [optional] 
-**transaction_id** | **string** | Identificador de la transacción. | [optional] 
 **type** | **string** | Tipo de petición. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

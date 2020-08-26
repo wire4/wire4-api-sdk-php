@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentRequestCodiResponseDTO
+ * CodiOperationResponseDTO
  *
  * PHP version 5
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * PaymentRequestCodiResponseDTO Class Doc Comment
+ * CodiOperationResponseDTO Class Doc Comment
  *
  * @category Class
  * @description Objeto que contiene la información de solicitud de pago por CODI®.
@@ -40,7 +40,7 @@ use \mx\wire4\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
+class CodiOperationResponseDTO implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentRequestCodiResponseDTO';
+    protected static $swaggerModelName = 'CodiOperationResponseDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,16 +58,12 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'amount' => 'float',
-'barcode_base64' => 'string',
-'barcode_url' => 'string',
 'concept' => 'string',
-'creation_date' => '\DateTime',
-'due_date' => '\DateTime',
-'operations' => '\mx\wire4\client\model\CodiOperationResponseDTO[]',
-'order_id' => 'string',
-'phone_number' => 'string',
+'id' => 'string',
+'operation_date' => '\DateTime',
+'payment_type' => 'string',
 'status' => 'string',
-'type' => 'string'    ];
+'transaction_id' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -76,16 +72,12 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'amount' => null,
-'barcode_base64' => null,
-'barcode_url' => null,
 'concept' => null,
-'creation_date' => 'date-time',
-'due_date' => 'date-time',
-'operations' => null,
-'order_id' => null,
-'phone_number' => null,
+'id' => null,
+'operation_date' => 'date-time',
+'payment_type' => null,
 'status' => null,
-'type' => null    ];
+'transaction_id' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -115,16 +107,12 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-'barcode_base64' => 'barcode_base64',
-'barcode_url' => 'barcode_url',
 'concept' => 'concept',
-'creation_date' => 'creation_date',
-'due_date' => 'due_date',
-'operations' => 'operations',
-'order_id' => 'order_id',
-'phone_number' => 'phone_number',
+'id' => 'id',
+'operation_date' => 'operation_date',
+'payment_type' => 'payment_type',
 'status' => 'status',
-'type' => 'type'    ];
+'transaction_id' => 'transaction_id'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -133,16 +121,12 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'amount' => 'setAmount',
-'barcode_base64' => 'setBarcodeBase64',
-'barcode_url' => 'setBarcodeUrl',
 'concept' => 'setConcept',
-'creation_date' => 'setCreationDate',
-'due_date' => 'setDueDate',
-'operations' => 'setOperations',
-'order_id' => 'setOrderId',
-'phone_number' => 'setPhoneNumber',
+'id' => 'setId',
+'operation_date' => 'setOperationDate',
+'payment_type' => 'setPaymentType',
 'status' => 'setStatus',
-'type' => 'setType'    ];
+'transaction_id' => 'setTransactionId'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -151,16 +135,12 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'amount' => 'getAmount',
-'barcode_base64' => 'getBarcodeBase64',
-'barcode_url' => 'getBarcodeUrl',
 'concept' => 'getConcept',
-'creation_date' => 'getCreationDate',
-'due_date' => 'getDueDate',
-'operations' => 'getOperations',
-'order_id' => 'getOrderId',
-'phone_number' => 'getPhoneNumber',
+'id' => 'getId',
+'operation_date' => 'getOperationDate',
+'payment_type' => 'getPaymentType',
 'status' => 'getStatus',
-'type' => 'getType'    ];
+'transaction_id' => 'getTransactionId'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -221,16 +201,12 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['barcode_base64'] = isset($data['barcode_base64']) ? $data['barcode_base64'] : null;
-        $this->container['barcode_url'] = isset($data['barcode_url']) ? $data['barcode_url'] : null;
         $this->container['concept'] = isset($data['concept']) ? $data['concept'] : null;
-        $this->container['creation_date'] = isset($data['creation_date']) ? $data['creation_date'] : null;
-        $this->container['due_date'] = isset($data['due_date']) ? $data['due_date'] : null;
-        $this->container['operations'] = isset($data['operations']) ? $data['operations'] : null;
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['operation_date'] = isset($data['operation_date']) ? $data['operation_date'] : null;
+        $this->container['payment_type'] = isset($data['payment_type']) ? $data['payment_type'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['transaction_id'] = isset($data['transaction_id']) ? $data['transaction_id'] : null;
     }
 
     /**
@@ -270,61 +246,13 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param float $amount Monto del pago.
+     * @param float $amount Monto de la operacion.
      *
      * @return $this
      */
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets barcode_base64
-     *
-     * @return string
-     */
-    public function getBarcodeBase64()
-    {
-        return $this->container['barcode_base64'];
-    }
-
-    /**
-     * Sets barcode_base64
-     *
-     * @param string $barcode_base64 Imagen QR en formato Base64 para el CODI®.
-     *
-     * @return $this
-     */
-    public function setBarcodeBase64($barcode_base64)
-    {
-        $this->container['barcode_base64'] = $barcode_base64;
-
-        return $this;
-    }
-
-    /**
-     * Gets barcode_url
-     *
-     * @return string
-     */
-    public function getBarcodeUrl()
-    {
-        return $this->container['barcode_url'];
-    }
-
-    /**
-     * Sets barcode_url
-     *
-     * @param string $barcode_url URL de la imagen QR para el CODI®.
-     *
-     * @return $this
-     */
-    public function setBarcodeUrl($barcode_url)
-    {
-        $this->container['barcode_url'] = $barcode_url;
 
         return $this;
     }
@@ -342,7 +270,7 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
     /**
      * Sets concept
      *
-     * @param string $concept Concepto de pago.
+     * @param string $concept Concepto del pago.
      *
      * @return $this
      */
@@ -354,121 +282,73 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets creation_date
-     *
-     * @return \DateTime
-     */
-    public function getCreationDate()
-    {
-        return $this->container['creation_date'];
-    }
-
-    /**
-     * Sets creation_date
-     *
-     * @param \DateTime $creation_date Fecha de creación.
-     *
-     * @return $this
-     */
-    public function setCreationDate($creation_date)
-    {
-        $this->container['creation_date'] = $creation_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets due_date
-     *
-     * @return \DateTime
-     */
-    public function getDueDate()
-    {
-        return $this->container['due_date'];
-    }
-
-    /**
-     * Sets due_date
-     *
-     * @param \DateTime $due_date Fecha de vencimiento.
-     *
-     * @return $this
-     */
-    public function setDueDate($due_date)
-    {
-        $this->container['due_date'] = $due_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets operations
-     *
-     * @return \mx\wire4\client\model\CodiOperationResponseDTO[]
-     */
-    public function getOperations()
-    {
-        return $this->container['operations'];
-    }
-
-    /**
-     * Sets operations
-     *
-     * @param \mx\wire4\client\model\CodiOperationResponseDTO[] $operations Listado de pagos realizados sobre la petición.
-     *
-     * @return $this
-     */
-    public function setOperations($operations)
-    {
-        $this->container['operations'] = $operations;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_id
+     * Gets id
      *
      * @return string
      */
-    public function getOrderId()
+    public function getId()
     {
-        return $this->container['order_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets order_id
+     * Sets id
      *
-     * @param string $order_id OrderId asignada a la solicitud.
+     * @param string $id Identificador de la operacion.
      *
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setId($id)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets phone_number
+     * Gets operation_date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getPhoneNumber()
+    public function getOperationDate()
     {
-        return $this->container['phone_number'];
+        return $this->container['operation_date'];
     }
 
     /**
-     * Sets phone_number
+     * Sets operation_date
      *
-     * @param string $phone_number Numero de teléfono.
+     * @param \DateTime $operation_date Fecha de la operacion.
      *
      * @return $this
      */
-    public function setPhoneNumber($phone_number)
+    public function setOperationDate($operation_date)
     {
-        $this->container['phone_number'] = $phone_number;
+        $this->container['operation_date'] = $operation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_type
+     *
+     * @return string
+     */
+    public function getPaymentType()
+    {
+        return $this->container['payment_type'];
+    }
+
+    /**
+     * Sets payment_type
+     *
+     * @param string $payment_type Tipo de pago.
+     *
+     * @return $this
+     */
+    public function setPaymentType($payment_type)
+    {
+        $this->container['payment_type'] = $payment_type;
 
         return $this;
     }
@@ -486,7 +366,7 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status Estatus de la orden de pago.
+     * @param string $status Estatus.
      *
      * @return $this
      */
@@ -498,25 +378,25 @@ class PaymentRequestCodiResponseDTO implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
+     * Gets transaction_id
      *
      * @return string
      */
-    public function getType()
+    public function getTransactionId()
     {
-        return $this->container['type'];
+        return $this->container['transaction_id'];
     }
 
     /**
-     * Sets type
+     * Sets transaction_id
      *
-     * @param string $type Tipo de petición.
+     * @param string $transaction_id Identificador de la transacción.
      *
      * @return $this
      */
-    public function setType($type)
+    public function setTransactionId($transaction_id)
     {
-        $this->container['type'] = $type;
+        $this->container['transaction_id'] = $transaction_id;
 
         return $this;
     }

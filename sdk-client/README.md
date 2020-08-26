@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [CertificateRequest](docs/Model/CertificateRequest.md)
  - [CodiCodeQrResponseDTO](docs/Model/CodiCodeQrResponseDTO.md)
  - [CodiCodeRequestDTO](docs/Model/CodiCodeRequestDTO.md)
+ - [CodiOperationResponseDTO](docs/Model/CodiOperationResponseDTO.md)
  - [CodiOperationsFiltersRequestDTO](docs/Model/CodiOperationsFiltersRequestDTO.md)
  - [CompanyRegistered](docs/Model/CompanyRegistered.md)
  - [CompanyRequested](docs/Model/CompanyRequested.md)
