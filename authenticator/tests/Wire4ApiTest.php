@@ -25,7 +25,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
     const SUBSCRIPTION = "19b341dd-88b0-49a2-9997-117f553d15cd";
 
 
-   /* public function testTrueAssertsToTrue() {
+    public function testTrueAssertsToTrue() {
 
         $this->assertTrue(true);
     }
@@ -1175,11 +1175,11 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         } catch (Exception $e) {
             echo 'Exception when calling TransferenciasSPEIApi->outgoingSpeiTransactionsReportUsingGET: ', $e->getMessage(), PHP_EOL;
         }
-    }*/
+    }
     // EJMEPLOS CODI
 
 
-    /*public function testregisterCompanyUsingPOST() {
+    public function testregisterCompanyUsingPOST() {
 
         $accessToken = "";
         try {
@@ -1467,5 +1467,131 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             echo 'Exception when calling OperacionesCoDiApi->consultCodiOperations: ', $e->getMessage(), PHP_EOL;
         }
 
-    }*/
+    }
+
+    public function testcreateAuthorization() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\ContractsDetailsApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $body = new \mx\wire4\client\model\PreMonexAuthorization(); // \mx\wire4\client\model\PreMonexAuthorization | Información para la autorización
+        $authorization = $accessToken; // string | Header para token
+
+        $body->setRfc("ONBI201002AA2");
+        $body->setBusinessName("Ejemplo de Empresa CODI  S.A de C.V");
+        $body->setReturnUrl("https://webhook.site/10761622-8035-45cd-be01-48ee4cf6cdf9");
+        $body->setCancelReturnUrl("https://webhook.site/10761622-8035-45cd-be01-48ee4cf6cdf9");
+
+        try {
+            $result = $apiInstance->createAuthorization($body, $authorization);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling ContractsDetailsApi->createAuthorization: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
+    public function testobtainAuthorizedUsers(){
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\ContractsDetailsApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $authorization = $accessToken; // string | Header para token
+        $x_access_key = "Arzuco#1"; // string | La llave de acceso de la aplicación
+        $request_id = "5569a11f-c17e-497e-8b31-acb403a54276"; // string | El identificador de la petición a esta API
+
+        try {
+            $result = $apiInstance->obtainAuthorizedUsers($authorization, $x_access_key, $request_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling ContractsDetailsApi->obtainAuthorizedUsers: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testobtainContractDetails() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::DEVELOP);
+
+            // Obtain an access token use application flow and scope "codi_general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\ContractsDetailsApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $apiInstance->getConfig()->setHost("https://development-api.wire4.mx/wire4/1.0.0");
+        $body = new \mx\wire4\client\model\ContractDetailRequest(); // \mx\wire4\client\model\ContractDetailRequest | Información para obtener los detalles de la companía
+        $authorization = $accessToken; // string | Header para token
+        $x_access_key = "YcJRdmXIt2SiZHxkCM+G3fK+EeRCIC1W"; // string | La llave de acceso de la aplicación
+
+        $body->setContract("1234567");
+        $body->setPassword("prueba12");
+        $body->setTokenCode("12345678");
+        $body->setUserName("amolina");
+
+        try {
+            $result = $apiInstance->obtainContractDetails($body, $authorization, $x_access_key);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling ContractsDetailsApi->obtainContractDetails: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
 }
