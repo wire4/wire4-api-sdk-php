@@ -1304,7 +1304,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
     // EJMEPLOS CODI
 
 
-    /*public function testregisterCompanyUsingPOST() {
+    public function testregisterCompanyUsingPOST() {
 
         $accessToken = "";
         try {
@@ -1717,6 +1717,6 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             echo 'Exception when calling ContractsDetailsApi->obtainContractDetails: ', $e->getMessage(), PHP_EOL;
         }
 
-    } */
+    }
 
 }
