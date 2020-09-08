@@ -97,6 +97,13 @@ class CodiCodeRequestDTOTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "metadata"
+     */
+    public function testPropertyMetadata()
+    {
+    }
+
+    /**
      * Test attribute "order_id"
      */
     public function testPropertyOrderId()

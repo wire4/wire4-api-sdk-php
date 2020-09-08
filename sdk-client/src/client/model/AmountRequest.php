@@ -58,8 +58,10 @@ class AmountRequest implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'amount_limit' => 'float',
+'cancel_return_url' => 'string',
 'currency_code' => 'string',
-'previous_amount_limit' => 'float'    ];
+'previous_amount_limit' => 'float',
+'return_url' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -68,8 +70,10 @@ class AmountRequest implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'amount_limit' => null,
+'cancel_return_url' => null,
 'currency_code' => null,
-'previous_amount_limit' => null    ];
+'previous_amount_limit' => null,
+'return_url' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -99,8 +103,10 @@ class AmountRequest implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'amount_limit' => 'amount_limit',
+'cancel_return_url' => 'cancel_return_url',
 'currency_code' => 'currency_code',
-'previous_amount_limit' => 'previous_amount_limit'    ];
+'previous_amount_limit' => 'previous_amount_limit',
+'return_url' => 'return_url'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -109,8 +115,10 @@ class AmountRequest implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'amount_limit' => 'setAmountLimit',
+'cancel_return_url' => 'setCancelReturnUrl',
 'currency_code' => 'setCurrencyCode',
-'previous_amount_limit' => 'setPreviousAmountLimit'    ];
+'previous_amount_limit' => 'setPreviousAmountLimit',
+'return_url' => 'setReturnUrl'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -119,8 +127,10 @@ class AmountRequest implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'amount_limit' => 'getAmountLimit',
+'cancel_return_url' => 'getCancelReturnUrl',
 'currency_code' => 'getCurrencyCode',
-'previous_amount_limit' => 'getPreviousAmountLimit'    ];
+'previous_amount_limit' => 'getPreviousAmountLimit',
+'return_url' => 'getReturnUrl'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -181,8 +191,10 @@ class AmountRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount_limit'] = isset($data['amount_limit']) ? $data['amount_limit'] : null;
+        $this->container['cancel_return_url'] = isset($data['cancel_return_url']) ? $data['cancel_return_url'] : null;
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
         $this->container['previous_amount_limit'] = isset($data['previous_amount_limit']) ? $data['previous_amount_limit'] : null;
+        $this->container['return_url'] = isset($data['return_url']) ? $data['return_url'] : null;
     }
 
     /**
@@ -197,11 +209,17 @@ class AmountRequest implements ModelInterface, ArrayAccess
         if ($this->container['amount_limit'] === null) {
             $invalidProperties[] = "'amount_limit' can't be null";
         }
+        if ($this->container['cancel_return_url'] === null) {
+            $invalidProperties[] = "'cancel_return_url' can't be null";
+        }
         if ($this->container['currency_code'] === null) {
             $invalidProperties[] = "'currency_code' can't be null";
         }
         if ($this->container['previous_amount_limit'] === null) {
             $invalidProperties[] = "'previous_amount_limit' can't be null";
+        }
+        if ($this->container['return_url'] === null) {
+            $invalidProperties[] = "'return_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -238,6 +256,30 @@ class AmountRequest implements ModelInterface, ArrayAccess
     public function setAmountLimit($amount_limit)
     {
         $this->container['amount_limit'] = $amount_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancel_return_url
+     *
+     * @return string
+     */
+    public function getCancelReturnUrl()
+    {
+        return $this->container['cancel_return_url'];
+    }
+
+    /**
+     * Sets cancel_return_url
+     *
+     * @param string $cancel_return_url Url a la que se redirigirá en caso de que el cliente cancele el registro
+     *
+     * @return $this
+     */
+    public function setCancelReturnUrl($cancel_return_url)
+    {
+        $this->container['cancel_return_url'] = $cancel_return_url;
 
         return $this;
     }
@@ -286,6 +328,30 @@ class AmountRequest implements ModelInterface, ArrayAccess
     public function setPreviousAmountLimit($previous_amount_limit)
     {
         $this->container['previous_amount_limit'] = $previous_amount_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_url
+     *
+     * @return string
+     */
+    public function getReturnUrl()
+    {
+        return $this->container['return_url'];
+    }
+
+    /**
+     * Sets return_url
+     *
+     * @param string $return_url Url a la que se redirigirá en caso de éxito
+     *
+     * @return $this
+     */
+    public function setReturnUrl($return_url)
+    {
+        $this->container['return_url'] = $return_url;
 
         return $this;
     }

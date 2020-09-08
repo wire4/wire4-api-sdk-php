@@ -393,7 +393,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAmountLimitAccountUsingPUT**
-> updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription)
+> \mx\wire4\client\model\TokenRequiredResponse updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription)
 
 Actualiza el monto límite
 
@@ -415,7 +415,8 @@ $account = "account_example"; // string | Cuenta a actualizar
 $subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 
 try {
-    $apiInstance->updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription);
+    $result = $apiInstance->updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->updateAmountLimitAccountUsingPUT: ', $e->getMessage(), PHP_EOL;
 }
@@ -433,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\mx\wire4\client\model\TokenRequiredResponse**](../Model/TokenRequiredResponse.md)
 
 ### Authorization
 
@@ -442,7 +443,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

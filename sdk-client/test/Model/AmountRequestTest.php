@@ -83,6 +83,13 @@ class AmountRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "cancel_return_url"
+     */
+    public function testPropertyCancelReturnUrl()
+    {
+    }
+
+    /**
      * Test attribute "currency_code"
      */
     public function testPropertyCurrencyCode()
@@ -93,6 +100,13 @@ class AmountRequestTest extends \PHPUnit_Framework_TestCase
      * Test attribute "previous_amount_limit"
      */
     public function testPropertyPreviousAmountLimit()
+    {
+    }
+
+    /**
+     * Test attribute "return_url"
+     */
+    public function testPropertyReturnUrl()
     {
     }
 }

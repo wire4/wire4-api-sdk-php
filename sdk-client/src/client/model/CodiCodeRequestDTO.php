@@ -59,6 +59,7 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
         'amount' => 'float',
 'concept' => 'string',
 'due_date' => '\DateTime',
+'metadata' => 'string',
 'order_id' => 'string',
 'phone_number' => 'string',
 'type' => 'string'    ];
@@ -72,6 +73,7 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
         'amount' => null,
 'concept' => null,
 'due_date' => 'date-time',
+'metadata' => null,
 'order_id' => null,
 'phone_number' => null,
 'type' => null    ];
@@ -106,6 +108,7 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
         'amount' => 'amount',
 'concept' => 'concept',
 'due_date' => 'due_date',
+'metadata' => 'metadata',
 'order_id' => 'order_id',
 'phone_number' => 'phone_number',
 'type' => 'type'    ];
@@ -119,6 +122,7 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
         'amount' => 'setAmount',
 'concept' => 'setConcept',
 'due_date' => 'setDueDate',
+'metadata' => 'setMetadata',
 'order_id' => 'setOrderId',
 'phone_number' => 'setPhoneNumber',
 'type' => 'setType'    ];
@@ -132,6 +136,7 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
         'amount' => 'getAmount',
 'concept' => 'getConcept',
 'due_date' => 'getDueDate',
+'metadata' => 'getMetadata',
 'order_id' => 'getOrderId',
 'phone_number' => 'getPhoneNumber',
 'type' => 'getType'    ];
@@ -210,6 +215,7 @@ self::TYPE_QR_CODE,        ];
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['concept'] = isset($data['concept']) ? $data['concept'] : null;
         $this->container['due_date'] = isset($data['due_date']) ? $data['due_date'] : null;
+        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
@@ -327,6 +333,30 @@ self::TYPE_QR_CODE,        ];
     public function setDueDate($due_date)
     {
         $this->container['due_date'] = $due_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return string
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param string $metadata Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres
+     *
+     * @return $this
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
