@@ -73,7 +73,7 @@ class SuscripcionesApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for preEnrollmentMonexUserUsingPOST
      *
-     * registra una pre-suscripción.
+     * Registra una pre-suscripción.
      *
      */
     public function testPreEnrollmentMonexUserUsingPOST()
@@ -83,7 +83,7 @@ class SuscripcionesApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for removeEnrollmentUserUsingDELETE
      *
-     * Elimna una suscripción por id.
+     * Elimina una suscripción por el identificador de la suscripción.
      *
      */
     public function testRemoveEnrollmentUserUsingDELETE()
@@ -93,7 +93,7 @@ class SuscripcionesApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for removeSubscriptionPendingStatusUsingDELETE
      *
-     * Elimna una pre-suscripción.
+     * Elimina una pre-suscripción.
      *
      */
     public function testRemoveSubscriptionPendingStatusUsingDELETE()

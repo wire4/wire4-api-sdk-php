@@ -66,6 +66,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'numeric_reference_spei' => 'string',
 'payment_concept_spei' => 'string',
 'person' => '\mx\wire4\client\model\Person',
+'register_date' => '\DateTime',
 'relationship' => 'string',
 'rfc' => 'string',
 'status' => 'string'    ];
@@ -85,6 +86,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'numeric_reference_spei' => null,
 'payment_concept_spei' => null,
 'person' => null,
+'register_date' => 'date-time',
 'relationship' => null,
 'rfc' => null,
 'status' => null    ];
@@ -125,6 +127,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'numeric_reference_spei' => 'numeric_reference_spei',
 'payment_concept_spei' => 'payment_concept_spei',
 'person' => 'person',
+'register_date' => 'register_date',
 'relationship' => 'relationship',
 'rfc' => 'rfc',
 'status' => 'status'    ];
@@ -144,6 +147,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'numeric_reference_spei' => 'setNumericReferenceSpei',
 'payment_concept_spei' => 'setPaymentConceptSpei',
 'person' => 'setPerson',
+'register_date' => 'setRegisterDate',
 'relationship' => 'setRelationship',
 'rfc' => 'setRfc',
 'status' => 'setStatus'    ];
@@ -163,6 +167,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
 'numeric_reference_spei' => 'getNumericReferenceSpei',
 'payment_concept_spei' => 'getPaymentConceptSpei',
 'person' => 'getPerson',
+'register_date' => 'getRegisterDate',
 'relationship' => 'getRelationship',
 'rfc' => 'getRfc',
 'status' => 'getStatus'    ];
@@ -234,6 +239,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
         $this->container['numeric_reference_spei'] = isset($data['numeric_reference_spei']) ? $data['numeric_reference_spei'] : null;
         $this->container['payment_concept_spei'] = isset($data['payment_concept_spei']) ? $data['payment_concept_spei'] : null;
         $this->container['person'] = isset($data['person']) ? $data['person'] : null;
+        $this->container['register_date'] = isset($data['register_date']) ? $data['register_date'] : null;
         $this->container['relationship'] = isset($data['relationship']) ? $data['relationship'] : null;
         $this->container['rfc'] = isset($data['rfc']) ? $data['rfc'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
@@ -411,7 +417,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
     /**
      * Sets kind_of_relationship
      *
-     * @param string $kind_of_relationship Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+     * @param string $kind_of_relationship Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
      *
      * @return $this
      */
@@ -495,6 +501,30 @@ class AccountResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets register_date
+     *
+     * @return \DateTime
+     */
+    public function getRegisterDate()
+    {
+        return $this->container['register_date'];
+    }
+
+    /**
+     * Sets register_date
+     *
+     * @param \DateTime $register_date La fecha en la que se registro el beneficiario
+     *
+     * @return $this
+     */
+    public function setRegisterDate($register_date)
+    {
+        $this->container['register_date'] = $register_date;
+
+        return $this;
+    }
+
+    /**
      * Gets relationship
      *
      * @return string
@@ -507,7 +537,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
     /**
      * Sets relationship
      *
-     * @param string $relationship Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+     * @param string $relationship Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
      *
      * @return $this
      */
@@ -531,7 +561,7 @@ class AccountResponse implements ModelInterface, ArrayAccess
     /**
      * Sets rfc
      *
-     * @param string $rfc Registro federal de contribuyentes de la persona o institución propietaria de la cuenta
+     * @param string $rfc Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
      *
      * @return $this
      */

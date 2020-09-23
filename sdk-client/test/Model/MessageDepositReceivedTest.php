@@ -32,7 +32,7 @@ namespace mx\wire4;
  * MessageDepositReceivedTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la informaciónde una transferencia de entrada recibida
+ * @description El mensaje que se envía mediante (webHook) con la información de una transferencia de entrada recibida
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen

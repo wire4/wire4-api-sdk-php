@@ -35,7 +35,7 @@ use \mx\wire4\ObjectSerializer;
  * MessageRequestChanged Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información acerca de algún cambio en el procesamiento de la petición a esta a esta API
+ * @description El mensaje que se envía mediante (WebHook) con la información acerca de algún cambio en el procesamiento o estado de la petición a esta a esta API
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -235,7 +235,7 @@ class MessageRequestChanged implements ModelInterface, ArrayAccess
     /**
      * Sets request_id
      *
-     * @param string $request_id Identificador de la petición realizada a está API
+     * @param string $request_id Identificador de la petición realizada a esta API
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class MessageRequestChanged implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status El cambio a informar en la procesamiento de la petición
+     * @param string $status El cambio a informar en la procesamiento/estado de la petición
      *
      * @return $this
      */

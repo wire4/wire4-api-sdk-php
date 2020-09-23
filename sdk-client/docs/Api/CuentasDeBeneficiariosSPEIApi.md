@@ -4,6 +4,7 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**authorizeAccountsPendingPUT**](CuentasDeBeneficiariosSPEIApi.md#authorizeaccountspendingput) | **PUT** /subscriptions/{subscription}/beneficiaries/pending | Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
 [**deleteAccountUsingDELETE**](CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
 [**getAvailableRelationshipsMonexUsingGET**](CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
 [**getBeneficiariesByRequestId**](CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesbyrequestid) | **GET** /subscriptions/{subscription}/beneficiaries/spei/{requestId} | Consulta los beneficiarios por el identificador de la petición de registro
@@ -11,6 +12,59 @@ Method | HTTP request | Description
 [**preRegisterAccountsUsingPOST**](CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 [**removeBeneficiariesPendingUsingDELETE**](CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
 [**updateAmountLimitAccountUsingPUT**](CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+
+# **authorizeAccountsPendingPUT**
+> \mx\wire4\client\model\AuthorizedBeneficiariesResponse authorizeAccountsPendingPUT($body, $authorization, $subscription)
+
+Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+
+Solicta autorizar las cuentas de beneficiarios en estado pendiente agrupandolas en un set de cuentas que pueden incluir tanto cuentas de SPI como de SPID, debe indicar las urls de redireccion en caso de error y en caso de exito<br/>
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\UrlsRedirect(); // \mx\wire4\client\model\UrlsRedirect | Información de la cuenta del beneficiario
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+
+try {
+    $result = $apiInstance->authorizeAccountsPendingPUT($body, $authorization, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->authorizeAccountsPendingPUT: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\mx\wire4\client\model\UrlsRedirect**](../Model/UrlsRedirect.md)| Información de la cuenta del beneficiario |
+ **authorization** | **string**| Header para token |
+ **subscription** | **string**| El identificador de la suscripción a esta API |
+
+### Return type
+
+[**\mx\wire4\client\model\AuthorizedBeneficiariesResponse**](../Model/AuthorizedBeneficiariesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteAccountUsingDELETE**
 > deleteAccountUsingDELETE($authorization, $account, $subscription)
@@ -169,7 +223,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBeneficiariesForAccountUsingGET**
-> \mx\wire4\client\model\BeneficiariesResponse getBeneficiariesForAccountUsingGET($authorization, $subscription, $account, $rfc)
+> \mx\wire4\client\model\BeneficiariesResponse getBeneficiariesForAccountUsingGET($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status)
 
 Consulta los beneficiarios registrados
 
@@ -188,10 +242,15 @@ $apiInstance = new mx\wire4\client\api\CuentasDeBeneficiariosSPEIApi(
 $authorization = "authorization_example"; // string | Header para token
 $subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 $account = "account_example"; // string | Cuenta del beneficiario, puede ser Clabe, TDD o Celular
+$beneficiary_bank = "beneficiary_bank_example"; // string | Clave del banco beneficiario
+$beneficiary_name = "beneficiary_name_example"; // string | Nombre del beneficiario
+$end_date = "end_date_example"; // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
+$init_date = "init_date_example"; // string | Fecha de inicio del perido a filtrar en formato dd-mm-yyyy
 $rfc = "rfc_example"; // string | RFC del beneficiario
+$status = "status_example"; // string | Estatus de la cuenta
 
 try {
-    $result = $apiInstance->getBeneficiariesForAccountUsingGET($authorization, $subscription, $account, $rfc);
+    $result = $apiInstance->getBeneficiariesForAccountUsingGET($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->getBeneficiariesForAccountUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -206,7 +265,12 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token |
  **subscription** | **string**| El identificador de la suscripción a esta API |
  **account** | **string**| Cuenta del beneficiario, puede ser Clabe, TDD o Celular | [optional]
+ **beneficiary_bank** | **string**| Clave del banco beneficiario | [optional]
+ **beneficiary_name** | **string**| Nombre del beneficiario | [optional]
+ **end_date** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional]
+ **init_date** | **string**| Fecha de inicio del perido a filtrar en formato dd-mm-yyyy | [optional]
  **rfc** | **string**| RFC del beneficiario | [optional]
+ **status** | **string**| Estatus de la cuenta | [optional]
 
 ### Return type
 
@@ -329,7 +393,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAmountLimitAccountUsingPUT**
-> updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription)
+> \mx\wire4\client\model\TokenRequiredResponse updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription)
 
 Actualiza el monto límite
 
@@ -351,7 +415,8 @@ $account = "account_example"; // string | Cuenta a actualizar
 $subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 
 try {
-    $apiInstance->updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription);
+    $result = $apiInstance->updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->updateAmountLimitAccountUsingPUT: ', $e->getMessage(), PHP_EOL;
 }
@@ -369,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\mx\wire4\client\model\TokenRequiredResponse**](../Model/TokenRequiredResponse.md)
 
 ### Authorization
 
@@ -378,7 +443,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

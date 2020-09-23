@@ -32,7 +32,7 @@ namespace mx\wire4;
  * MessageSubscriptionTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del la suscripción a esta a esta API
+ * @description El mensaje que se envía mediante (webHook) con la información de la suscripción a esta a esta API
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen

@@ -59,6 +59,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'amount' => 'float',
 'beneficiary_account' => 'string',
+'beneficiary_bank_key' => 'string',
 'concept' => 'string',
 'currency_code' => 'string',
 'email' => 'string[]',
@@ -73,6 +74,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'amount' => null,
 'beneficiary_account' => null,
+'beneficiary_bank_key' => null,
 'concept' => null,
 'currency_code' => null,
 'email' => null,
@@ -108,6 +110,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'amount' => 'amount',
 'beneficiary_account' => 'beneficiary_account',
+'beneficiary_bank_key' => 'beneficiary_bank_key',
 'concept' => 'concept',
 'currency_code' => 'currency_code',
 'email' => 'email',
@@ -122,6 +125,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     protected static $setters = [
         'amount' => 'setAmount',
 'beneficiary_account' => 'setBeneficiaryAccount',
+'beneficiary_bank_key' => 'setBeneficiaryBankKey',
 'concept' => 'setConcept',
 'currency_code' => 'setCurrencyCode',
 'email' => 'setEmail',
@@ -136,6 +140,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     protected static $getters = [
         'amount' => 'getAmount',
 'beneficiary_account' => 'getBeneficiaryAccount',
+'beneficiary_bank_key' => 'getBeneficiaryBankKey',
 'concept' => 'getConcept',
 'currency_code' => 'getCurrencyCode',
 'email' => 'getEmail',
@@ -202,6 +207,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     {
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['beneficiary_account'] = isset($data['beneficiary_account']) ? $data['beneficiary_account'] : null;
+        $this->container['beneficiary_bank_key'] = isset($data['beneficiary_bank_key']) ? $data['beneficiary_bank_key'] : null;
         $this->container['concept'] = isset($data['concept']) ? $data['concept'] : null;
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
@@ -288,13 +294,37 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     /**
      * Sets beneficiary_account
      *
-     * @param string $beneficiary_account Cuenta del beneficiario, podría ser un numero celular, TDD o Cuenta CLABE interbancaria
+     * @param string $beneficiary_account Cuenta del beneficiario, podría ser un número celular, TDD o Cuenta CLABE interbancaria
      *
      * @return $this
      */
     public function setBeneficiaryAccount($beneficiary_account)
     {
         $this->container['beneficiary_account'] = $beneficiary_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets beneficiary_bank_key
+     *
+     * @return string
+     */
+    public function getBeneficiaryBankKey()
+    {
+        return $this->container['beneficiary_bank_key'];
+    }
+
+    /**
+     * Sets beneficiary_bank_key
+     *
+     * @param string $beneficiary_bank_key La clave del banco beneficiario, proprocionada por BANXICO, este campo solo es obligatario cuando la cuenta beneficiaria es un número celular (*).
+     *
+     * @return $this
+     */
+    public function setBeneficiaryBankKey($beneficiary_bank_key)
+    {
+        $this->container['beneficiary_bank_key'] = $beneficiary_bank_key;
 
         return $this;
     }

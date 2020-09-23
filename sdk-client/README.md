@@ -81,6 +81,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ComprobanteElectrnicoDePagoCEPApi* | [**obtainTransactionCepUsingPOST**](docs/Api/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
 *ContactoApi* | [**sendContactUsingPOST**](docs/Api/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
+*ContractsDetailsApi* | [**createAuthorization**](docs/Api/ContractsDetailsApi.md#createauthorization) | **POST** /onboarding/accounts/authorize | Devuelve la URL para autorización del usuario Monex
+*ContractsDetailsApi* | [**obtainAuthorizedUsers**](docs/Api/ContractsDetailsApi.md#obtainauthorizedusers) | **GET** /onboarding/accounts/{requestId}/authorized-users | Obtiene los usuarios autorizados
+*ContractsDetailsApi* | [**obtainContractDetails**](docs/Api/ContractsDetailsApi.md#obtaincontractdetails) | **POST** /onboarding/accounts/details | Obtiene los detalles de la empresa del contrato
+*CuentasDeBeneficiariosSPEIApi* | [**authorizeAccountsPendingPUT**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#authorizeaccountspendingput) | **PUT** /subscriptions/{subscription}/beneficiaries/pending | Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
 *CuentasDeBeneficiariosSPEIApi* | [**deleteAccountUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
 *CuentasDeBeneficiariosSPEIApi* | [**getAvailableRelationshipsMonexUsingGET**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getavailablerelationshipsmonexusingget) | **GET** /subscriptions/{subscription}/beneficiaries/relationships | Consulta de relaciones
 *CuentasDeBeneficiariosSPEIApi* | [**getBeneficiariesByRequestId**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesbyrequestid) | **GET** /subscriptions/{subscription}/beneficiaries/spei/{requestId} | Consulta los beneficiarios por el identificador de la petición de registro
@@ -92,13 +96,21 @@ Class | Method | HTTP request | Description
 *CuentasDeBeneficiariosSPIDApi* | [**preRegisterAccountsUsingPOST1**](docs/Api/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
 *DepositantesApi* | [**getDepositantsUsingGET**](docs/Api/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
 *DepositantesApi* | [**registerDepositantsUsingPOST**](docs/Api/DepositantesApi.md#registerdepositantsusingpost) | **POST** /subscriptions/{subscription}/depositants | Registra un nuevo depositante
+*EmpresasCoDiApi* | [**obtainCompanies**](docs/Api/EmpresasCoDiApi.md#obtaincompanies) | **GET** /codi/companies | Consulta de empresas CODI
+*EmpresasCoDiApi* | [**registerCompanyUsingPOST**](docs/Api/EmpresasCoDiApi.md#registercompanyusingpost) | **POST** /codi/companies | Registro de empresas CODI
 *FacturasApi* | [**billingsReportByIdUsingGET**](docs/Api/FacturasApi.md#billingsreportbyidusingget) | **GET** /billings/{id} | Consulta de facturas por identificador
 *FacturasApi* | [**billingsReportUsingGET**](docs/Api/FacturasApi.md#billingsreportusingget) | **GET** /billings | Consulta de facturas
 *InstitucionesApi* | [**getAllInstitutionsUsingGET**](docs/Api/InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
+*OperacionesCoDiApi* | [**consultCodiOperations**](docs/Api/OperacionesCoDiApi.md#consultcodioperations) | **POST** /codi/charges | Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+*PeticionesDePagoPorCoDiApi* | [**consultCodiRequestByOrderId**](docs/Api/PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+*PeticionesDePagoPorCoDiApi* | [**generateCodiCodeQR**](docs/Api/PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
+*PuntosDeVentaCoDiApi* | [**createSalesPoint**](docs/Api/PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
+*PuntosDeVentaCoDiApi* | [**obtainSalePoints**](docs/Api/PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
 *SaldoApi* | [**getBalanceUsingGET**](docs/Api/SaldoApi.md#getbalanceusingget) | **GET** /subscriptions/{subscription}/balance | Consulta los saldo de una cuenta
-*SuscripcionesApi* | [**preEnrollmentMonexUserUsingPOST**](docs/Api/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | registra una pre-suscripción
-*SuscripcionesApi* | [**removeEnrollmentUserUsingDELETE**](docs/Api/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimna una suscripción por id
-*SuscripcionesApi* | [**removeSubscriptionPendingStatusUsingDELETE**](docs/Api/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimna una pre-suscripción
+*SuscripcionesApi* | [**preEnrollmentMonexUserUsingPOST**](docs/Api/SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | Registra una pre-suscripción
+*SuscripcionesApi* | [**removeEnrollmentUserUsingDELETE**](docs/Api/SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimina una suscripción por el identificador de la suscripción
+*SuscripcionesApi* | [**removeSubscriptionPendingStatusUsingDELETE**](docs/Api/SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimina una pre-suscripción
+*TransferenciasSPEIApi* | [**createAuthorizationTransactionsGroup**](docs/Api/TransferenciasSPEIApi.md#createauthorizationtransactionsgroup) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
 *TransferenciasSPEIApi* | [**dropTransactionsPendingUsingDELETE**](docs/Api/TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 *TransferenciasSPEIApi* | [**incomingSpeiTransactionsReportUsingGET**](docs/Api/TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 *TransferenciasSPEIApi* | [**outCommingSpeiRequestIdTransactionsReportUsingGET**](docs/Api/TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
@@ -113,10 +125,16 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Account](docs/Model/Account.md)
+ - [AccountDetail](docs/Model/AccountDetail.md)
+ - [AccountReassigned](docs/Model/AccountReassigned.md)
  - [AccountRequest](docs/Model/AccountRequest.md)
  - [AccountResponse](docs/Model/AccountResponse.md)
  - [AccountSpid](docs/Model/AccountSpid.md)
+ - [AddressCompany](docs/Model/AddressCompany.md)
  - [AmountRequest](docs/Model/AmountRequest.md)
+ - [AuthorizationTransactionGroup](docs/Model/AuthorizationTransactionGroup.md)
+ - [AuthorizedBeneficiariesResponse](docs/Model/AuthorizedBeneficiariesResponse.md)
+ - [AuthorizedUsers](docs/Model/AuthorizedUsers.md)
  - [Balance](docs/Model/Balance.md)
  - [BalanceListResponse](docs/Model/BalanceListResponse.md)
  - [BeneficiariesQueryRegisterStatus](docs/Model/BeneficiariesQueryRegisterStatus.md)
@@ -126,7 +144,17 @@ Class | Method | HTTP request | Description
  - [BillingTransaction](docs/Model/BillingTransaction.md)
  - [CepResponse](docs/Model/CepResponse.md)
  - [CepSearchBanxico](docs/Model/CepSearchBanxico.md)
+ - [CertificateRequest](docs/Model/CertificateRequest.md)
+ - [CodiCodeQrResponseDTO](docs/Model/CodiCodeQrResponseDTO.md)
+ - [CodiCodeRequestDTO](docs/Model/CodiCodeRequestDTO.md)
+ - [CodiOperationResponseDTO](docs/Model/CodiOperationResponseDTO.md)
+ - [CodiOperationsFiltersRequestDTO](docs/Model/CodiOperationsFiltersRequestDTO.md)
+ - [CompanyRegistered](docs/Model/CompanyRegistered.md)
+ - [CompanyRequested](docs/Model/CompanyRequested.md)
+ - [Compay](docs/Model/Compay.md)
  - [ContactRequest](docs/Model/ContactRequest.md)
+ - [ContractDetailRequest](docs/Model/ContractDetailRequest.md)
+ - [ContractDetailResponse](docs/Model/ContractDetailResponse.md)
  - [Deposit](docs/Model/Deposit.md)
  - [Depositant](docs/Model/Depositant.md)
  - [DepositantsRegister](docs/Model/DepositantsRegister.md)
@@ -137,19 +165,31 @@ Class | Method | HTTP request | Description
  - [InstitutionsList](docs/Model/InstitutionsList.md)
  - [MessageAccountBeneficiary](docs/Model/MessageAccountBeneficiary.md)
  - [MessageCEP](docs/Model/MessageCEP.md)
+ - [MessageCodiAction](docs/Model/MessageCodiAction.md)
  - [MessageDepositReceived](docs/Model/MessageDepositReceived.md)
  - [MessageInstitution](docs/Model/MessageInstitution.md)
  - [MessagePayment](docs/Model/MessagePayment.md)
+ - [MessagePaymentStatePending](docs/Model/MessagePaymentStatePending.md)
  - [MessageRequestChanged](docs/Model/MessageRequestChanged.md)
+ - [MessageSalesPoint](docs/Model/MessageSalesPoint.md)
  - [MessageSubscription](docs/Model/MessageSubscription.md)
+ - [MessageUserAuthorized](docs/Model/MessageUserAuthorized.md)
  - [MessageWebHook](docs/Model/MessageWebHook.md)
+ - [Operations](docs/Model/Operations.md)
+ - [PagerResponseDto](docs/Model/PagerResponseDto.md)
  - [Payment](docs/Model/Payment.md)
+ - [PaymentRequestCodiResponseDTO](docs/Model/PaymentRequestCodiResponseDTO.md)
  - [PaymentsRequestId](docs/Model/PaymentsRequestId.md)
  - [Person](docs/Model/Person.md)
  - [PreEnrollmentData](docs/Model/PreEnrollmentData.md)
  - [PreEnrollmentResponse](docs/Model/PreEnrollmentResponse.md)
+ - [PreMonexAuthorization](docs/Model/PreMonexAuthorization.md)
  - [Relationship](docs/Model/Relationship.md)
  - [RelationshipsResponse](docs/Model/RelationshipsResponse.md)
+ - [SalesPoint](docs/Model/SalesPoint.md)
+ - [SalesPointFound](docs/Model/SalesPointFound.md)
+ - [SalesPointRequest](docs/Model/SalesPointRequest.md)
+ - [SalesPointRespose](docs/Model/SalesPointRespose.md)
  - [SpidBeneficiariesResponse](docs/Model/SpidBeneficiariesResponse.md)
  - [SpidBeneficiaryResponse](docs/Model/SpidBeneficiaryResponse.md)
  - [SpidClassificationDTO](docs/Model/SpidClassificationDTO.md)
@@ -159,6 +199,9 @@ Class | Method | HTTP request | Description
  - [TransactionOutgoing](docs/Model/TransactionOutgoing.md)
  - [TransactionOutgoingSpid](docs/Model/TransactionOutgoingSpid.md)
  - [TransactionsOutgoingRegister](docs/Model/TransactionsOutgoingRegister.md)
+ - [UrlsRedirect](docs/Model/UrlsRedirect.md)
+ - [UserCompany](docs/Model/UserCompany.md)
+ - [Webhook](docs/Model/Webhook.md)
  - [WebhookRequest](docs/Model/WebhookRequest.md)
  - [WebhookResponse](docs/Model/WebhookResponse.md)
  - [WebhooksList](docs/Model/WebhooksList.md)

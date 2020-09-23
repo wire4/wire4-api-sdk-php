@@ -153,6 +153,13 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "error_message"
+     */
+    public function testPropertyErrorMessage()
+    {
+    }
+
+    /**
      * Test attribute "monex_description"
      */
     public function testPropertyMonexDescription()
@@ -170,6 +177,13 @@ class PaymentTest extends \PHPUnit_Framework_TestCase
      * Test attribute "payment_order_id"
      */
     public function testPropertyPaymentOrderId()
+    {
+    }
+
+    /**
+     * Test attribute "pending_reason"
+     */
+    public function testPropertyPendingReason()
     {
     }
 

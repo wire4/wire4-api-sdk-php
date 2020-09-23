@@ -222,7 +222,7 @@ class MessageAccountBeneficiary implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param string $account Cuenta del beneficiario
+     * @param string $account Cuenta del beneficiario registrado
      *
      * @return $this
      */
@@ -270,7 +270,7 @@ class MessageAccountBeneficiary implements ModelInterface, ArrayAccess
     /**
      * Sets request_id
      *
-     * @param string $request_id El identificador, en esta API, de la petición de registro de la cuenta del beneficiario
+     * @param string $request_id El identificador en esta API, de la petición de registro de la cuenta del beneficiario
      *
      * @return $this
      */

@@ -35,7 +35,7 @@ use \mx\wire4\ObjectSerializer;
  * MessageSubscription Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información del la suscripción a esta a esta API
+ * @description El mensaje que se envía mediante (webHook) con la información de la suscripción a esta a esta API
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -240,7 +240,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
     /**
      * Sets contract
      *
-     * @param string $contract Contrato Monex, con el cual se suscribió el cliente Monex en Wire4
+     * @param string $contract Contrato Monex, con el cuál se suscribió el cliente Monex en Wire4
      *
      * @return $this
      */
@@ -264,7 +264,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
     /**
      * Sets masked_contract
      *
-     * @param string $masked_contract Contrato enmascarado de Monex, con el cual se suscribió el cliente Monex en Wire4
+     * @param string $masked_contract Contrato enmascarado de Monex, con el cuál se suscribió el cliente Monex en Wire4
      *
      * @return $this
      */
@@ -288,7 +288,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
     /**
      * Sets subscription
      *
-     * @param string $subscription Identificador de la suscripción, el cual se utiliza en las operaciones que solicitan una suscripción
+     * @param string $subscription Identificador de la suscripción, el cual se utilizará en las operaciones que solicitan una suscripción
      *
      * @return $this
      */
@@ -312,7 +312,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
     /**
      * Sets user
      *
-     * @param string $user Usuario enmascardo, con el cual se suscribió el cliente Monex en Wire4
+     * @param string $user Usuario enmascardo, con el cuál se suscribió el cliente Monex en Wire4
      *
      * @return $this
      */
@@ -336,7 +336,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
     /**
      * Sets user_key
      *
-     * @param string $user_key Usuario proporcionado por Wire4, el cual se debe utilizar para autenticar a esta suscripción
+     * @param string $user_key Usuario proporcionado por Wire4, el cuál se debe utilizar para autenticar a esta suscripción
      *
      * @return $this
      */
@@ -360,7 +360,7 @@ class MessageSubscription implements ModelInterface, ArrayAccess
     /**
      * Sets user_secret
      *
-     * @param string $user_secret Contraseña proporcionada por Wire4, la cual se debe utilizar para autenticar a esta suscripción
+     * @param string $user_secret Contraseña proporcionada por Wire4, la cuál se debe utilizar para autenticar a esta suscripción
      *
      * @return $this
      */

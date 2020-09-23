@@ -32,7 +32,7 @@ namespace mx\wire4;
  * MessageRequestChangedTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información acerca de algún cambio en el procesamiento de la petición a esta a esta API
+ * @description El mensaje que se envía mediante (WebHook) con la información acerca de algún cambio en el procesamiento o estado de la petición a esta a esta API
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen

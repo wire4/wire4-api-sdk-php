@@ -132,6 +132,13 @@ class SpidBeneficiaryResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "register_date"
+     */
+    public function testPropertyRegisterDate()
+    {
+    }
+
+    /**
      * Test attribute "relationship"
      */
     public function testPropertyRelationship()
@@ -142,6 +149,13 @@ class SpidBeneficiaryResponseTest extends \PHPUnit_Framework_TestCase
      * Test attribute "rfc"
      */
     public function testPropertyRfc()
+    {
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
     {
     }
 }

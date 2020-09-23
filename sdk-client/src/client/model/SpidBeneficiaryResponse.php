@@ -65,8 +65,10 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
 'kind_of_relationship' => 'string',
 'numeric_reference_spid' => 'string',
 'payment_concept_spid' => 'string',
+'register_date' => '\DateTime',
 'relationship' => 'string',
-'rfc' => 'string'    ];
+'rfc' => 'string',
+'status' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -82,8 +84,10 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
 'kind_of_relationship' => null,
 'numeric_reference_spid' => null,
 'payment_concept_spid' => null,
+'register_date' => 'date-time',
 'relationship' => null,
-'rfc' => null    ];
+'rfc' => null,
+'status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -120,8 +124,10 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
 'kind_of_relationship' => 'kind_of_relationship',
 'numeric_reference_spid' => 'numeric_reference_spid',
 'payment_concept_spid' => 'payment_concept_spid',
+'register_date' => 'register_date',
 'relationship' => 'relationship',
-'rfc' => 'rfc'    ];
+'rfc' => 'rfc',
+'status' => 'status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -137,8 +143,10 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
 'kind_of_relationship' => 'setKindOfRelationship',
 'numeric_reference_spid' => 'setNumericReferenceSpid',
 'payment_concept_spid' => 'setPaymentConceptSpid',
+'register_date' => 'setRegisterDate',
 'relationship' => 'setRelationship',
-'rfc' => 'setRfc'    ];
+'rfc' => 'setRfc',
+'status' => 'setStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -154,8 +162,10 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
 'kind_of_relationship' => 'getKindOfRelationship',
 'numeric_reference_spid' => 'getNumericReferenceSpid',
 'payment_concept_spid' => 'getPaymentConceptSpid',
+'register_date' => 'getRegisterDate',
 'relationship' => 'getRelationship',
-'rfc' => 'getRfc'    ];
+'rfc' => 'getRfc',
+'status' => 'getStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -223,8 +233,10 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
         $this->container['kind_of_relationship'] = isset($data['kind_of_relationship']) ? $data['kind_of_relationship'] : null;
         $this->container['numeric_reference_spid'] = isset($data['numeric_reference_spid']) ? $data['numeric_reference_spid'] : null;
         $this->container['payment_concept_spid'] = isset($data['payment_concept_spid']) ? $data['payment_concept_spid'] : null;
+        $this->container['register_date'] = isset($data['register_date']) ? $data['register_date'] : null;
         $this->container['relationship'] = isset($data['relationship']) ? $data['relationship'] : null;
         $this->container['rfc'] = isset($data['rfc']) ? $data['rfc'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -459,6 +471,30 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets register_date
+     *
+     * @return \DateTime
+     */
+    public function getRegisterDate()
+    {
+        return $this->container['register_date'];
+    }
+
+    /**
+     * Sets register_date
+     *
+     * @param \DateTime $register_date La fecha en la que se registro el beneficiario
+     *
+     * @return $this
+     */
+    public function setRegisterDate($register_date)
+    {
+        $this->container['register_date'] = $register_date;
+
+        return $this;
+    }
+
+    /**
      * Gets relationship
      *
      * @return string
@@ -502,6 +538,30 @@ class SpidBeneficiaryResponse implements ModelInterface, ArrayAccess
     public function setRfc($rfc)
     {
         $this->container['rfc'] = $rfc;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status El estado en el que se encuentra el registo del beneficiario
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

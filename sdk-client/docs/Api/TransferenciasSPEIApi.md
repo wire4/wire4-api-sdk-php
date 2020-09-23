@@ -4,14 +4,68 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createAuthorizationTransactionsGroup**](TransferenciasSPEIApi.md#createauthorizationtransactionsgroup) | **POST** /subscriptions/{subscription}/transactions/group | Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
 [**dropTransactionsPendingUsingDELETE**](TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 [**incomingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 [**outCommingSpeiRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
 [**outgoingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
 [**registerOutgoingSpeiTransactionUsingPOST**](TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
 
+# **createAuthorizationTransactionsGroup**
+> \mx\wire4\client\model\TokenRequiredResponse createAuthorizationTransactionsGroup($body, $authorization, $subscription)
+
+Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+
+Agrupa transacciones SPEI/SPID en un transaction_id, generando la URL para su autorización. Las transacciones deben estar en estatus PENDING y pertenecer a un mmismo contrato
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\AuthorizationTransactionGroup(); // \mx\wire4\client\model\AuthorizationTransactionGroup | authorizationTransactionsGroupRequestDTO
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | Identificador de la suscripcion
+
+try {
+    $result = $apiInstance->createAuthorizationTransactionsGroup($body, $authorization, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransferenciasSPEIApi->createAuthorizationTransactionsGroup: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\mx\wire4\client\model\AuthorizationTransactionGroup**](../Model/AuthorizationTransactionGroup.md)| authorizationTransactionsGroupRequestDTO |
+ **authorization** | **string**| Header para token |
+ **subscription** | **string**| Identificador de la suscripcion |
+
+### Return type
+
+[**\mx\wire4\client\model\TokenRequiredResponse**](../Model/TokenRequiredResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **dropTransactionsPendingUsingDELETE**
-> dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription)
+> dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription, $order_id)
 
 Eliminación de transferencias SPEI® pendientes
 
@@ -30,9 +84,10 @@ $apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
 $authorization = "authorization_example"; // string | Header para token
 $request_id = "request_id_example"; // string | Identificador de las transferencias a eliminar
 $subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$order_id = "order_id_example"; // string | Listado de identificadores dentro del request_id para eliminar
 
 try {
-    $apiInstance->dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription);
+    $apiInstance->dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription, $order_id);
 } catch (Exception $e) {
     echo 'Exception when calling TransferenciasSPEIApi->dropTransactionsPendingUsingDELETE: ', $e->getMessage(), PHP_EOL;
 }
@@ -46,6 +101,7 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token |
  **request_id** | **string**| Identificador de las transferencias a eliminar |
  **subscription** | **string**| El identificador de la suscripción a esta API |
+ **order_id** | **string**| Listado de identificadores dentro del request_id para eliminar | [optional]
 
 ### Return type
 

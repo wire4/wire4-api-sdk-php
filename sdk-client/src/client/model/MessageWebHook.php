@@ -258,7 +258,7 @@ class MessageWebHook implements ModelInterface, ArrayAccess
     /**
      * Sets api_version
      *
-     * @param string $api_version La versión de la API
+     * @param string $api_version La versión de esta API
      *
      * @return $this
      */
@@ -378,7 +378,7 @@ class MessageWebHook implements ModelInterface, ArrayAccess
     /**
      * Sets object
      *
-     * @param string $object Tipo de objeto  que contiene el mensaje en el atributo data los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing
+     * @param string $object Tipo de objeto  que contiene el mensaje en el atributo 'data' los posibles valores son: subscription, beneficiary, spei_outgoing, spei_incoming, spid_outgoing, request_outgoing
      *
      * @return $this
      */

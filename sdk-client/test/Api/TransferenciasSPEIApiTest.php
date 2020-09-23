@@ -71,6 +71,16 @@ class TransferenciasSPEIApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for createAuthorizationTransactionsGroup
+     *
+     * Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar.
+     *
+     */
+    public function testCreateAuthorizationTransactionsGroup()
+    {
+    }
+
+    /**
      * Test case for dropTransactionsPendingUsingDELETE
      *
      * Eliminación de transferencias SPEI® pendientes.

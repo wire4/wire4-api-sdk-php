@@ -108,7 +108,8 @@ class OAuthWire4 {
             curl_close($ch);
 
             if (! isset($accessToken->access_token)) {
-                throw new \Exception($accessToken->error_description,400);
+                throw new \Exception(
+                    !isset($accessToken->error_description) ? "Ocurrio un error inesperado, por favor contacte al administrados":$accessToken->error_description,400);
             }
 
         } catch (Exception $e) {

@@ -94,15 +94,20 @@ class CuentasDeBeneficiariosSPIDApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\SpidBeneficiariesResponse
      */
-    public function getSpidBeneficiariesForAccount($authorization, $subscription, $account = null, $rfc = null)
+    public function getSpidBeneficiariesForAccount($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
-        list($response) = $this->getSpidBeneficiariesForAccountWithHttpInfo($authorization, $subscription, $account, $rfc);
+        list($response) = $this->getSpidBeneficiariesForAccountWithHttpInfo($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
         return $response;
     }
 
@@ -114,16 +119,21 @@ class CuentasDeBeneficiariosSPIDApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\SpidBeneficiariesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSpidBeneficiariesForAccountWithHttpInfo($authorization, $subscription, $account = null, $rfc = null)
+    public function getSpidBeneficiariesForAccountWithHttpInfo($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
         $returnType = '\mx\wire4\client\model\SpidBeneficiariesResponse';
-        $request = $this->getSpidBeneficiariesForAccountRequest($authorization, $subscription, $account, $rfc);
+        $request = $this->getSpidBeneficiariesForAccountRequest($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
 
         try {
             $options = $this->createHttpClientOption();
@@ -232,14 +242,19 @@ class CuentasDeBeneficiariosSPIDApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSpidBeneficiariesForAccountAsync($authorization, $subscription, $account = null, $rfc = null)
+    public function getSpidBeneficiariesForAccountAsync($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
-        return $this->getSpidBeneficiariesForAccountAsyncWithHttpInfo($authorization, $subscription, $account, $rfc)
+        return $this->getSpidBeneficiariesForAccountAsyncWithHttpInfo($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -255,15 +270,20 @@ class CuentasDeBeneficiariosSPIDApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSpidBeneficiariesForAccountAsyncWithHttpInfo($authorization, $subscription, $account = null, $rfc = null)
+    public function getSpidBeneficiariesForAccountAsyncWithHttpInfo($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
         $returnType = '\mx\wire4\client\model\SpidBeneficiariesResponse';
-        $request = $this->getSpidBeneficiariesForAccountRequest($authorization, $subscription, $account, $rfc);
+        $request = $this->getSpidBeneficiariesForAccountRequest($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -308,12 +328,17 @@ class CuentasDeBeneficiariosSPIDApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSpidBeneficiariesForAccountRequest($authorization, $subscription, $account = null, $rfc = null)
+    protected function getSpidBeneficiariesForAccountRequest($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
@@ -340,8 +365,28 @@ class CuentasDeBeneficiariosSPIDApi
             $queryParams['account'] = ObjectSerializer::toQueryValue($account);
         }
         // query params
+        if ($beneficiary_bank !== null) {
+            $queryParams['beneficiary_bank'] = ObjectSerializer::toQueryValue($beneficiary_bank);
+        }
+        // query params
+        if ($beneficiary_name !== null) {
+            $queryParams['beneficiary_name'] = ObjectSerializer::toQueryValue($beneficiary_name);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($init_date !== null) {
+            $queryParams['init_date'] = ObjectSerializer::toQueryValue($init_date);
+        }
+        // query params
         if ($rfc !== null) {
             $queryParams['rfc'] = ObjectSerializer::toQueryValue($rfc);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
         }
         // header params
         if ($authorization !== null) {

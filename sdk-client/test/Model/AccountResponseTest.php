@@ -139,6 +139,13 @@ class AccountResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "register_date"
+     */
+    public function testPropertyRegisterDate()
+    {
+    }
+
+    /**
      * Test attribute "relationship"
      */
     public function testPropertyRelationship()

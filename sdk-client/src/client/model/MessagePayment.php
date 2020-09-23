@@ -35,7 +35,7 @@ use \mx\wire4\ObjectSerializer;
  * MessagePayment Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información del transferencia de salida realizada
+ * @description El mensaje que se envía mediante (webHook) con la información de la transferencia de salida realizada
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -68,9 +68,11 @@ class MessagePayment implements ModelInterface, ArrayAccess
 'confirm_date' => '\DateTime',
 'currency_code' => 'string',
 'detention_message' => 'string',
+'error_message' => 'string',
 'monex_description' => 'string',
 'order_id' => 'string',
 'payment_order_id' => 'int',
+'pending_reason' => 'string',
 'reference' => 'int',
 'request_id' => 'string',
 'status_code' => 'string',
@@ -93,9 +95,11 @@ class MessagePayment implements ModelInterface, ArrayAccess
 'confirm_date' => 'date-time',
 'currency_code' => null,
 'detention_message' => null,
+'error_message' => null,
 'monex_description' => null,
 'order_id' => null,
 'payment_order_id' => null,
+'pending_reason' => null,
 'reference' => null,
 'request_id' => null,
 'status_code' => null,
@@ -139,9 +143,11 @@ class MessagePayment implements ModelInterface, ArrayAccess
 'confirm_date' => 'confirm_date',
 'currency_code' => 'currency_code',
 'detention_message' => 'detention_message',
+'error_message' => 'error_message',
 'monex_description' => 'monex_description',
 'order_id' => 'order_id',
 'payment_order_id' => 'payment_order_id',
+'pending_reason' => 'pending_reason',
 'reference' => 'reference',
 'request_id' => 'request_id',
 'status_code' => 'status_code',
@@ -164,9 +170,11 @@ class MessagePayment implements ModelInterface, ArrayAccess
 'confirm_date' => 'setConfirmDate',
 'currency_code' => 'setCurrencyCode',
 'detention_message' => 'setDetentionMessage',
+'error_message' => 'setErrorMessage',
 'monex_description' => 'setMonexDescription',
 'order_id' => 'setOrderId',
 'payment_order_id' => 'setPaymentOrderId',
+'pending_reason' => 'setPendingReason',
 'reference' => 'setReference',
 'request_id' => 'setRequestId',
 'status_code' => 'setStatusCode',
@@ -189,9 +197,11 @@ class MessagePayment implements ModelInterface, ArrayAccess
 'confirm_date' => 'getConfirmDate',
 'currency_code' => 'getCurrencyCode',
 'detention_message' => 'getDetentionMessage',
+'error_message' => 'getErrorMessage',
 'monex_description' => 'getMonexDescription',
 'order_id' => 'getOrderId',
 'payment_order_id' => 'getPaymentOrderId',
+'pending_reason' => 'getPendingReason',
 'reference' => 'getReference',
 'request_id' => 'getRequestId',
 'status_code' => 'getStatusCode',
@@ -266,9 +276,11 @@ class MessagePayment implements ModelInterface, ArrayAccess
         $this->container['confirm_date'] = isset($data['confirm_date']) ? $data['confirm_date'] : null;
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
         $this->container['detention_message'] = isset($data['detention_message']) ? $data['detention_message'] : null;
+        $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
         $this->container['monex_description'] = isset($data['monex_description']) ? $data['monex_description'] : null;
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['payment_order_id'] = isset($data['payment_order_id']) ? $data['payment_order_id'] : null;
+        $this->container['pending_reason'] = isset($data['pending_reason']) ? $data['pending_reason'] : null;
         $this->container['reference'] = isset($data['reference']) ? $data['reference'] : null;
         $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
         $this->container['status_code'] = isset($data['status_code']) ? $data['status_code'] : null;
@@ -564,6 +576,30 @@ class MessagePayment implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets error_message
+     *
+     * @return string
+     */
+    public function getErrorMessage()
+    {
+        return $this->container['error_message'];
+    }
+
+    /**
+     * Sets error_message
+     *
+     * @param string $error_message Mensaje de error
+     *
+     * @return $this
+     */
+    public function setErrorMessage($error_message)
+    {
+        $this->container['error_message'] = $error_message;
+
+        return $this;
+    }
+
+    /**
      * Gets monex_description
      *
      * @return string
@@ -631,6 +667,30 @@ class MessagePayment implements ModelInterface, ArrayAccess
     public function setPaymentOrderId($payment_order_id)
     {
         $this->container['payment_order_id'] = $payment_order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_reason
+     *
+     * @return string
+     */
+    public function getPendingReason()
+    {
+        return $this->container['pending_reason'];
+    }
+
+    /**
+     * Sets pending_reason
+     *
+     * @param string $pending_reason Razón de porque está pendiente aún cuando se autorizó la transferencia
+     *
+     * @return $this
+     */
+    public function setPendingReason($pending_reason)
+    {
+        $this->container['pending_reason'] = $pending_reason;
 
         return $this;
     }

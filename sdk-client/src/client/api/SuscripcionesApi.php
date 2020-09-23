@@ -89,9 +89,9 @@ class SuscripcionesApi
     /**
      * Operation preEnrollmentMonexUserUsingPOST
      *
-     * registra una pre-suscripción
+     * Registra una pre-suscripción
      *
-     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para la pre-suscripción (required)
      * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
@@ -107,9 +107,9 @@ class SuscripcionesApi
     /**
      * Operation preEnrollmentMonexUserUsingPOSTWithHttpInfo
      *
-     * registra una pre-suscripción
+     * Registra una pre-suscripción
      *
-     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para la pre-suscripción (required)
      * @param  string $authorization Header para token (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
@@ -215,9 +215,9 @@ class SuscripcionesApi
     /**
      * Operation preEnrollmentMonexUserUsingPOSTAsync
      *
-     * registra una pre-suscripción
+     * Registra una pre-suscripción
      *
-     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para la pre-suscripción (required)
      * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
@@ -236,9 +236,9 @@ class SuscripcionesApi
     /**
      * Operation preEnrollmentMonexUserUsingPOSTAsyncWithHttpInfo
      *
-     * registra una pre-suscripción
+     * Registra una pre-suscripción
      *
-     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para la pre-suscripción (required)
      * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
@@ -289,7 +289,7 @@ class SuscripcionesApi
     /**
      * Create request for operation 'preEnrollmentMonexUserUsingPOST'
      *
-     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para el enrolamiento (required)
+     * @param  \mx\wire4\client\model\PreEnrollmentData $body Información para la pre-suscripción (required)
      * @param  string $authorization Header para token (required)
      *
      * @throws \InvalidArgumentException
@@ -393,7 +393,7 @@ class SuscripcionesApi
     /**
      * Operation removeEnrollmentUserUsingDELETE
      *
-     * Elimna una suscripción por id
+     * Elimina una suscripción por el identificador de la suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -410,7 +410,7 @@ class SuscripcionesApi
     /**
      * Operation removeEnrollmentUserUsingDELETEWithHttpInfo
      *
-     * Elimna una suscripción por id
+     * Elimina una suscripción por el identificador de la suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -464,7 +464,7 @@ class SuscripcionesApi
     /**
      * Operation removeEnrollmentUserUsingDELETEAsync
      *
-     * Elimna una suscripción por id
+     * Elimina una suscripción por el identificador de la suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -485,7 +485,7 @@ class SuscripcionesApi
     /**
      * Operation removeEnrollmentUserUsingDELETEAsyncWithHttpInfo
      *
-     * Elimna una suscripción por id
+     * Elimina una suscripción por el identificador de la suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -633,7 +633,7 @@ class SuscripcionesApi
     /**
      * Operation removeSubscriptionPendingStatusUsingDELETE
      *
-     * Elimna una pre-suscripción
+     * Elimina una pre-suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -650,7 +650,7 @@ class SuscripcionesApi
     /**
      * Operation removeSubscriptionPendingStatusUsingDELETEWithHttpInfo
      *
-     * Elimna una pre-suscripción
+     * Elimina una pre-suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -704,7 +704,7 @@ class SuscripcionesApi
     /**
      * Operation removeSubscriptionPendingStatusUsingDELETEAsync
      *
-     * Elimna una pre-suscripción
+     * Elimina una pre-suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -725,7 +725,7 @@ class SuscripcionesApi
     /**
      * Operation removeSubscriptionPendingStatusUsingDELETEAsyncWithHttpInfo
      *
-     * Elimna una pre-suscripción
+     * Elimina una pre-suscripción
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)

@@ -87,6 +87,305 @@ class CuentasDeBeneficiariosSPEIApi
     }
 
     /**
+     * Operation authorizeAccountsPendingPUT
+     *
+     * Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+     *
+     * @param  \mx\wire4\client\model\UrlsRedirect $body Información de la cuenta del beneficiario (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     *
+     * @throws \mx\wire4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \mx\wire4\client\model\AuthorizedBeneficiariesResponse
+     */
+    public function authorizeAccountsPendingPUT($body, $authorization, $subscription)
+    {
+        list($response) = $this->authorizeAccountsPendingPUTWithHttpInfo($body, $authorization, $subscription);
+        return $response;
+    }
+
+    /**
+     * Operation authorizeAccountsPendingPUTWithHttpInfo
+     *
+     * Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+     *
+     * @param  \mx\wire4\client\model\UrlsRedirect $body Información de la cuenta del beneficiario (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     *
+     * @throws \mx\wire4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \mx\wire4\client\model\AuthorizedBeneficiariesResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function authorizeAccountsPendingPUTWithHttpInfo($body, $authorization, $subscription)
+    {
+        $returnType = '\mx\wire4\client\model\AuthorizedBeneficiariesResponse';
+        $request = $this->authorizeAccountsPendingPUTRequest($body, $authorization, $subscription);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\AuthorizedBeneficiariesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 204:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\AuthorizedBeneficiariesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation authorizeAccountsPendingPUTAsync
+     *
+     * Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+     *
+     * @param  \mx\wire4\client\model\UrlsRedirect $body Información de la cuenta del beneficiario (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function authorizeAccountsPendingPUTAsync($body, $authorization, $subscription)
+    {
+        return $this->authorizeAccountsPendingPUTAsyncWithHttpInfo($body, $authorization, $subscription)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation authorizeAccountsPendingPUTAsyncWithHttpInfo
+     *
+     * Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
+     *
+     * @param  \mx\wire4\client\model\UrlsRedirect $body Información de la cuenta del beneficiario (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function authorizeAccountsPendingPUTAsyncWithHttpInfo($body, $authorization, $subscription)
+    {
+        $returnType = '\mx\wire4\client\model\AuthorizedBeneficiariesResponse';
+        $request = $this->authorizeAccountsPendingPUTRequest($body, $authorization, $subscription);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'authorizeAccountsPendingPUT'
+     *
+     * @param  \mx\wire4\client\model\UrlsRedirect $body Información de la cuenta del beneficiario (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function authorizeAccountsPendingPUTRequest($body, $authorization, $subscription)
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling authorizeAccountsPendingPUT'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling authorizeAccountsPendingPUT'
+            );
+        }
+        // verify the required parameter 'subscription' is set
+        if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $subscription when calling authorizeAccountsPendingPUT'
+            );
+        }
+
+        $resourcePath = '/subscriptions/{subscription}/beneficiaries/pending';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
+
+        // path params
+        if ($subscription !== null) {
+            $resourcePath = str_replace(
+                '{' . 'subscription' . '}',
+                ObjectSerializer::toPathValue($subscription),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteAccountUsingDELETE
      *
      * Elimina la cuenta del beneficiario
@@ -998,15 +1297,20 @@ class CuentasDeBeneficiariosSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\BeneficiariesResponse
      */
-    public function getBeneficiariesForAccountUsingGET($authorization, $subscription, $account = null, $rfc = null)
+    public function getBeneficiariesForAccountUsingGET($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
-        list($response) = $this->getBeneficiariesForAccountUsingGETWithHttpInfo($authorization, $subscription, $account, $rfc);
+        list($response) = $this->getBeneficiariesForAccountUsingGETWithHttpInfo($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
         return $response;
     }
 
@@ -1018,16 +1322,21 @@ class CuentasDeBeneficiariosSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\BeneficiariesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBeneficiariesForAccountUsingGETWithHttpInfo($authorization, $subscription, $account = null, $rfc = null)
+    public function getBeneficiariesForAccountUsingGETWithHttpInfo($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
         $returnType = '\mx\wire4\client\model\BeneficiariesResponse';
-        $request = $this->getBeneficiariesForAccountUsingGETRequest($authorization, $subscription, $account, $rfc);
+        $request = $this->getBeneficiariesForAccountUsingGETRequest($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1136,14 +1445,19 @@ class CuentasDeBeneficiariosSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBeneficiariesForAccountUsingGETAsync($authorization, $subscription, $account = null, $rfc = null)
+    public function getBeneficiariesForAccountUsingGETAsync($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
-        return $this->getBeneficiariesForAccountUsingGETAsyncWithHttpInfo($authorization, $subscription, $account, $rfc)
+        return $this->getBeneficiariesForAccountUsingGETAsyncWithHttpInfo($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1159,15 +1473,20 @@ class CuentasDeBeneficiariosSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBeneficiariesForAccountUsingGETAsyncWithHttpInfo($authorization, $subscription, $account = null, $rfc = null)
+    public function getBeneficiariesForAccountUsingGETAsyncWithHttpInfo($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
         $returnType = '\mx\wire4\client\model\BeneficiariesResponse';
-        $request = $this->getBeneficiariesForAccountUsingGETRequest($authorization, $subscription, $account, $rfc);
+        $request = $this->getBeneficiariesForAccountUsingGETRequest($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1212,12 +1531,17 @@ class CuentasDeBeneficiariosSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      * @param  string $account Cuenta del beneficiario, puede ser Clabe, TDD o Celular (optional)
+     * @param  string $beneficiary_bank Clave del banco beneficiario (optional)
+     * @param  string $beneficiary_name Nombre del beneficiario (optional)
+     * @param  string $end_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
+     * @param  string $init_date Fecha de inicio del perido a filtrar en formato dd-mm-yyyy (optional)
      * @param  string $rfc RFC del beneficiario (optional)
+     * @param  string $status Estatus de la cuenta (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getBeneficiariesForAccountUsingGETRequest($authorization, $subscription, $account = null, $rfc = null)
+    protected function getBeneficiariesForAccountUsingGETRequest($authorization, $subscription, $account = null, $beneficiary_bank = null, $beneficiary_name = null, $end_date = null, $init_date = null, $rfc = null, $status = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
@@ -1244,8 +1568,28 @@ class CuentasDeBeneficiariosSPEIApi
             $queryParams['account'] = ObjectSerializer::toQueryValue($account);
         }
         // query params
+        if ($beneficiary_bank !== null) {
+            $queryParams['beneficiary_bank'] = ObjectSerializer::toQueryValue($beneficiary_bank);
+        }
+        // query params
+        if ($beneficiary_name !== null) {
+            $queryParams['beneficiary_name'] = ObjectSerializer::toQueryValue($beneficiary_name);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+        }
+        // query params
+        if ($init_date !== null) {
+            $queryParams['init_date'] = ObjectSerializer::toQueryValue($init_date);
+        }
+        // query params
         if ($rfc !== null) {
             $queryParams['rfc'] = ObjectSerializer::toQueryValue($rfc);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = ObjectSerializer::toQueryValue($status);
         }
         // header params
         if ($authorization !== null) {
@@ -1919,11 +2263,12 @@ class CuentasDeBeneficiariosSPEIApi
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \mx\wire4\client\model\TokenRequiredResponse
      */
     public function updateAmountLimitAccountUsingPUT($body, $authorization, $account, $subscription)
     {
-        $this->updateAmountLimitAccountUsingPUTWithHttpInfo($body, $authorization, $account, $subscription);
+        list($response) = $this->updateAmountLimitAccountUsingPUTWithHttpInfo($body, $authorization, $account, $subscription);
+        return $response;
     }
 
     /**
@@ -1938,11 +2283,11 @@ class CuentasDeBeneficiariosSPEIApi
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \mx\wire4\client\model\TokenRequiredResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAmountLimitAccountUsingPUTWithHttpInfo($body, $authorization, $account, $subscription)
     {
-        $returnType = '';
+        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
         $request = $this->updateAmountLimitAccountUsingPUTRequest($body, $authorization, $account, $subscription);
 
         try {
@@ -1973,10 +2318,32 @@ class CuentasDeBeneficiariosSPEIApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\TokenRequiredResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2020,14 +2387,28 @@ class CuentasDeBeneficiariosSPEIApi
      */
     public function updateAmountLimitAccountUsingPUTAsyncWithHttpInfo($body, $authorization, $account, $subscription)
     {
-        $returnType = '';
+        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
         $request = $this->updateAmountLimitAccountUsingPUTRequest($body, $authorization, $account, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2121,11 +2502,11 @@ class CuentasDeBeneficiariosSPEIApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 ['application/json']
             );
         }

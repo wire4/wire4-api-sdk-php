@@ -32,7 +32,7 @@ namespace mx\wire4;
  * MessagePaymentTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del transferencia de salida realizada
+ * @description El mensaje que se envía mediante (webHook) con la información de la transferencia de salida realizada
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -153,6 +153,13 @@ class MessagePaymentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "error_message"
+     */
+    public function testPropertyErrorMessage()
+    {
+    }
+
+    /**
      * Test attribute "monex_description"
      */
     public function testPropertyMonexDescription()
@@ -170,6 +177,13 @@ class MessagePaymentTest extends \PHPUnit_Framework_TestCase
      * Test attribute "payment_order_id"
      */
     public function testPropertyPaymentOrderId()
+    {
+    }
+
+    /**
+     * Test attribute "pending_reason"
+     */
+    public function testPropertyPendingReason()
     {
     }
 

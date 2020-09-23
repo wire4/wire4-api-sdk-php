@@ -32,7 +32,7 @@ namespace mx\wire4;
  * MessageCEPTest Class Doc Comment
  *
  * @category    Class
- * @description El CEP emitido por Banxico de la transferencia. Solo cuando este disponible, en otro caso se podrá usar la Consulta de CEP que esta misma API ofrece
+ * @description El CEP emitido por Banxico de la transferencia. Solo cuando esté disponible, en otro caso se podrá usar la Consulta de CEP que esta misma API ofrece
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen

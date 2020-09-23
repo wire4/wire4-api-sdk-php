@@ -71,6 +71,16 @@ class CuentasDeBeneficiariosSPEIApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for authorizeAccountsPendingPUT
+     *
+     * Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas.
+     *
+     */
+    public function testAuthorizeAccountsPendingPUT()
+    {
+    }
+
+    /**
      * Test case for deleteAccountUsingDELETE
      *
      * Elimina la cuenta del beneficiario.

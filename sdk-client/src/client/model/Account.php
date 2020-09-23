@@ -405,7 +405,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets kind_of_relationship
      *
-     * @param string $kind_of_relationship Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+     * @param string $kind_of_relationship Tipo de relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
      *
      * @return $this
      */
@@ -501,7 +501,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets relationship
      *
-     * @param string $relationship Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships
+     * @param string $relationship Relación con el propietario de la cuenta, para registrar una cuenta este valor se debe obtener  del recurso relationships. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
      *
      * @return $this
      */
@@ -525,7 +525,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets rfc
      *
-     * @param string $rfc Registro federal de contribuyentes de la persona o institución propietaria de la cuenta
+     * @param string $rfc Registro federal de contribuyentes de la persona o institución propietaria de la cuenta. <br> Nota: Si en la respuesta de Monex esta propiedad es nula, tampoco estará presente en esta respuesta.
      *
      * @return $this
      */

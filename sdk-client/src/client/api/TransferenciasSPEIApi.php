@@ -87,6 +87,337 @@ class TransferenciasSPEIApi
     }
 
     /**
+     * Operation createAuthorizationTransactionsGroup
+     *
+     * Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+     *
+     * @param  \mx\wire4\client\model\AuthorizationTransactionGroup $body authorizationTransactionsGroupRequestDTO (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription Identificador de la suscripcion (required)
+     *
+     * @throws \mx\wire4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \mx\wire4\client\model\TokenRequiredResponse
+     */
+    public function createAuthorizationTransactionsGroup($body, $authorization, $subscription)
+    {
+        list($response) = $this->createAuthorizationTransactionsGroupWithHttpInfo($body, $authorization, $subscription);
+        return $response;
+    }
+
+    /**
+     * Operation createAuthorizationTransactionsGroupWithHttpInfo
+     *
+     * Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+     *
+     * @param  \mx\wire4\client\model\AuthorizationTransactionGroup $body authorizationTransactionsGroupRequestDTO (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription Identificador de la suscripcion (required)
+     *
+     * @throws \mx\wire4\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \mx\wire4\client\model\TokenRequiredResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAuthorizationTransactionsGroupWithHttpInfo($body, $authorization, $subscription)
+    {
+        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
+        $request = $this->createAuthorizationTransactionsGroupRequest($body, $authorization, $subscription);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\TokenRequiredResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\TokenRequiredResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAuthorizationTransactionsGroupAsync
+     *
+     * Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+     *
+     * @param  \mx\wire4\client\model\AuthorizationTransactionGroup $body authorizationTransactionsGroupRequestDTO (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription Identificador de la suscripcion (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAuthorizationTransactionsGroupAsync($body, $authorization, $subscription)
+    {
+        return $this->createAuthorizationTransactionsGroupAsyncWithHttpInfo($body, $authorization, $subscription)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAuthorizationTransactionsGroupAsyncWithHttpInfo
+     *
+     * Agrupa un conjunto de transacciones bajo un mismo request_id para autorizar
+     *
+     * @param  \mx\wire4\client\model\AuthorizationTransactionGroup $body authorizationTransactionsGroupRequestDTO (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription Identificador de la suscripcion (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAuthorizationTransactionsGroupAsyncWithHttpInfo($body, $authorization, $subscription)
+    {
+        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
+        $request = $this->createAuthorizationTransactionsGroupRequest($body, $authorization, $subscription);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAuthorizationTransactionsGroup'
+     *
+     * @param  \mx\wire4\client\model\AuthorizationTransactionGroup $body authorizationTransactionsGroupRequestDTO (required)
+     * @param  string $authorization Header para token (required)
+     * @param  string $subscription Identificador de la suscripcion (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createAuthorizationTransactionsGroupRequest($body, $authorization, $subscription)
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createAuthorizationTransactionsGroup'
+            );
+        }
+        // verify the required parameter 'authorization' is set
+        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $authorization when calling createAuthorizationTransactionsGroup'
+            );
+        }
+        // verify the required parameter 'subscription' is set
+        if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $subscription when calling createAuthorizationTransactionsGroup'
+            );
+        }
+
+        $resourcePath = '/subscriptions/{subscription}/transactions/group';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($authorization !== null) {
+            $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
+        }
+
+        // path params
+        if ($subscription !== null) {
+            $resourcePath = str_replace(
+                '{' . 'subscription' . '}',
+                ObjectSerializer::toPathValue($subscription),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['*/*']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['*/*'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation dropTransactionsPendingUsingDELETE
      *
      * Eliminación de transferencias SPEI® pendientes
@@ -94,14 +425,15 @@ class TransferenciasSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $order_id Listado de identificadores dentro del request_id para eliminar (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETE($authorization, $request_id, $subscription, $order_id = null)
     {
-        $this->dropTransactionsPendingUsingDELETEWithHttpInfo($authorization, $request_id, $subscription);
+        $this->dropTransactionsPendingUsingDELETEWithHttpInfo($authorization, $request_id, $subscription, $order_id);
     }
 
     /**
@@ -112,15 +444,16 @@ class TransferenciasSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $order_id Listado de identificadores dentro del request_id para eliminar (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function dropTransactionsPendingUsingDELETEWithHttpInfo($authorization, $request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETEWithHttpInfo($authorization, $request_id, $subscription, $order_id = null)
     {
         $returnType = '';
-        $request = $this->dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription);
+        $request = $this->dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription, $order_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -167,13 +500,14 @@ class TransferenciasSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $order_id Listado de identificadores dentro del request_id para eliminar (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dropTransactionsPendingUsingDELETEAsync($authorization, $request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETEAsync($authorization, $request_id, $subscription, $order_id = null)
     {
-        return $this->dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($authorization, $request_id, $subscription)
+        return $this->dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($authorization, $request_id, $subscription, $order_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -189,14 +523,15 @@ class TransferenciasSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $order_id Listado de identificadores dentro del request_id para eliminar (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($authorization, $request_id, $subscription)
+    public function dropTransactionsPendingUsingDELETEAsyncWithHttpInfo($authorization, $request_id, $subscription, $order_id = null)
     {
         $returnType = '';
-        $request = $this->dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription);
+        $request = $this->dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription, $order_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -227,11 +562,12 @@ class TransferenciasSPEIApi
      * @param  string $authorization Header para token (required)
      * @param  string $request_id Identificador de las transferencias a eliminar (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $order_id Listado de identificadores dentro del request_id para eliminar (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription)
+    protected function dropTransactionsPendingUsingDELETERequest($authorization, $request_id, $subscription, $order_id = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
@@ -259,6 +595,10 @@ class TransferenciasSPEIApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($order_id !== null) {
+            $queryParams['order_id'] = ObjectSerializer::toQueryValue($order_id);
+        }
         // header params
         if ($authorization !== null) {
             $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);

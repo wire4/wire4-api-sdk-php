@@ -11,8 +11,10 @@ Name | Type | Description | Notes
 **kind_of_relationship** | **string** | Tipo de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de relationships | 
 **numeric_reference_spid** | **string** | Referencia numérica | [optional] 
 **payment_concept_spid** | **string** | Concepto de pago | [optional] 
+**register_date** | [**\DateTime**](\DateTime.md) | La fecha en la que se registro el beneficiario | [optional] 
 **relationship** | **string** | Código de relación de la cuenta, este valor debe ser igual a uno de los obtenidos del recurso de consulta de  relationship | 
 **rfc** | **string** | Registro federal de contribuyentes | [optional] 
+**status** | **string** | El estado en el que se encuentra el registo del beneficiario | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

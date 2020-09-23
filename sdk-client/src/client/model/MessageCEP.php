@@ -35,7 +35,7 @@ use \mx\wire4\ObjectSerializer;
  * MessageCEP Class Doc Comment
  *
  * @category Class
- * @description El CEP emitido por Banxico de la transferencia. Solo cuando este disponible, en otro caso se podrá usar la Consulta de CEP que esta misma API ofrece
+ * @description El CEP emitido por Banxico de la transferencia. Solo cuando esté disponible, en otro caso se podrá usar la Consulta de CEP que esta misma API ofrece
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -402,7 +402,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets available
      *
-     * @param bool $available Bander para saber si el cep esta disponible
+     * @param bool $available Indica sí el CEP está disponible
      *
      * @return $this
      */
@@ -450,7 +450,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets bank_sender
      *
-     * @param string $bank_sender Clave del banco que envia la operación
+     * @param string $bank_sender Clave del banco que envía la operación
      *
      * @return $this
      */
@@ -570,7 +570,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets certificate_serial_number
      *
-     * @param string $certificate_serial_number Numero de serie emitido por el SAT
+     * @param string $certificate_serial_number Número de serie emitido por el SAT
      *
      * @return $this
      */
@@ -642,7 +642,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets iva
      *
-     * @param float $iva Iva de la operación
+     * @param float $iva IVA de la operación
      *
      * @return $this
      */
@@ -690,7 +690,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets operation_date_cep
      *
-     * @param \DateTime $operation_date_cep Fecha en la que genera el cep
+     * @param \DateTime $operation_date_cep Fecha en la que genera el CEP
      *
      * @return $this
      */
@@ -738,7 +738,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets sender_name
      *
-     * @param string $sender_name Nombre de quien envia la operación
+     * @param string $sender_name Nombre de quién envía la operación
      *
      * @return $this
      */
@@ -762,7 +762,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets sender_rfc
      *
-     * @param string $sender_rfc RFC de quien envia la operación
+     * @param string $sender_rfc RFC de quién envía la operación
      *
      * @return $this
      */
@@ -786,7 +786,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets signature
      *
-     * @param string $signature Firma del Cep
+     * @param string $signature Firma del CEP
      *
      * @return $this
      */
@@ -810,7 +810,7 @@ class MessageCEP implements ModelInterface, ArrayAccess
     /**
      * Sets url_zip
      *
-     * @param string $url_zip Url que contiene el PDF y XML del CEP proporcionado por banxico
+     * @param string $url_zip Dirección URL de descarga del archivo ZIP que contiene el PDF y XML del CEP proporcionado por BANXICO
      *
      * @return $this
      */
