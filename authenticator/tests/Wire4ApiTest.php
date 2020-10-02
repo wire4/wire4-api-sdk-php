@@ -1757,4 +1757,102 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
     }
 
+    public function testobtainConfigurationsLimits() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+// Obtain an access token use application flow and scope "spei_admin"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
+                "spei_admin");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\LmitesDeMontosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API //REPLACE THIS WITH YOUR DATA
+
+        try {
+            $result = $apiInstance->obtainConfigurationsLimits($accessToken, $subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling LmitesDeMontosApi->obtainConfigurationsLimits: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
+    public function testupdateConfigurations(){
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+// Obtain an access token use application flow and scope "spei_admin"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
+                "spei_admin");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new mx\wire4\client\api\LmitesDeMontosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new GuzzleHttp\Client()
+        );
+        $body = new \mx\wire4\client\model\UpdateConfigurationsRequestDTO(); // \mx\wire4\client\model\UpdateConfigurationsRequestDTO | updateConfigurationsResquestDTO
+
+
+        $authorization = $accessToken; // string | Header para token
+        $suscription = Wire4ApiTest::SUBSCRIPTION; // string | suscription
+
+        $item1 = new \mx\wire4\client\model\Item();
+        $item2 = new \mx\wire4\client\model\Item();
+        $item3 = new \mx\wire4\client\model\Item();
+        $item4 = new \mx\wire4\client\model\Item();
+        $item1->setKey("BY_AMOUNT");
+        $item1->setValue("3000000");
+        $item2->setKey("BY_OPERATION");
+        $item2->setValue("88");
+        $item3->setKey("BY_AMOUNT");
+        $item3->setValue("7700000");
+        $item4->setKey("BY_OPERATION");
+        $item4->setValue("99");
+
+        $config1 = new \mx\wire4\client\model\ConfigurationsLimits();
+        $config1->setGroup("LIMIT_BY_RANGE");
+        $config1->setItems(array($item1,$item2));
+        $config2 = new \mx\wire4\client\model\ConfigurationsLimits();
+        $config2->setGroup("LIMIT_BY_TIME");
+        $config2->setItems(array($item3,$item4));
+
+        $body->setConfigurations(array($config1,$config2));
+
+        try {
+            $apiInstance->updateConfigurations($body, $authorization, $suscription);
+        } catch (Exception $e) {
+            echo 'Exception when calling LmitesDeMontosApi->updateConfigurations: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
 }
