@@ -83,6 +83,13 @@ class TransactionOutgoingTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "beneficiary"
+     */
+    public function testPropertyBeneficiary()
+    {
+    }
+
+    /**
      * Test attribute "beneficiary_account"
      */
     public function testPropertyBeneficiaryAccount()

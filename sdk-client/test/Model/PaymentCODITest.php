@@ -1,6 +1,6 @@
 <?php
 /**
- * TimestampTest
+ * PaymentCODITest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * TimestampTest Class Doc Comment
+ * PaymentCODITest Class Doc Comment
  *
  * @category    Class
- * @description Timestamp
+ * @description Objeto que contiene la información del pago realizado
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TimestampTest extends \PHPUnit_Framework_TestCase
+class PaymentCODITest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,79 +69,51 @@ class TimestampTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Timestamp"
+     * Test "PaymentCODI"
      */
-    public function testTimestamp()
+    public function testPaymentCODI()
     {
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "amount"
      */
-    public function testPropertyDate()
+    public function testPropertyAmount()
     {
     }
 
     /**
-     * Test attribute "day"
+     * Test attribute "description"
      */
-    public function testPropertyDay()
+    public function testPropertyDescription()
     {
     }
 
     /**
-     * Test attribute "hours"
+     * Test attribute "error_message"
      */
-    public function testPropertyHours()
+    public function testPropertyErrorMessage()
     {
     }
 
     /**
-     * Test attribute "minutes"
+     * Test attribute "id"
      */
-    public function testPropertyMinutes()
+    public function testPropertyId()
     {
     }
 
     /**
-     * Test attribute "month"
+     * Test attribute "operation_date"
      */
-    public function testPropertyMonth()
+    public function testPropertyOperationDate()
     {
     }
 
     /**
-     * Test attribute "nanos"
+     * Test attribute "status"
      */
-    public function testPropertyNanos()
-    {
-    }
-
-    /**
-     * Test attribute "seconds"
-     */
-    public function testPropertySeconds()
-    {
-    }
-
-    /**
-     * Test attribute "time"
-     */
-    public function testPropertyTime()
-    {
-    }
-
-    /**
-     * Test attribute "timezone_offset"
-     */
-    public function testPropertyTimezoneOffset()
-    {
-    }
-
-    /**
-     * Test attribute "year"
-     */
-    public function testPropertyYear()
+    public function testPropertyStatus()
     {
     }
 }

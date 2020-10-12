@@ -62,7 +62,7 @@ class Operations implements ModelInterface, ArrayAccess
 'description' => 'string',
 'due_date' => '\DateTime',
 'order_id' => 'string',
-'payment' => '\mx\wire4\client\model\Payment',
+'payment' => '\mx\wire4\client\model\PaymentCODI',
 'phone_number' => 'string',
 'sales_point' => '\mx\wire4\client\model\SalesPoint',
 'status' => 'string',
@@ -418,7 +418,7 @@ self::TYPE_QR_CODE,        ];
     /**
      * Gets payment
      *
-     * @return \mx\wire4\client\model\Payment
+     * @return \mx\wire4\client\model\PaymentCODI
      */
     public function getPayment()
     {
@@ -428,7 +428,7 @@ self::TYPE_QR_CODE,        ];
     /**
      * Sets payment
      *
-     * @param \mx\wire4\client\model\Payment $payment payment
+     * @param \mx\wire4\client\model\PaymentCODI $payment payment
      *
      * @return $this
      */

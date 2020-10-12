@@ -35,7 +35,7 @@ use \mx\wire4\ObjectSerializer;
  * TransactionsOutgoingRegister Class Doc Comment
  *
  * @category Class
- * @description Objeto que contiene la información de las transferencias SPEI de salida
+ * @description Contiene la información de las transferencias SPEI de salida
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen

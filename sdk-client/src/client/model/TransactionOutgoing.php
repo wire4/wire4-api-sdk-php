@@ -58,6 +58,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'amount' => 'float',
+'beneficiary' => '\mx\wire4\client\model\Account',
 'beneficiary_account' => 'string',
 'beneficiary_bank_key' => 'string',
 'concept' => 'string',
@@ -73,6 +74,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'amount' => null,
+'beneficiary' => null,
 'beneficiary_account' => null,
 'beneficiary_bank_key' => null,
 'concept' => null,
@@ -109,6 +111,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'amount' => 'amount',
+'beneficiary' => 'beneficiary',
 'beneficiary_account' => 'beneficiary_account',
 'beneficiary_bank_key' => 'beneficiary_bank_key',
 'concept' => 'concept',
@@ -124,6 +127,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'amount' => 'setAmount',
+'beneficiary' => 'setBeneficiary',
 'beneficiary_account' => 'setBeneficiaryAccount',
 'beneficiary_bank_key' => 'setBeneficiaryBankKey',
 'concept' => 'setConcept',
@@ -139,6 +143,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'amount' => 'getAmount',
+'beneficiary' => 'getBeneficiary',
 'beneficiary_account' => 'getBeneficiaryAccount',
 'beneficiary_bank_key' => 'getBeneficiaryBankKey',
 'concept' => 'getConcept',
@@ -206,6 +211,7 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['beneficiary'] = isset($data['beneficiary']) ? $data['beneficiary'] : null;
         $this->container['beneficiary_account'] = isset($data['beneficiary_account']) ? $data['beneficiary_account'] : null;
         $this->container['beneficiary_bank_key'] = isset($data['beneficiary_bank_key']) ? $data['beneficiary_bank_key'] : null;
         $this->container['concept'] = isset($data['concept']) ? $data['concept'] : null;
@@ -277,6 +283,30 @@ class TransactionOutgoing implements ModelInterface, ArrayAccess
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets beneficiary
+     *
+     * @return \mx\wire4\client\model\Account
+     */
+    public function getBeneficiary()
+    {
+        return $this->container['beneficiary'];
+    }
+
+    /**
+     * Sets beneficiary
+     *
+     * @param \mx\wire4\client\model\Account $beneficiary beneficiary
+     *
+     * @return $this
+     */
+    public function setBeneficiary($beneficiary)
+    {
+        $this->container['beneficiary'] = $beneficiary;
 
         return $this;
     }

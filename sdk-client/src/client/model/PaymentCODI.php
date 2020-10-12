@@ -1,6 +1,6 @@
 <?php
 /**
- * Timestamp
+ * PaymentCODI
  *
  * PHP version 5
  *
@@ -32,14 +32,15 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * Timestamp Class Doc Comment
+ * PaymentCODI Class Doc Comment
  *
  * @category Class
+ * @description Objeto que contiene la información del pago realizado
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Timestamp implements ModelInterface, ArrayAccess
+class PaymentCODI implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +49,7 @@ class Timestamp implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Timestamp';
+    protected static $swaggerModelName = 'PaymentCODI';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,16 +57,12 @@ class Timestamp implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'date' => 'int',
-'day' => 'int',
-'hours' => 'int',
-'minutes' => 'int',
-'month' => 'int',
-'nanos' => 'int',
-'seconds' => 'int',
-'time' => 'int',
-'timezone_offset' => 'int',
-'year' => 'int'    ];
+        'amount' => 'float',
+'description' => 'string',
+'error_message' => 'string',
+'id' => 'string',
+'operation_date' => '\DateTime',
+'status' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,16 +70,12 @@ class Timestamp implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'date' => 'int32',
-'day' => 'int32',
-'hours' => 'int32',
-'minutes' => 'int32',
-'month' => 'int32',
-'nanos' => 'int32',
-'seconds' => 'int32',
-'time' => 'int64',
-'timezone_offset' => 'int32',
-'year' => 'int32'    ];
+        'amount' => null,
+'description' => null,
+'error_message' => null,
+'id' => null,
+'operation_date' => 'date-time',
+'status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -111,16 +104,12 @@ class Timestamp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'date' => 'date',
-'day' => 'day',
-'hours' => 'hours',
-'minutes' => 'minutes',
-'month' => 'month',
-'nanos' => 'nanos',
-'seconds' => 'seconds',
-'time' => 'time',
-'timezone_offset' => 'timezone_offset',
-'year' => 'year'    ];
+        'amount' => 'amount',
+'description' => 'description',
+'error_message' => 'error_message',
+'id' => 'id',
+'operation_date' => 'operation_date',
+'status' => 'status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -128,16 +117,12 @@ class Timestamp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'date' => 'setDate',
-'day' => 'setDay',
-'hours' => 'setHours',
-'minutes' => 'setMinutes',
-'month' => 'setMonth',
-'nanos' => 'setNanos',
-'seconds' => 'setSeconds',
-'time' => 'setTime',
-'timezone_offset' => 'setTimezoneOffset',
-'year' => 'setYear'    ];
+        'amount' => 'setAmount',
+'description' => 'setDescription',
+'error_message' => 'setErrorMessage',
+'id' => 'setId',
+'operation_date' => 'setOperationDate',
+'status' => 'setStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -145,16 +130,12 @@ class Timestamp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'date' => 'getDate',
-'day' => 'getDay',
-'hours' => 'getHours',
-'minutes' => 'getMinutes',
-'month' => 'getMonth',
-'nanos' => 'getNanos',
-'seconds' => 'getSeconds',
-'time' => 'getTime',
-'timezone_offset' => 'getTimezoneOffset',
-'year' => 'getYear'    ];
+        'amount' => 'getAmount',
+'description' => 'getDescription',
+'error_message' => 'getErrorMessage',
+'id' => 'getId',
+'operation_date' => 'getOperationDate',
+'status' => 'getStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -197,7 +178,22 @@ class Timestamp implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
+    const STATUS_RECEIVED = 'RECEIVED';
+const STATUS_COMPLETED = 'COMPLETED';
+const STATUS_CANCELLED = 'CANCELLED';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_RECEIVED,
+self::STATUS_COMPLETED,
+self::STATUS_CANCELLED,        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -214,16 +210,12 @@ class Timestamp implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
-        $this->container['day'] = isset($data['day']) ? $data['day'] : null;
-        $this->container['hours'] = isset($data['hours']) ? $data['hours'] : null;
-        $this->container['minutes'] = isset($data['minutes']) ? $data['minutes'] : null;
-        $this->container['month'] = isset($data['month']) ? $data['month'] : null;
-        $this->container['nanos'] = isset($data['nanos']) ? $data['nanos'] : null;
-        $this->container['seconds'] = isset($data['seconds']) ? $data['seconds'] : null;
-        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
-        $this->container['timezone_offset'] = isset($data['timezone_offset']) ? $data['timezone_offset'] : null;
-        $this->container['year'] = isset($data['year']) ? $data['year'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['error_message'] = isset($data['error_message']) ? $data['error_message'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['operation_date'] = isset($data['operation_date']) ? $data['operation_date'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -234,6 +226,14 @@ class Timestamp implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -251,241 +251,154 @@ class Timestamp implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets date
+     * Gets amount
      *
-     * @return int
+     * @return float
      */
-    public function getDate()
+    public function getAmount()
     {
-        return $this->container['date'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets date
+     * Sets amount
      *
-     * @param int $date date
+     * @param float $amount Monto del pago
      *
      * @return $this
      */
-    public function setDate($date)
+    public function setAmount($amount)
     {
-        $this->container['date'] = $date;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets day
+     * Gets description
      *
-     * @return int
+     * @return string
      */
-    public function getDay()
+    public function getDescription()
     {
-        return $this->container['day'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets day
+     * Sets description
      *
-     * @param int $day day
+     * @param string $description Descripción del pago
      *
      * @return $this
      */
-    public function setDay($day)
+    public function setDescription($description)
     {
-        $this->container['day'] = $day;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets hours
+     * Gets error_message
      *
-     * @return int
+     * @return string
      */
-    public function getHours()
+    public function getErrorMessage()
     {
-        return $this->container['hours'];
+        return $this->container['error_message'];
     }
 
     /**
-     * Sets hours
+     * Sets error_message
      *
-     * @param int $hours hours
+     * @param string $error_message Mensaje de error
      *
      * @return $this
      */
-    public function setHours($hours)
+    public function setErrorMessage($error_message)
     {
-        $this->container['hours'] = $hours;
+        $this->container['error_message'] = $error_message;
 
         return $this;
     }
 
     /**
-     * Gets minutes
+     * Gets id
      *
-     * @return int
+     * @return string
      */
-    public function getMinutes()
+    public function getId()
     {
-        return $this->container['minutes'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets minutes
+     * Sets id
      *
-     * @param int $minutes minutes
+     * @param string $id Identificador del pago
      *
      * @return $this
      */
-    public function setMinutes($minutes)
+    public function setId($id)
     {
-        $this->container['minutes'] = $minutes;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets month
+     * Gets operation_date
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getMonth()
+    public function getOperationDate()
     {
-        return $this->container['month'];
+        return $this->container['operation_date'];
     }
 
     /**
-     * Sets month
+     * Sets operation_date
      *
-     * @param int $month month
+     * @param \DateTime $operation_date Fecha en que se efectuo el pago
      *
      * @return $this
      */
-    public function setMonth($month)
+    public function setOperationDate($operation_date)
     {
-        $this->container['month'] = $month;
+        $this->container['operation_date'] = $operation_date;
 
         return $this;
     }
 
     /**
-     * Gets nanos
+     * Gets status
      *
-     * @return int
+     * @return string
      */
-    public function getNanos()
+    public function getStatus()
     {
-        return $this->container['nanos'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets nanos
+     * Sets status
      *
-     * @param int $nanos nanos
+     * @param string $status Estatus del pago
      *
      * @return $this
      */
-    public function setNanos($nanos)
+    public function setStatus($status)
     {
-        $this->container['nanos'] = $nanos;
-
-        return $this;
-    }
-
-    /**
-     * Gets seconds
-     *
-     * @return int
-     */
-    public function getSeconds()
-    {
-        return $this->container['seconds'];
-    }
-
-    /**
-     * Sets seconds
-     *
-     * @param int $seconds seconds
-     *
-     * @return $this
-     */
-    public function setSeconds($seconds)
-    {
-        $this->container['seconds'] = $seconds;
-
-        return $this;
-    }
-
-    /**
-     * Gets time
-     *
-     * @return int
-     */
-    public function getTime()
-    {
-        return $this->container['time'];
-    }
-
-    /**
-     * Sets time
-     *
-     * @param int $time time
-     *
-     * @return $this
-     */
-    public function setTime($time)
-    {
-        $this->container['time'] = $time;
-
-        return $this;
-    }
-
-    /**
-     * Gets timezone_offset
-     *
-     * @return int
-     */
-    public function getTimezoneOffset()
-    {
-        return $this->container['timezone_offset'];
-    }
-
-    /**
-     * Sets timezone_offset
-     *
-     * @param int $timezone_offset timezone_offset
-     *
-     * @return $this
-     */
-    public function setTimezoneOffset($timezone_offset)
-    {
-        $this->container['timezone_offset'] = $timezone_offset;
-
-        return $this;
-    }
-
-    /**
-     * Gets year
-     *
-     * @return int
-     */
-    public function getYear()
-    {
-        return $this->container['year'];
-    }
-
-    /**
-     * Sets year
-     *
-     * @param int $year year
-     *
-     * @return $this
-     */
-    public function setYear($year)
-    {
-        $this->container['year'] = $year;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

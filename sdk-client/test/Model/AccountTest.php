@@ -32,7 +32,7 @@ namespace mx\wire4;
  * AccountTest Class Doc Comment
  *
  * @category    Class
- * @description Objeto que contiene información de la cuenta
+ * @description Contiene la información del beneficiario como la cuenta, monto límite, datos del beneficiario entre otros
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen

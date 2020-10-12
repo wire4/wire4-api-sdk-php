@@ -60,7 +60,7 @@ class BillingTransaction implements ModelInterface, ArrayAccess
         'amount' => 'float',
 'clave_rastreo' => 'string',
 'monex_id' => 'int',
-'operation_date' => '\mx\wire4\client\model\Timestamp',
+'operation_date' => '\DateTime',
 'order_id' => 'string',
 'payment_order_id' => 'string',
 'transaction_id' => 'int',
@@ -75,7 +75,7 @@ class BillingTransaction implements ModelInterface, ArrayAccess
         'amount' => null,
 'clave_rastreo' => null,
 'monex_id' => null,
-'operation_date' => null,
+'operation_date' => 'date-time',
 'order_id' => null,
 'payment_order_id' => null,
 'transaction_id' => null,
@@ -335,7 +335,7 @@ self::TYPE_OUT,        ];
     /**
      * Gets operation_date
      *
-     * @return \mx\wire4\client\model\Timestamp
+     * @return \DateTime
      */
     public function getOperationDate()
     {
@@ -345,7 +345,7 @@ self::TYPE_OUT,        ];
     /**
      * Sets operation_date
      *
-     * @param \mx\wire4\client\model\Timestamp $operation_date operation_date
+     * @param \DateTime $operation_date Fecha y hora de la transacción
      *
      * @return $this
      */
