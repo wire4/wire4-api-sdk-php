@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorizedTest
+ * DepositAuthorizationRequestTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageUserAuthorizedTest Class Doc Comment
+ * DepositAuthorizationRequestTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Contiene la información de la autorización de depósitos
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
+class DepositAuthorizationRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,58 +69,30 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageUserAuthorized"
+     * Test "DepositAuthorizationRequest"
      */
-    public function testMessageUserAuthorized()
+    public function testDepositAuthorizationRequest()
     {
     }
 
     /**
-     * Test attribute "account"
+     * Test attribute "enabled"
      */
-    public function testPropertyAccount()
+    public function testPropertyEnabled()
     {
     }
 
     /**
-     * Test attribute "masked_account"
+     * Test attribute "webhook"
      */
-    public function testPropertyMaskedAccount()
+    public function testPropertyWebhook()
     {
     }
 
     /**
-     * Test attribute "masked_name"
+     * Test attribute "wh_uuid"
      */
-    public function testPropertyMaskedName()
-    {
-    }
-
-    /**
-     * Test attribute "masked_user_name"
-     */
-    public function testPropertyMaskedUserName()
-    {
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
-
-    /**
-     * Test attribute "request_id"
-     */
-    public function testPropertyRequestId()
-    {
-    }
-
-    /**
-     * Test attribute "user_name"
-     */
-    public function testPropertyUserName()
+    public function testPropertyWhUuid()
     {
     }
 }

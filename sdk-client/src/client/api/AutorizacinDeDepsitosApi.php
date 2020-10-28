@@ -1,6 +1,6 @@
 <?php
 /**
- * TransferenciasSPIDApi
+ * AutorizacinDeDepsitosApi
  * PHP version 5
  *
  * @category Class
@@ -39,14 +39,14 @@ use mx\wire4\HeaderSelector;
 use mx\wire4\ObjectSerializer;
 
 /**
- * TransferenciasSPIDApi Class Doc Comment
+ * AutorizacinDeDepsitosApi Class Doc Comment
  *
  * @category Class
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class TransferenciasSPIDApi
+class AutorizacinDeDepsitosApi
 {
     /**
      * @var ClientInterface
@@ -87,39 +87,39 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation getSpidClassificationsUsingGET
+     * Operation getDepositAuthConfigurations
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta autorización de depósitos
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \mx\wire4\client\model\SpidClassificationsResponseDTO
+     * @return \mx\wire4\client\model\DepositsAuthorizationResponse
      */
-    public function getSpidClassificationsUsingGET($authorization, $subscription)
+    public function getDepositAuthConfigurations($authorization, $subscription)
     {
-        list($response) = $this->getSpidClassificationsUsingGETWithHttpInfo($authorization, $subscription);
+        list($response) = $this->getDepositAuthConfigurationsWithHttpInfo($authorization, $subscription);
         return $response;
     }
 
     /**
-     * Operation getSpidClassificationsUsingGETWithHttpInfo
+     * Operation getDepositAuthConfigurationsWithHttpInfo
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta autorización de depósitos
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \mx\wire4\client\model\SpidClassificationsResponseDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \mx\wire4\client\model\DepositsAuthorizationResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSpidClassificationsUsingGETWithHttpInfo($authorization, $subscription)
+    public function getDepositAuthConfigurationsWithHttpInfo($authorization, $subscription)
     {
-        $returnType = '\mx\wire4\client\model\SpidClassificationsResponseDTO';
-        $request = $this->getSpidClassificationsUsingGETRequest($authorization, $subscription);
+        $returnType = '\mx\wire4\client\model\DepositsAuthorizationResponse';
+        $request = $this->getDepositAuthConfigurationsRequest($authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -170,7 +170,7 @@ class TransferenciasSPIDApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\mx\wire4\client\model\SpidClassificationsResponseDTO',
+                        '\mx\wire4\client\model\DepositsAuthorizationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -213,9 +213,9 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation getSpidClassificationsUsingGETAsync
+     * Operation getDepositAuthConfigurationsAsync
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta autorización de depósitos
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -223,9 +223,9 @@ class TransferenciasSPIDApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSpidClassificationsUsingGETAsync($authorization, $subscription)
+    public function getDepositAuthConfigurationsAsync($authorization, $subscription)
     {
-        return $this->getSpidClassificationsUsingGETAsyncWithHttpInfo($authorization, $subscription)
+        return $this->getDepositAuthConfigurationsAsyncWithHttpInfo($authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -234,9 +234,9 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation getSpidClassificationsUsingGETAsyncWithHttpInfo
+     * Operation getDepositAuthConfigurationsAsyncWithHttpInfo
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta autorización de depósitos
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -244,10 +244,10 @@ class TransferenciasSPIDApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSpidClassificationsUsingGETAsyncWithHttpInfo($authorization, $subscription)
+    public function getDepositAuthConfigurationsAsyncWithHttpInfo($authorization, $subscription)
     {
-        $returnType = '\mx\wire4\client\model\SpidClassificationsResponseDTO';
-        $request = $this->getSpidClassificationsUsingGETRequest($authorization, $subscription);
+        $returnType = '\mx\wire4\client\model\DepositsAuthorizationResponse';
+        $request = $this->getDepositAuthConfigurationsRequest($authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -287,7 +287,7 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Create request for operation 'getSpidClassificationsUsingGET'
+     * Create request for operation 'getDepositAuthConfigurations'
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
@@ -295,22 +295,22 @@ class TransferenciasSPIDApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSpidClassificationsUsingGETRequest($authorization, $subscription)
+    protected function getDepositAuthConfigurationsRequest($authorization, $subscription)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $authorization when calling getSpidClassificationsUsingGET'
+                'Missing the required parameter $authorization when calling getDepositAuthConfigurations'
             );
         }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription when calling getSpidClassificationsUsingGET'
+                'Missing the required parameter $subscription when calling getDepositAuthConfigurations'
             );
         }
 
-        $resourcePath = '/subscriptions/{subscription}/beneficiaries/spid/classifications';
+        $resourcePath = '/subscriptions/{subscription}/configurations/deposit-authorization';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -396,41 +396,41 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOST
+     * Operation putDepositAuthConfigurations
      *
-     * Registro de transferencias SPID
+     * Des/Habilitar autorización de depósitos
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\DepositAuthorizationRequest $body Deposit Authorization info (required)
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \mx\wire4\client\model\TokenRequiredResponse
+     * @return \mx\wire4\client\model\DepositsAuthorizationResponse
      */
-    public function registerOutgoingSpidTransactionUsingPOST($body, $authorization, $subscription)
+    public function putDepositAuthConfigurations($body, $authorization, $subscription)
     {
-        list($response) = $this->registerOutgoingSpidTransactionUsingPOSTWithHttpInfo($body, $authorization, $subscription);
+        list($response) = $this->putDepositAuthConfigurationsWithHttpInfo($body, $authorization, $subscription);
         return $response;
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOSTWithHttpInfo
+     * Operation putDepositAuthConfigurationsWithHttpInfo
      *
-     * Registro de transferencias SPID
+     * Des/Habilitar autorización de depósitos
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\DepositAuthorizationRequest $body Deposit Authorization info (required)
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \mx\wire4\client\model\TokenRequiredResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \mx\wire4\client\model\DepositsAuthorizationResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerOutgoingSpidTransactionUsingPOSTWithHttpInfo($body, $authorization, $subscription)
+    public function putDepositAuthConfigurationsWithHttpInfo($body, $authorization, $subscription)
     {
-        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
-        $request = $this->registerOutgoingSpidTransactionUsingPOSTRequest($body, $authorization, $subscription);
+        $returnType = '\mx\wire4\client\model\DepositsAuthorizationResponse';
+        $request = $this->putDepositAuthConfigurationsRequest($body, $authorization, $subscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -478,50 +478,10 @@ class TransferenciasSPIDApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\mx\wire4\client\model\TokenRequiredResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\DetailedErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
+                        '\mx\wire4\client\model\DepositsAuthorizationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -532,20 +492,20 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOSTAsync
+     * Operation putDepositAuthConfigurationsAsync
      *
-     * Registro de transferencias SPID
+     * Des/Habilitar autorización de depósitos
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\DepositAuthorizationRequest $body Deposit Authorization info (required)
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerOutgoingSpidTransactionUsingPOSTAsync($body, $authorization, $subscription)
+    public function putDepositAuthConfigurationsAsync($body, $authorization, $subscription)
     {
-        return $this->registerOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
+        return $this->putDepositAuthConfigurationsAsyncWithHttpInfo($body, $authorization, $subscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -554,21 +514,21 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo
+     * Operation putDepositAuthConfigurationsAsyncWithHttpInfo
      *
-     * Registro de transferencias SPID
+     * Des/Habilitar autorización de depósitos
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\DepositAuthorizationRequest $body Deposit Authorization info (required)
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
+    public function putDepositAuthConfigurationsAsyncWithHttpInfo($body, $authorization, $subscription)
     {
-        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
-        $request = $this->registerOutgoingSpidTransactionUsingPOSTRequest($body, $authorization, $subscription);
+        $returnType = '\mx\wire4\client\model\DepositsAuthorizationResponse';
+        $request = $this->putDepositAuthConfigurationsRequest($body, $authorization, $subscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -608,37 +568,37 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Create request for operation 'registerOutgoingSpidTransactionUsingPOST'
+     * Create request for operation 'putDepositAuthConfigurations'
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\DepositAuthorizationRequest $body Deposit Authorization info (required)
      * @param  string $authorization Header para token (required)
      * @param  string $subscription El identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function registerOutgoingSpidTransactionUsingPOSTRequest($body, $authorization, $subscription)
+    protected function putDepositAuthConfigurationsRequest($body, $authorization, $subscription)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling registerOutgoingSpidTransactionUsingPOST'
+                'Missing the required parameter $body when calling putDepositAuthConfigurations'
             );
         }
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $authorization when calling registerOutgoingSpidTransactionUsingPOST'
+                'Missing the required parameter $authorization when calling putDepositAuthConfigurations'
             );
         }
         // verify the required parameter 'subscription' is set
         if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription when calling registerOutgoingSpidTransactionUsingPOST'
+                'Missing the required parameter $subscription when calling putDepositAuthConfigurations'
             );
         }
 
-        $resourcePath = '/subscriptions/{subscription}/transactions/outcoming/spid';
+        $resourcePath = '/subscriptions/{subscription}/configurations/deposit-authorization';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -719,7 +679,7 @@ class TransferenciasSPIDApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

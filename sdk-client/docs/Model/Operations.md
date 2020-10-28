@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **string** | Descripción de la petición | [optional] 
 **due_date** | [**\DateTime**](\DateTime.md) | Fecha de vencimiento de la petición | [optional] 
 **order_id** | **string** | Order id de la petición | [optional] 
-**payment** | [**\mx\wire4\client\model\Payment**](Payment.md) |  | [optional] 
+**payment** | [**\mx\wire4\client\model\PaymentCODI**](PaymentCODI.md) |  | [optional] 
 **phone_number** | **string** | Numero de telefono | [optional] 
 **sales_point** | [**\mx\wire4\client\model\SalesPoint**](SalesPoint.md) |  | [optional] 
 **status** | **string** | Estatus de la petición | [optional] 

@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorized
+ * WebHookDepositAuthorizationResponse
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * MessageUserAuthorized Class Doc Comment
+ * WebHookDepositAuthorizationResponse Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Contiene la información de un WebHook para autorización de depósitos.
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorized implements ModelInterface, ArrayAccess
+class WebHookDepositAuthorizationResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'MessageUserAuthorized';
+    protected static $swaggerModelName = 'WebHookDepositAuthorizationResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,12 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'account' => 'string',
-'masked_account' => 'string',
-'masked_name' => 'string',
-'masked_user_name' => 'string',
+        'events' => 'string[]',
 'name' => 'string',
-'request_id' => 'string',
-'user_name' => 'string'    ];
+'secret' => 'string',
+'status' => 'string',
+'url' => 'string',
+'wh_uuid' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -71,13 +70,12 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'account' => null,
-'masked_account' => null,
-'masked_name' => null,
-'masked_user_name' => null,
+        'events' => null,
 'name' => null,
-'request_id' => null,
-'user_name' => null    ];
+'secret' => null,
+'status' => null,
+'url' => null,
+'wh_uuid' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -106,13 +104,12 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'account' => 'account',
-'masked_account' => 'masked_account',
-'masked_name' => 'masked_name',
-'masked_user_name' => 'masked_user_name',
+        'events' => 'events',
 'name' => 'name',
-'request_id' => 'request_id',
-'user_name' => 'user_name'    ];
+'secret' => 'secret',
+'status' => 'status',
+'url' => 'url',
+'wh_uuid' => 'wh_uuid'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -120,13 +117,12 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'account' => 'setAccount',
-'masked_account' => 'setMaskedAccount',
-'masked_name' => 'setMaskedName',
-'masked_user_name' => 'setMaskedUserName',
+        'events' => 'setEvents',
 'name' => 'setName',
-'request_id' => 'setRequestId',
-'user_name' => 'setUserName'    ];
+'secret' => 'setSecret',
+'status' => 'setStatus',
+'url' => 'setUrl',
+'wh_uuid' => 'setWhUuid'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -134,13 +130,12 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'account' => 'getAccount',
-'masked_account' => 'getMaskedAccount',
-'masked_name' => 'getMaskedName',
-'masked_user_name' => 'getMaskedUserName',
+        'events' => 'getEvents',
 'name' => 'getName',
-'request_id' => 'getRequestId',
-'user_name' => 'getUserName'    ];
+'secret' => 'getSecret',
+'status' => 'getStatus',
+'url' => 'getUrl',
+'wh_uuid' => 'getWhUuid'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -200,13 +195,12 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['account'] = isset($data['account']) ? $data['account'] : null;
-        $this->container['masked_account'] = isset($data['masked_account']) ? $data['masked_account'] : null;
-        $this->container['masked_name'] = isset($data['masked_name']) ? $data['masked_name'] : null;
-        $this->container['masked_user_name'] = isset($data['masked_user_name']) ? $data['masked_user_name'] : null;
+        $this->container['events'] = isset($data['events']) ? $data['events'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
+        $this->container['secret'] = isset($data['secret']) ? $data['secret'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['wh_uuid'] = isset($data['wh_uuid']) ? $data['wh_uuid'] : null;
     }
 
     /**
@@ -234,97 +228,25 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets account
+     * Gets events
      *
-     * @return string
+     * @return string[]
      */
-    public function getAccount()
+    public function getEvents()
     {
-        return $this->container['account'];
+        return $this->container['events'];
     }
 
     /**
-     * Sets account
+     * Sets events
      *
-     * @param string $account El contrato al cual se le brinda el acceso a la API
+     * @param string[] $events Tipo de evento manejado por el webhook, para mas referencia sobre los tipos de eventos soportados, revise la siguiente liga: https://developers.wire4.mx/#section/Eventos.
      *
      * @return $this
      */
-    public function setAccount($account)
+    public function setEvents($events)
     {
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_account
-     *
-     * @return string
-     */
-    public function getMaskedAccount()
-    {
-        return $this->container['masked_account'];
-    }
-
-    /**
-     * Sets masked_account
-     *
-     * @param string $masked_account El contrato enmascarado al cual se le brinda el acceso a la API
-     *
-     * @return $this
-     */
-    public function setMaskedAccount($masked_account)
-    {
-        $this->container['masked_account'] = $masked_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_name
-     *
-     * @return string
-     */
-    public function getMaskedName()
-    {
-        return $this->container['masked_name'];
-    }
-
-    /**
-     * Sets masked_name
-     *
-     * @param string $masked_name El usuario enmascarado que se autorizó
-     *
-     * @return $this
-     */
-    public function setMaskedName($masked_name)
-    {
-        $this->container['masked_name'] = $masked_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_user_name
-     *
-     * @return string
-     */
-    public function getMaskedUserName()
-    {
-        return $this->container['masked_user_name'];
-    }
-
-    /**
-     * Sets masked_user_name
-     *
-     * @param string $masked_user_name El nombre enmascarado del usuario de acceso que se autorizó
-     *
-     * @return $this
-     */
-    public function setMaskedUserName($masked_user_name)
-    {
-        $this->container['masked_user_name'] = $masked_user_name;
+        $this->container['events'] = $events;
 
         return $this;
     }
@@ -342,7 +264,7 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name El usuario que se autorizó
+     * @param string $name Nombre del webhook.
      *
      * @return $this
      */
@@ -354,49 +276,97 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets request_id
+     * Gets secret
      *
      * @return string
      */
-    public function getRequestId()
+    public function getSecret()
     {
-        return $this->container['request_id'];
+        return $this->container['secret'];
     }
 
     /**
-     * Sets request_id
+     * Sets secret
      *
-     * @param string $request_id El identificador de la petición cuando se solicitó la autorización
+     * @param string $secret Llave con la cual se debe de identificar que el webhook fue enviado por Wire4, para mayor información revisar la guía de notificaciones (https://wire4.mx/#/guides/notificaciones), en la sección de  \"Comprobación de firmas de Webhook\".
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setSecret($secret)
     {
-        $this->container['request_id'] = $request_id;
+        $this->container['secret'] = $secret;
 
         return $this;
     }
 
     /**
-     * Gets user_name
+     * Gets status
      *
      * @return string
      */
-    public function getUserName()
+    public function getStatus()
     {
-        return $this->container['user_name'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets user_name
+     * Sets status
      *
-     * @param string $user_name El nombre del usuario de acceso que se autorizó
+     * @param string $status Estatus en el que se encuentra el webhook.
      *
      * @return $this
      */
-    public function setUserName($user_name)
+    public function setStatus($status)
     {
-        $this->container['user_name'] = $user_name;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url URL a la cual Wire4 enviará las notificaciones cuando un evento ocurra.
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets wh_uuid
+     *
+     * @return string
+     */
+    public function getWhUuid()
+    {
+        return $this->container['wh_uuid'];
+    }
+
+    /**
+     * Sets wh_uuid
+     *
+     * @param string $wh_uuid Identificador del webhook.
+     *
+     * @return $this
+     */
+    public function setWhUuid($wh_uuid)
+    {
+        $this->container['wh_uuid'] = $wh_uuid;
 
         return $this;
     }

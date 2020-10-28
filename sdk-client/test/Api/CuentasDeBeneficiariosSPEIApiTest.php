@@ -143,7 +143,7 @@ class CuentasDeBeneficiariosSPEIApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for updateAmountLimitAccountUsingPUT
      *
-     * Actualiza el monto límite.
+     * Solicitud para actualizar el monto límite.
      *
      */
     public function testUpdateAmountLimitAccountUsingPUT()

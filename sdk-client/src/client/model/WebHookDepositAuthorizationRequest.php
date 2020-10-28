@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorized
+ * WebHookDepositAuthorizationRequest
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * MessageUserAuthorized Class Doc Comment
+ * WebHookDepositAuthorizationRequest Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Contiene la información de un WebHook para autorización de depósitos.
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorized implements ModelInterface, ArrayAccess
+class WebHookDepositAuthorizationRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'MessageUserAuthorized';
+    protected static $swaggerModelName = 'WebHookDepositAuthorizationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'account' => 'string',
-'masked_account' => 'string',
-'masked_name' => 'string',
-'masked_user_name' => 'string',
-'name' => 'string',
-'request_id' => 'string',
-'user_name' => 'string'    ];
+        'name' => 'string',
+'url' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -71,13 +66,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'account' => null,
-'masked_account' => null,
-'masked_name' => null,
-'masked_user_name' => null,
-'name' => null,
-'request_id' => null,
-'user_name' => null    ];
+        'name' => null,
+'url' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -106,13 +96,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'account' => 'account',
-'masked_account' => 'masked_account',
-'masked_name' => 'masked_name',
-'masked_user_name' => 'masked_user_name',
-'name' => 'name',
-'request_id' => 'request_id',
-'user_name' => 'user_name'    ];
+        'name' => 'name',
+'url' => 'url'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -120,13 +105,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'account' => 'setAccount',
-'masked_account' => 'setMaskedAccount',
-'masked_name' => 'setMaskedName',
-'masked_user_name' => 'setMaskedUserName',
-'name' => 'setName',
-'request_id' => 'setRequestId',
-'user_name' => 'setUserName'    ];
+        'name' => 'setName',
+'url' => 'setUrl'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -134,13 +114,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'account' => 'getAccount',
-'masked_account' => 'getMaskedAccount',
-'masked_name' => 'getMaskedName',
-'masked_user_name' => 'getMaskedUserName',
-'name' => 'getName',
-'request_id' => 'getRequestId',
-'user_name' => 'getUserName'    ];
+        'name' => 'getName',
+'url' => 'getUrl'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -200,13 +175,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['account'] = isset($data['account']) ? $data['account'] : null;
-        $this->container['masked_account'] = isset($data['masked_account']) ? $data['masked_account'] : null;
-        $this->container['masked_name'] = isset($data['masked_name']) ? $data['masked_name'] : null;
-        $this->container['masked_user_name'] = isset($data['masked_user_name']) ? $data['masked_user_name'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -234,102 +204,6 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets account
-     *
-     * @return string
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param string $account El contrato al cual se le brinda el acceso a la API
-     *
-     * @return $this
-     */
-    public function setAccount($account)
-    {
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_account
-     *
-     * @return string
-     */
-    public function getMaskedAccount()
-    {
-        return $this->container['masked_account'];
-    }
-
-    /**
-     * Sets masked_account
-     *
-     * @param string $masked_account El contrato enmascarado al cual se le brinda el acceso a la API
-     *
-     * @return $this
-     */
-    public function setMaskedAccount($masked_account)
-    {
-        $this->container['masked_account'] = $masked_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_name
-     *
-     * @return string
-     */
-    public function getMaskedName()
-    {
-        return $this->container['masked_name'];
-    }
-
-    /**
-     * Sets masked_name
-     *
-     * @param string $masked_name El usuario enmascarado que se autorizó
-     *
-     * @return $this
-     */
-    public function setMaskedName($masked_name)
-    {
-        $this->container['masked_name'] = $masked_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_user_name
-     *
-     * @return string
-     */
-    public function getMaskedUserName()
-    {
-        return $this->container['masked_user_name'];
-    }
-
-    /**
-     * Sets masked_user_name
-     *
-     * @param string $masked_user_name El nombre enmascarado del usuario de acceso que se autorizó
-     *
-     * @return $this
-     */
-    public function setMaskedUserName($masked_user_name)
-    {
-        $this->container['masked_user_name'] = $masked_user_name;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -342,7 +216,7 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name El usuario que se autorizó
+     * @param string $name Nombre del webhook.
      *
      * @return $this
      */
@@ -354,49 +228,25 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets request_id
+     * Gets url
      *
      * @return string
      */
-    public function getRequestId()
+    public function getUrl()
     {
-        return $this->container['request_id'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets request_id
+     * Sets url
      *
-     * @param string $request_id El identificador de la petición cuando se solicitó la autorización
+     * @param string $url URL a la cual Wire4 enviará las notificaciones cuando un evento ocurra.
      *
      * @return $this
      */
-    public function setRequestId($request_id)
+    public function setUrl($url)
     {
-        $this->container['request_id'] = $request_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_name
-     *
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->container['user_name'];
-    }
-
-    /**
-     * Sets user_name
-     *
-     * @param string $user_name El nombre del usuario de acceso que se autorizó
-     *
-     * @return $this
-     */
-    public function setUserName($user_name)
-    {
-        $this->container['user_name'] = $user_name;
+        $this->container['url'] = $url;
 
         return $this;
     }

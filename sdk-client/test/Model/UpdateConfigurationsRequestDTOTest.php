@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorizedTest
+ * UpdateConfigurationsRequestDTOTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageUserAuthorizedTest Class Doc Comment
+ * UpdateConfigurationsRequestDTOTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Contiene el listado de grupo de configuraciones para actualizar
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
+class UpdateConfigurationsRequestDTOTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,58 +69,16 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageUserAuthorized"
+     * Test "UpdateConfigurationsRequestDTO"
      */
-    public function testMessageUserAuthorized()
+    public function testUpdateConfigurationsRequestDTO()
     {
     }
 
     /**
-     * Test attribute "account"
+     * Test attribute "configurations"
      */
-    public function testPropertyAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_account"
-     */
-    public function testPropertyMaskedAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_name"
-     */
-    public function testPropertyMaskedName()
-    {
-    }
-
-    /**
-     * Test attribute "masked_user_name"
-     */
-    public function testPropertyMaskedUserName()
-    {
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
-
-    /**
-     * Test attribute "request_id"
-     */
-    public function testPropertyRequestId()
-    {
-    }
-
-    /**
-     * Test attribute "user_name"
-     */
-    public function testPropertyUserName()
+    public function testPropertyConfigurations()
     {
     }
 }

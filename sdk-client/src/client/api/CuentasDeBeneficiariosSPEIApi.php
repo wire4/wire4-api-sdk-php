@@ -2254,7 +2254,7 @@ class CuentasDeBeneficiariosSPEIApi
     /**
      * Operation updateAmountLimitAccountUsingPUT
      *
-     * Actualiza el monto límite
+     * Solicitud para actualizar el monto límite
      *
      * @param  \mx\wire4\client\model\AmountRequest $body Información de la cuenta y el monto límite a actualizar (required)
      * @param  string $authorization Header para token (required)
@@ -2274,7 +2274,7 @@ class CuentasDeBeneficiariosSPEIApi
     /**
      * Operation updateAmountLimitAccountUsingPUTWithHttpInfo
      *
-     * Actualiza el monto límite
+     * Solicitud para actualizar el monto límite
      *
      * @param  \mx\wire4\client\model\AmountRequest $body Información de la cuenta y el monto límite a actualizar (required)
      * @param  string $authorization Header para token (required)
@@ -2352,7 +2352,7 @@ class CuentasDeBeneficiariosSPEIApi
     /**
      * Operation updateAmountLimitAccountUsingPUTAsync
      *
-     * Actualiza el monto límite
+     * Solicitud para actualizar el monto límite
      *
      * @param  \mx\wire4\client\model\AmountRequest $body Información de la cuenta y el monto límite a actualizar (required)
      * @param  string $authorization Header para token (required)
@@ -2375,7 +2375,7 @@ class CuentasDeBeneficiariosSPEIApi
     /**
      * Operation updateAmountLimitAccountUsingPUTAsyncWithHttpInfo
      *
-     * Actualiza el monto límite
+     * Solicitud para actualizar el monto límite
      *
      * @param  \mx\wire4\client\model\AmountRequest $body Información de la cuenta y el monto límite a actualizar (required)
      * @param  string $authorization Header para token (required)

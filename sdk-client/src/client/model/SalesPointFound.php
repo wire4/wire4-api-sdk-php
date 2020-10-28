@@ -59,11 +59,11 @@ class SalesPointFound implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'access_ip' => 'string',
 'account' => 'string',
-'created_at' => '\mx\wire4\client\model\Timestamp',
+'created_at' => '\DateTime',
 'name' => 'string',
 'public_id' => 'string',
 'status' => 'string',
-'updated_at' => '\mx\wire4\client\model\Timestamp'    ];
+'updated_at' => '\DateTime'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -73,11 +73,11 @@ class SalesPointFound implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'access_ip' => null,
 'account' => null,
-'created_at' => null,
+'created_at' => 'date-time',
 'name' => null,
 'public_id' => null,
 'status' => null,
-'updated_at' => null    ];
+'updated_at' => 'date-time'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -305,7 +305,7 @@ self::STATUS_INACTIVE,        ];
     /**
      * Gets created_at
      *
-     * @return \mx\wire4\client\model\Timestamp
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -315,7 +315,7 @@ self::STATUS_INACTIVE,        ];
     /**
      * Sets created_at
      *
-     * @param \mx\wire4\client\model\Timestamp $created_at created_at
+     * @param \DateTime $created_at Fecha en la que se creó el punto de venta
      *
      * @return $this
      */
@@ -410,7 +410,7 @@ self::STATUS_INACTIVE,        ];
     /**
      * Gets updated_at
      *
-     * @return \mx\wire4\client\model\Timestamp
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -420,7 +420,7 @@ self::STATUS_INACTIVE,        ];
     /**
      * Sets updated_at
      *
-     * @param \mx\wire4\client\model\Timestamp $updated_at updated_at
+     * @param \DateTime $updated_at Fecha en la que se actualizó el punto de venta
      *
      * @return $this
      */

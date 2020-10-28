@@ -1,6 +1,6 @@
 <?php
 /**
- * ContractsDetailsApiTest
+ * LmitesDeMontosApiTest
  * PHP version 5
  *
  * @category Class
@@ -32,14 +32,14 @@ use mx\wire4\ApiException;
 use mx\wire4\ObjectSerializer;
 
 /**
- * ContractsDetailsApiTest Class Doc Comment
+ * LmitesDeMontosApiTest Class Doc Comment
  *
  * @category Class
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ContractsDetailsApiTest extends \PHPUnit_Framework_TestCase
+class LmitesDeMontosApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,42 +71,22 @@ class ContractsDetailsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for createAuthorization
+     * Test case for obtainConfigurationsLimits
      *
-     * Devuelve la URL para autorización del usuario Monex.
+     * Consulta las configuraciones para el contrato asocaido al enrolamiento en la aplicación.
      *
      */
-    public function testCreateAuthorization()
+    public function testObtainConfigurationsLimits()
     {
     }
 
     /**
-     * Test case for obtainAuthorizedUsers
+     * Test case for updateConfigurations
      *
-     * Obtiene los usuarios autorizados.
-     *
-     */
-    public function testObtainAuthorizedUsers()
-    {
-    }
-
-    /**
-     * Test case for obtainAuthorizedUsersByContract
-     *
-     * Obtiene los usuarios autorizados por contrato.
+     * Actualiza las configuraciones por subscripción.
      *
      */
-    public function testObtainAuthorizedUsersByContract()
-    {
-    }
-
-    /**
-     * Test case for obtainContractDetails
-     *
-     * Obtiene los detalles de la empresa del contrato.
-     *
-     */
-    public function testObtainContractDetails()
+    public function testUpdateConfigurations()
     {
     }
 }

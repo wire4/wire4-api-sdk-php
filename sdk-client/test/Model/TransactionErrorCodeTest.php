@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorizedTest
+ * TransactionErrorCodeTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageUserAuthorizedTest Class Doc Comment
+ * TransactionErrorCodeTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description TransactionErrorCode
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
+class TransactionErrorCodeTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,58 +69,30 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageUserAuthorized"
+     * Test "TransactionErrorCode"
      */
-    public function testMessageUserAuthorized()
+    public function testTransactionErrorCode()
     {
     }
 
     /**
-     * Test attribute "account"
+     * Test attribute "code"
      */
-    public function testPropertyAccount()
+    public function testPropertyCode()
     {
     }
 
     /**
-     * Test attribute "masked_account"
+     * Test attribute "error"
      */
-    public function testPropertyMaskedAccount()
+    public function testPropertyError()
     {
     }
 
     /**
-     * Test attribute "masked_name"
+     * Test attribute "order_id"
      */
-    public function testPropertyMaskedName()
-    {
-    }
-
-    /**
-     * Test attribute "masked_user_name"
-     */
-    public function testPropertyMaskedUserName()
-    {
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
-
-    /**
-     * Test attribute "request_id"
-     */
-    public function testPropertyRequestId()
-    {
-    }
-
-    /**
-     * Test attribute "user_name"
-     */
-    public function testPropertyUserName()
+    public function testPropertyOrderId()
     {
     }
 }

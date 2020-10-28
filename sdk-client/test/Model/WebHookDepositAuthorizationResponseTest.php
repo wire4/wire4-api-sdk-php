@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorizedTest
+ * WebHookDepositAuthorizationResponseTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageUserAuthorizedTest Class Doc Comment
+ * WebHookDepositAuthorizationResponseTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Contiene la información de un WebHook para autorización de depósitos.
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
+class WebHookDepositAuthorizationResponseTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,37 +69,16 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageUserAuthorized"
+     * Test "WebHookDepositAuthorizationResponse"
      */
-    public function testMessageUserAuthorized()
+    public function testWebHookDepositAuthorizationResponse()
     {
     }
 
     /**
-     * Test attribute "account"
+     * Test attribute "events"
      */
-    public function testPropertyAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_account"
-     */
-    public function testPropertyMaskedAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_name"
-     */
-    public function testPropertyMaskedName()
-    {
-    }
-
-    /**
-     * Test attribute "masked_user_name"
-     */
-    public function testPropertyMaskedUserName()
+    public function testPropertyEvents()
     {
     }
 
@@ -111,16 +90,30 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "request_id"
+     * Test attribute "secret"
      */
-    public function testPropertyRequestId()
+    public function testPropertySecret()
     {
     }
 
     /**
-     * Test attribute "user_name"
+     * Test attribute "status"
      */
-    public function testPropertyUserName()
+    public function testPropertyStatus()
+    {
+    }
+
+    /**
+     * Test attribute "url"
+     */
+    public function testPropertyUrl()
+    {
+    }
+
+    /**
+     * Test attribute "wh_uuid"
+     */
+    public function testPropertyWhUuid()
     {
     }
 }

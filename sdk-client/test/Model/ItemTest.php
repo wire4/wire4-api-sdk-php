@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorizedTest
+ * ItemTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageUserAuthorizedTest Class Doc Comment
+ * ItemTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Cada Item especifica el valor configurado para limite de monto permitido o número de operaciones permitidas. Debe especificar un item por cada configuración
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
+class ItemTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,58 +69,23 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageUserAuthorized"
+     * Test "Item"
      */
-    public function testMessageUserAuthorized()
+    public function testItem()
     {
     }
 
     /**
-     * Test attribute "account"
+     * Test attribute "key"
      */
-    public function testPropertyAccount()
+    public function testPropertyKey()
     {
     }
 
     /**
-     * Test attribute "masked_account"
+     * Test attribute "value"
      */
-    public function testPropertyMaskedAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_name"
-     */
-    public function testPropertyMaskedName()
-    {
-    }
-
-    /**
-     * Test attribute "masked_user_name"
-     */
-    public function testPropertyMaskedUserName()
-    {
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
-
-    /**
-     * Test attribute "request_id"
-     */
-    public function testPropertyRequestId()
-    {
-    }
-
-    /**
-     * Test attribute "user_name"
-     */
-    public function testPropertyUserName()
+    public function testPropertyValue()
     {
     }
 }

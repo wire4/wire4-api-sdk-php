@@ -1,6 +1,6 @@
 <?php
 /**
- * TransferenciasSPIDApi
+ * LmitesDeMontosApi
  * PHP version 5
  *
  * @category Class
@@ -39,14 +39,14 @@ use mx\wire4\HeaderSelector;
 use mx\wire4\ObjectSerializer;
 
 /**
- * TransferenciasSPIDApi Class Doc Comment
+ * LmitesDeMontosApi Class Doc Comment
  *
  * @category Class
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class TransferenciasSPIDApi
+class LmitesDeMontosApi
 {
     /**
      * @var ClientInterface
@@ -87,39 +87,39 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation getSpidClassificationsUsingGET
+     * Operation obtainConfigurationsLimits
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta las configuraciones para el contrato asocaido al enrolamiento en la aplicación
      *
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription Identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \mx\wire4\client\model\SpidClassificationsResponseDTO
+     * @return \mx\wire4\client\model\MessageConfigurationsLimits
      */
-    public function getSpidClassificationsUsingGET($authorization, $subscription)
+    public function obtainConfigurationsLimits($authorization, $suscription)
     {
-        list($response) = $this->getSpidClassificationsUsingGETWithHttpInfo($authorization, $subscription);
+        list($response) = $this->obtainConfigurationsLimitsWithHttpInfo($authorization, $suscription);
         return $response;
     }
 
     /**
-     * Operation getSpidClassificationsUsingGETWithHttpInfo
+     * Operation obtainConfigurationsLimitsWithHttpInfo
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta las configuraciones para el contrato asocaido al enrolamiento en la aplicación
      *
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription Identificador de la suscripción a esta API (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \mx\wire4\client\model\SpidClassificationsResponseDTO, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \mx\wire4\client\model\MessageConfigurationsLimits, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSpidClassificationsUsingGETWithHttpInfo($authorization, $subscription)
+    public function obtainConfigurationsLimitsWithHttpInfo($authorization, $suscription)
     {
-        $returnType = '\mx\wire4\client\model\SpidClassificationsResponseDTO';
-        $request = $this->getSpidClassificationsUsingGETRequest($authorization, $subscription);
+        $returnType = '\mx\wire4\client\model\MessageConfigurationsLimits';
+        $request = $this->obtainConfigurationsLimitsRequest($authorization, $suscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -170,7 +170,15 @@ class TransferenciasSPIDApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\mx\wire4\client\model\SpidClassificationsResponseDTO',
+                        '\mx\wire4\client\model\MessageConfigurationsLimits',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 204:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\mx\wire4\client\model\MessageConfigurationsLimits',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -213,19 +221,19 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation getSpidClassificationsUsingGETAsync
+     * Operation obtainConfigurationsLimitsAsync
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta las configuraciones para el contrato asocaido al enrolamiento en la aplicación
      *
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription Identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSpidClassificationsUsingGETAsync($authorization, $subscription)
+    public function obtainConfigurationsLimitsAsync($authorization, $suscription)
     {
-        return $this->getSpidClassificationsUsingGETAsyncWithHttpInfo($authorization, $subscription)
+        return $this->obtainConfigurationsLimitsAsyncWithHttpInfo($authorization, $suscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -234,20 +242,20 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation getSpidClassificationsUsingGETAsyncWithHttpInfo
+     * Operation obtainConfigurationsLimitsAsyncWithHttpInfo
      *
-     * Consulta las clasificaciones para operaciones con SPID
+     * Consulta las configuraciones para el contrato asocaido al enrolamiento en la aplicación
      *
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription Identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSpidClassificationsUsingGETAsyncWithHttpInfo($authorization, $subscription)
+    public function obtainConfigurationsLimitsAsyncWithHttpInfo($authorization, $suscription)
     {
-        $returnType = '\mx\wire4\client\model\SpidClassificationsResponseDTO';
-        $request = $this->getSpidClassificationsUsingGETRequest($authorization, $subscription);
+        $returnType = '\mx\wire4\client\model\MessageConfigurationsLimits';
+        $request = $this->obtainConfigurationsLimitsRequest($authorization, $suscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -287,30 +295,30 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Create request for operation 'getSpidClassificationsUsingGET'
+     * Create request for operation 'obtainConfigurationsLimits'
      *
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription Identificador de la suscripción a esta API (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSpidClassificationsUsingGETRequest($authorization, $subscription)
+    protected function obtainConfigurationsLimitsRequest($authorization, $suscription)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $authorization when calling getSpidClassificationsUsingGET'
+                'Missing the required parameter $authorization when calling obtainConfigurationsLimits'
             );
         }
-        // verify the required parameter 'subscription' is set
-        if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
+        // verify the required parameter 'suscription' is set
+        if ($suscription === null || (is_array($suscription) && count($suscription) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription when calling getSpidClassificationsUsingGET'
+                'Missing the required parameter $suscription when calling obtainConfigurationsLimits'
             );
         }
 
-        $resourcePath = '/subscriptions/{subscription}/beneficiaries/spid/classifications';
+        $resourcePath = '/subscriptions/{suscription}/configurations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -323,10 +331,10 @@ class TransferenciasSPIDApi
         }
 
         // path params
-        if ($subscription !== null) {
+        if ($suscription !== null) {
             $resourcePath = str_replace(
-                '{' . 'subscription' . '}',
-                ObjectSerializer::toPathValue($subscription),
+                '{' . 'suscription' . '}',
+                ObjectSerializer::toPathValue($suscription),
                 $resourcePath
             );
         }
@@ -396,41 +404,40 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOST
+     * Operation updateConfigurations
      *
-     * Registro de transferencias SPID
+     * Actualiza las configuraciones por subscripción
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\UpdateConfigurationsRequestDTO $body updateConfigurationsResquestDTO (required)
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription suscription (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \mx\wire4\client\model\TokenRequiredResponse
+     * @return void
      */
-    public function registerOutgoingSpidTransactionUsingPOST($body, $authorization, $subscription)
+    public function updateConfigurations($body, $authorization, $suscription)
     {
-        list($response) = $this->registerOutgoingSpidTransactionUsingPOSTWithHttpInfo($body, $authorization, $subscription);
-        return $response;
+        $this->updateConfigurationsWithHttpInfo($body, $authorization, $suscription);
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOSTWithHttpInfo
+     * Operation updateConfigurationsWithHttpInfo
      *
-     * Registro de transferencias SPID
+     * Actualiza las configuraciones por subscripción
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\UpdateConfigurationsRequestDTO $body updateConfigurationsResquestDTO (required)
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription suscription (required)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \mx\wire4\client\model\TokenRequiredResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function registerOutgoingSpidTransactionUsingPOSTWithHttpInfo($body, $authorization, $subscription)
+    public function updateConfigurationsWithHttpInfo($body, $authorization, $suscription)
     {
-        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
-        $request = $this->registerOutgoingSpidTransactionUsingPOSTRequest($body, $authorization, $subscription);
+        $returnType = '';
+        $request = $this->updateConfigurationsRequest($body, $authorization, $suscription);
 
         try {
             $options = $this->createHttpClientOption();
@@ -460,92 +467,30 @@ class TransferenciasSPIDApi
                 );
             }
 
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\TokenRequiredResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\DetailedErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\mx\wire4\client\model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOSTAsync
+     * Operation updateConfigurationsAsync
      *
-     * Registro de transferencias SPID
+     * Actualiza las configuraciones por subscripción
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\UpdateConfigurationsRequestDTO $body updateConfigurationsResquestDTO (required)
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription suscription (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerOutgoingSpidTransactionUsingPOSTAsync($body, $authorization, $subscription)
+    public function updateConfigurationsAsync($body, $authorization, $suscription)
     {
-        return $this->registerOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
+        return $this->updateConfigurationsAsyncWithHttpInfo($body, $authorization, $suscription)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -554,41 +499,27 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Operation registerOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo
+     * Operation updateConfigurationsAsyncWithHttpInfo
      *
-     * Registro de transferencias SPID
+     * Actualiza las configuraciones por subscripción
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\UpdateConfigurationsRequestDTO $body updateConfigurationsResquestDTO (required)
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription suscription (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function registerOutgoingSpidTransactionUsingPOSTAsyncWithHttpInfo($body, $authorization, $subscription)
+    public function updateConfigurationsAsyncWithHttpInfo($body, $authorization, $suscription)
     {
-        $returnType = '\mx\wire4\client\model\TokenRequiredResponse';
-        $request = $this->registerOutgoingSpidTransactionUsingPOSTRequest($body, $authorization, $subscription);
+        $returnType = '';
+        $request = $this->updateConfigurationsRequest($body, $authorization, $suscription);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -608,37 +539,37 @@ class TransferenciasSPIDApi
     }
 
     /**
-     * Create request for operation 'registerOutgoingSpidTransactionUsingPOST'
+     * Create request for operation 'updateConfigurations'
      *
-     * @param  \mx\wire4\client\model\TransactionOutgoingSpid $body Información de las transferencias SPID de salida (required)
+     * @param  \mx\wire4\client\model\UpdateConfigurationsRequestDTO $body updateConfigurationsResquestDTO (required)
      * @param  string $authorization Header para token (required)
-     * @param  string $subscription El identificador de la suscripción a esta API (required)
+     * @param  string $suscription suscription (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function registerOutgoingSpidTransactionUsingPOSTRequest($body, $authorization, $subscription)
+    protected function updateConfigurationsRequest($body, $authorization, $suscription)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling registerOutgoingSpidTransactionUsingPOST'
+                'Missing the required parameter $body when calling updateConfigurations'
             );
         }
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $authorization when calling registerOutgoingSpidTransactionUsingPOST'
+                'Missing the required parameter $authorization when calling updateConfigurations'
             );
         }
-        // verify the required parameter 'subscription' is set
-        if ($subscription === null || (is_array($subscription) && count($subscription) === 0)) {
+        // verify the required parameter 'suscription' is set
+        if ($suscription === null || (is_array($suscription) && count($suscription) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription when calling registerOutgoingSpidTransactionUsingPOST'
+                'Missing the required parameter $suscription when calling updateConfigurations'
             );
         }
 
-        $resourcePath = '/subscriptions/{subscription}/transactions/outcoming/spid';
+        $resourcePath = '/subscriptions/{suscription}/configurations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -651,10 +582,10 @@ class TransferenciasSPIDApi
         }
 
         // path params
-        if ($subscription !== null) {
+        if ($suscription !== null) {
             $resourcePath = str_replace(
-                '{' . 'subscription' . '}',
-                ObjectSerializer::toPathValue($subscription),
+                '{' . 'suscription' . '}',
+                ObjectSerializer::toPathValue($suscription),
                 $resourcePath
             );
         }
@@ -667,11 +598,11 @@ class TransferenciasSPIDApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
+                []
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
+                [],
                 ['application/json']
             );
         }
@@ -719,7 +650,7 @@ class TransferenciasSPIDApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -56,19 +56,35 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new mx\wire4\client\api\ComprobanteElectrnicoDePagoCEPApi(
+$apiInstance = new mx\wire4\client\api\AutorizacinDeDepsitosApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \mx\wire4\client\model\CepSearchBanxico(); // \mx\wire4\client\model\CepSearchBanxico | Información para buscar un CEP
 $authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
 
 try {
-    $result = $apiInstance->obtainTransactionCepUsingPOST($body, $authorization);
+    $result = $apiInstance->getDepositAuthConfigurations($authorization, $subscription);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ComprobanteElectrnicoDePagoCEPApi->obtainTransactionCepUsingPOST: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AutorizacinDeDepsitosApi->getDepositAuthConfigurations: ', $e->getMessage(), PHP_EOL;
+}
+
+$apiInstance = new mx\wire4\client\api\AutorizacinDeDepsitosApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\DepositAuthorizationRequest(); // \mx\wire4\client\model\DepositAuthorizationRequest | Deposit Authorization info
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+
+try {
+    $result = $apiInstance->putDepositAuthConfigurations($body, $authorization, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AutorizacinDeDepsitosApi->putDepositAuthConfigurations: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -79,10 +95,13 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AutorizacinDeDepsitosApi* | [**getDepositAuthConfigurations**](docs/Api/AutorizacinDeDepsitosApi.md#getdepositauthconfigurations) | **GET** /subscriptions/{subscription}/configurations/deposit-authorization | Consulta autorización de depósitos
+*AutorizacinDeDepsitosApi* | [**putDepositAuthConfigurations**](docs/Api/AutorizacinDeDepsitosApi.md#putdepositauthconfigurations) | **PUT** /subscriptions/{subscription}/configurations/deposit-authorization | Des/Habilitar autorización de depósitos
 *ComprobanteElectrnicoDePagoCEPApi* | [**obtainTransactionCepUsingPOST**](docs/Api/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
 *ContactoApi* | [**sendContactUsingPOST**](docs/Api/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
 *ContractsDetailsApi* | [**createAuthorization**](docs/Api/ContractsDetailsApi.md#createauthorization) | **POST** /onboarding/accounts/authorize | Devuelve la URL para autorización del usuario Monex
 *ContractsDetailsApi* | [**obtainAuthorizedUsers**](docs/Api/ContractsDetailsApi.md#obtainauthorizedusers) | **GET** /onboarding/accounts/{requestId}/authorized-users | Obtiene los usuarios autorizados
+*ContractsDetailsApi* | [**obtainAuthorizedUsersByContract**](docs/Api/ContractsDetailsApi.md#obtainauthorizedusersbycontract) | **GET** /onboarding/accounts/authorized-users | Obtiene los usuarios autorizados por contrato
 *ContractsDetailsApi* | [**obtainContractDetails**](docs/Api/ContractsDetailsApi.md#obtaincontractdetails) | **POST** /onboarding/accounts/details | Obtiene los detalles de la empresa del contrato
 *CuentasDeBeneficiariosSPEIApi* | [**authorizeAccountsPendingPUT**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#authorizeaccountspendingput) | **PUT** /subscriptions/{subscription}/beneficiaries/pending | Recibe la solicitud para agrupar las cuentas SPEI/SPID de beneficiarios en estado pendiente que deben ser autorizadas
 *CuentasDeBeneficiariosSPEIApi* | [**deleteAccountUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#deleteaccountusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/{account} | Elimina la cuenta del beneficiario
@@ -91,7 +110,7 @@ Class | Method | HTTP request | Description
 *CuentasDeBeneficiariosSPEIApi* | [**getBeneficiariesForAccountUsingGET**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#getbeneficiariesforaccountusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spei | Consulta los beneficiarios registrados
 *CuentasDeBeneficiariosSPEIApi* | [**preRegisterAccountsUsingPOST**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#preregisteraccountsusingpost) | **POST** /subscriptions/{subscription}/beneficiaries/spei | Pre-registro de cuentas de beneficiarios.
 *CuentasDeBeneficiariosSPEIApi* | [**removeBeneficiariesPendingUsingDELETE**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#removebeneficiariespendingusingdelete) | **DELETE** /subscriptions/{subscription}/beneficiaries/spei/request/{requestId} | Eliminación de beneficiarios SPEI® sin confirmar
-*CuentasDeBeneficiariosSPEIApi* | [**updateAmountLimitAccountUsingPUT**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Actualiza el monto límite
+*CuentasDeBeneficiariosSPEIApi* | [**updateAmountLimitAccountUsingPUT**](docs/Api/CuentasDeBeneficiariosSPEIApi.md#updateamountlimitaccountusingput) | **PUT** /subscriptions/{subscription}/beneficiaries/spei/{account} | Solicitud para actualizar el monto límite
 *CuentasDeBeneficiariosSPIDApi* | [**getSpidBeneficiariesForAccount**](docs/Api/CuentasDeBeneficiariosSPIDApi.md#getspidbeneficiariesforaccount) | **GET** /subscriptions/{subscription}/beneficiaries/spid | Consulta los beneficiarios SPID registrados
 *CuentasDeBeneficiariosSPIDApi* | [**preRegisterAccountsUsingPOST1**](docs/Api/CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID
 *DepositantesApi* | [**getDepositantsUsingGET**](docs/Api/DepositantesApi.md#getdepositantsusingget) | **GET** /subscriptions/{subscription}/depositants | Consulta de cuentas de depositantes
@@ -101,6 +120,8 @@ Class | Method | HTTP request | Description
 *FacturasApi* | [**billingsReportByIdUsingGET**](docs/Api/FacturasApi.md#billingsreportbyidusingget) | **GET** /billings/{id} | Consulta de facturas por identificador
 *FacturasApi* | [**billingsReportUsingGET**](docs/Api/FacturasApi.md#billingsreportusingget) | **GET** /billings | Consulta de facturas
 *InstitucionesApi* | [**getAllInstitutionsUsingGET**](docs/Api/InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
+*LmitesDeMontosApi* | [**obtainConfigurationsLimits**](docs/Api/LmitesDeMontosApi.md#obtainconfigurationslimits) | **GET** /subscriptions/{suscription}/configurations | Consulta las configuraciones para el contrato asocaido al enrolamiento en la aplicación
+*LmitesDeMontosApi* | [**updateConfigurations**](docs/Api/LmitesDeMontosApi.md#updateconfigurations) | **PUT** /subscriptions/{suscription}/configurations | Actualiza las configuraciones por subscripción
 *OperacionesCoDiApi* | [**consultCodiOperations**](docs/Api/OperacionesCoDiApi.md#consultcodioperations) | **POST** /codi/charges | Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
 *PeticionesDePagoPorCoDiApi* | [**consultCodiRequestByOrderId**](docs/Api/PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
 *PeticionesDePagoPorCoDiApi* | [**generateCodiCodeQR**](docs/Api/PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
@@ -152,20 +173,27 @@ Class | Method | HTTP request | Description
  - [CompanyRegistered](docs/Model/CompanyRegistered.md)
  - [CompanyRequested](docs/Model/CompanyRequested.md)
  - [Compay](docs/Model/Compay.md)
+ - [ConfigurationsLimits](docs/Model/ConfigurationsLimits.md)
  - [ContactRequest](docs/Model/ContactRequest.md)
  - [ContractDetailRequest](docs/Model/ContractDetailRequest.md)
  - [ContractDetailResponse](docs/Model/ContractDetailResponse.md)
  - [Deposit](docs/Model/Deposit.md)
+ - [DepositAuthorizationRequest](docs/Model/DepositAuthorizationRequest.md)
  - [Depositant](docs/Model/Depositant.md)
  - [DepositantsRegister](docs/Model/DepositantsRegister.md)
  - [DepositantsResponse](docs/Model/DepositantsResponse.md)
+ - [DepositsAuthorizationResponse](docs/Model/DepositsAuthorizationResponse.md)
+ - [DetailedErrorResponse](docs/Model/DetailedErrorResponse.md)
  - [ErrorResponse](docs/Model/ErrorResponse.md)
  - [GetDepositants](docs/Model/GetDepositants.md)
  - [Institution](docs/Model/Institution.md)
  - [InstitutionsList](docs/Model/InstitutionsList.md)
+ - [Item](docs/Model/Item.md)
  - [MessageAccountBeneficiary](docs/Model/MessageAccountBeneficiary.md)
  - [MessageCEP](docs/Model/MessageCEP.md)
  - [MessageCodiAction](docs/Model/MessageCodiAction.md)
+ - [MessageConfigurationsLimits](docs/Model/MessageConfigurationsLimits.md)
+ - [MessageDepositAuthorizationRequest](docs/Model/MessageDepositAuthorizationRequest.md)
  - [MessageDepositReceived](docs/Model/MessageDepositReceived.md)
  - [MessageInstitution](docs/Model/MessageInstitution.md)
  - [MessagePayment](docs/Model/MessagePayment.md)
@@ -178,6 +206,7 @@ Class | Method | HTTP request | Description
  - [Operations](docs/Model/Operations.md)
  - [PagerResponseDto](docs/Model/PagerResponseDto.md)
  - [Payment](docs/Model/Payment.md)
+ - [PaymentCODI](docs/Model/PaymentCODI.md)
  - [PaymentRequestCodiResponseDTO](docs/Model/PaymentRequestCodiResponseDTO.md)
  - [PaymentsRequestId](docs/Model/PaymentsRequestId.md)
  - [Person](docs/Model/Person.md)
@@ -194,13 +223,16 @@ Class | Method | HTTP request | Description
  - [SpidBeneficiaryResponse](docs/Model/SpidBeneficiaryResponse.md)
  - [SpidClassificationDTO](docs/Model/SpidClassificationDTO.md)
  - [SpidClassificationsResponseDTO](docs/Model/SpidClassificationsResponseDTO.md)
- - [Timestamp](docs/Model/Timestamp.md)
  - [TokenRequiredResponse](docs/Model/TokenRequiredResponse.md)
+ - [TransactionErrorCode](docs/Model/TransactionErrorCode.md)
  - [TransactionOutgoing](docs/Model/TransactionOutgoing.md)
  - [TransactionOutgoingSpid](docs/Model/TransactionOutgoingSpid.md)
  - [TransactionsOutgoingRegister](docs/Model/TransactionsOutgoingRegister.md)
+ - [UpdateConfigurationsRequestDTO](docs/Model/UpdateConfigurationsRequestDTO.md)
  - [UrlsRedirect](docs/Model/UrlsRedirect.md)
  - [UserCompany](docs/Model/UserCompany.md)
+ - [WebHookDepositAuthorizationRequest](docs/Model/WebHookDepositAuthorizationRequest.md)
+ - [WebHookDepositAuthorizationResponse](docs/Model/WebHookDepositAuthorizationResponse.md)
  - [Webhook](docs/Model/Webhook.md)
  - [WebhookRequest](docs/Model/WebhookRequest.md)
  - [WebhookResponse](docs/Model/WebhookResponse.md)

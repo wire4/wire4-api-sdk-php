@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorized
+ * ConfigurationsLimits
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * MessageUserAuthorized Class Doc Comment
+ * ConfigurationsLimits Class Doc Comment
  *
  * @category Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Es la lista de configuraciones asociadas al contrato
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorized implements ModelInterface, ArrayAccess
+class ConfigurationsLimits implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'MessageUserAuthorized';
+    protected static $swaggerModelName = 'ConfigurationsLimits';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'account' => 'string',
-'masked_account' => 'string',
-'masked_name' => 'string',
-'masked_user_name' => 'string',
-'name' => 'string',
-'request_id' => 'string',
-'user_name' => 'string'    ];
+        'group' => 'string',
+'items' => '\mx\wire4\client\model\Item[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -71,13 +66,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'account' => null,
-'masked_account' => null,
-'masked_name' => null,
-'masked_user_name' => null,
-'name' => null,
-'request_id' => null,
-'user_name' => null    ];
+        'group' => null,
+'items' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -106,13 +96,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'account' => 'account',
-'masked_account' => 'masked_account',
-'masked_name' => 'masked_name',
-'masked_user_name' => 'masked_user_name',
-'name' => 'name',
-'request_id' => 'request_id',
-'user_name' => 'user_name'    ];
+        'group' => 'group',
+'items' => 'items'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -120,13 +105,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'account' => 'setAccount',
-'masked_account' => 'setMaskedAccount',
-'masked_name' => 'setMaskedName',
-'masked_user_name' => 'setMaskedUserName',
-'name' => 'setName',
-'request_id' => 'setRequestId',
-'user_name' => 'setUserName'    ];
+        'group' => 'setGroup',
+'items' => 'setItems'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -134,13 +114,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'account' => 'getAccount',
-'masked_account' => 'getMaskedAccount',
-'masked_name' => 'getMaskedName',
-'masked_user_name' => 'getMaskedUserName',
-'name' => 'getName',
-'request_id' => 'getRequestId',
-'user_name' => 'getUserName'    ];
+        'group' => 'getGroup',
+'items' => 'getItems'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -200,13 +175,8 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['account'] = isset($data['account']) ? $data['account'] : null;
-        $this->container['masked_account'] = isset($data['masked_account']) ? $data['masked_account'] : null;
-        $this->container['masked_name'] = isset($data['masked_name']) ? $data['masked_name'] : null;
-        $this->container['masked_user_name'] = isset($data['masked_user_name']) ? $data['masked_user_name'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
-        $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
+        $this->container['group'] = isset($data['group']) ? $data['group'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -234,169 +204,49 @@ class MessageUserAuthorized implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets account
+     * Gets group
      *
      * @return string
      */
-    public function getAccount()
+    public function getGroup()
     {
-        return $this->container['account'];
+        return $this->container['group'];
     }
 
     /**
-     * Sets account
+     * Sets group
      *
-     * @param string $account El contrato al cual se le brinda el acceso a la API
+     * @param string $group Nombre del grupo de configuraciones. Debe ser LIMIT_BY_TIME para especificar la configuración por límite por horario o LIMIT_BY_RANGE para especificar límite por periodo.
      *
      * @return $this
      */
-    public function setAccount($account)
+    public function setGroup($group)
     {
-        $this->container['account'] = $account;
+        $this->container['group'] = $group;
 
         return $this;
     }
 
     /**
-     * Gets masked_account
+     * Gets items
      *
-     * @return string
+     * @return \mx\wire4\client\model\Item[]
      */
-    public function getMaskedAccount()
+    public function getItems()
     {
-        return $this->container['masked_account'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets masked_account
+     * Sets items
      *
-     * @param string $masked_account El contrato enmascarado al cual se le brinda el acceso a la API
+     * @param \mx\wire4\client\model\Item[] $items Lista de items configurados
      *
      * @return $this
      */
-    public function setMaskedAccount($masked_account)
+    public function setItems($items)
     {
-        $this->container['masked_account'] = $masked_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_name
-     *
-     * @return string
-     */
-    public function getMaskedName()
-    {
-        return $this->container['masked_name'];
-    }
-
-    /**
-     * Sets masked_name
-     *
-     * @param string $masked_name El usuario enmascarado que se autorizó
-     *
-     * @return $this
-     */
-    public function setMaskedName($masked_name)
-    {
-        $this->container['masked_name'] = $masked_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets masked_user_name
-     *
-     * @return string
-     */
-    public function getMaskedUserName()
-    {
-        return $this->container['masked_user_name'];
-    }
-
-    /**
-     * Sets masked_user_name
-     *
-     * @param string $masked_user_name El nombre enmascarado del usuario de acceso que se autorizó
-     *
-     * @return $this
-     */
-    public function setMaskedUserName($masked_user_name)
-    {
-        $this->container['masked_user_name'] = $masked_user_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name El usuario que se autorizó
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_id
-     *
-     * @return string
-     */
-    public function getRequestId()
-    {
-        return $this->container['request_id'];
-    }
-
-    /**
-     * Sets request_id
-     *
-     * @param string $request_id El identificador de la petición cuando se solicitó la autorización
-     *
-     * @return $this
-     */
-    public function setRequestId($request_id)
-    {
-        $this->container['request_id'] = $request_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_name
-     *
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->container['user_name'];
-    }
-
-    /**
-     * Sets user_name
-     *
-     * @param string $user_name El nombre del usuario de acceso que se autorizó
-     *
-     * @return $this
-     */
-    public function setUserName($user_name)
-    {
-        $this->container['user_name'] = $user_name;
+        $this->container['items'] = $items;
 
         return $this;
     }

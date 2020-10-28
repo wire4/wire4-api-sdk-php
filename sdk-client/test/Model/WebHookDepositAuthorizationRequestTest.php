@@ -1,6 +1,6 @@
 <?php
 /**
- * MessageUserAuthorizedTest
+ * WebHookDepositAuthorizationRequestTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * MessageUserAuthorizedTest Class Doc Comment
+ * WebHookDepositAuthorizationRequestTest Class Doc Comment
  *
  * @category    Class
- * @description El mensaje que se envía mediante (webHook) con la información del usuario que se le autorizó el uso del API de Monex.
+ * @description Contiene la información de un WebHook para autorización de depósitos.
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
+class WebHookDepositAuthorizationRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,37 +69,9 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "MessageUserAuthorized"
+     * Test "WebHookDepositAuthorizationRequest"
      */
-    public function testMessageUserAuthorized()
-    {
-    }
-
-    /**
-     * Test attribute "account"
-     */
-    public function testPropertyAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_account"
-     */
-    public function testPropertyMaskedAccount()
-    {
-    }
-
-    /**
-     * Test attribute "masked_name"
-     */
-    public function testPropertyMaskedName()
-    {
-    }
-
-    /**
-     * Test attribute "masked_user_name"
-     */
-    public function testPropertyMaskedUserName()
+    public function testWebHookDepositAuthorizationRequest()
     {
     }
 
@@ -111,16 +83,9 @@ class MessageUserAuthorizedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "request_id"
+     * Test attribute "url"
      */
-    public function testPropertyRequestId()
-    {
-    }
-
-    /**
-     * Test attribute "user_name"
-     */
-    public function testPropertyUserName()
+    public function testPropertyUrl()
     {
     }
 }

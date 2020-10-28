@@ -1,6 +1,6 @@
 <?php
 /**
- * ContractsDetailsApiTest
+ * AutorizacinDeDepsitosApiTest
  * PHP version 5
  *
  * @category Class
@@ -32,14 +32,14 @@ use mx\wire4\ApiException;
 use mx\wire4\ObjectSerializer;
 
 /**
- * ContractsDetailsApiTest Class Doc Comment
+ * AutorizacinDeDepsitosApiTest Class Doc Comment
  *
  * @category Class
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ContractsDetailsApiTest extends \PHPUnit_Framework_TestCase
+class AutorizacinDeDepsitosApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -71,42 +71,22 @@ class ContractsDetailsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for createAuthorization
+     * Test case for getDepositAuthConfigurations
      *
-     * Devuelve la URL para autorización del usuario Monex.
+     * Consulta autorización de depósitos.
      *
      */
-    public function testCreateAuthorization()
+    public function testGetDepositAuthConfigurations()
     {
     }
 
     /**
-     * Test case for obtainAuthorizedUsers
+     * Test case for putDepositAuthConfigurations
      *
-     * Obtiene los usuarios autorizados.
-     *
-     */
-    public function testObtainAuthorizedUsers()
-    {
-    }
-
-    /**
-     * Test case for obtainAuthorizedUsersByContract
-     *
-     * Obtiene los usuarios autorizados por contrato.
+     * Des/Habilitar autorización de depósitos.
      *
      */
-    public function testObtainAuthorizedUsersByContract()
-    {
-    }
-
-    /**
-     * Test case for obtainContractDetails
-     *
-     * Obtiene los detalles de la empresa del contrato.
-     *
-     */
-    public function testObtainContractDetails()
+    public function testPutDepositAuthConfigurations()
     {
     }
 }
