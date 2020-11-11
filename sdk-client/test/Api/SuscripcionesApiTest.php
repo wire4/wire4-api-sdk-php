@@ -71,6 +71,16 @@ class SuscripcionesApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for changeSubscriptionStatusUsingPUT
+     *
+     * Cambia el estatus de la suscripción.
+     *
+     */
+    public function testChangeSubscriptionStatusUsingPUT()
+    {
+    }
+
+    /**
      * Test case for preEnrollmentMonexUserUsingPOST
      *
      * Registra una pre-suscripción.

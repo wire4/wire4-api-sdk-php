@@ -4,9 +4,62 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**changeSubscriptionStatusUsingPUT**](SuscripcionesApi.md#changesubscriptionstatususingput) | **PUT** /subscriptions/{subscription}/status | Cambia el estatus de la suscripción
 [**preEnrollmentMonexUserUsingPOST**](SuscripcionesApi.md#preenrollmentmonexuserusingpost) | **POST** /subscriptions/pre-subscription | Registra una pre-suscripción
 [**removeEnrollmentUserUsingDELETE**](SuscripcionesApi.md#removeenrollmentuserusingdelete) | **DELETE** /subscriptions/{subscription} | Elimina una suscripción por el identificador de la suscripción
 [**removeSubscriptionPendingStatusUsingDELETE**](SuscripcionesApi.md#removesubscriptionpendingstatususingdelete) | **DELETE** /subscriptions/pre-subscription/{subscription} | Elimina una pre-suscripción
+
+# **changeSubscriptionStatusUsingPUT**
+> changeSubscriptionStatusUsingPUT($body, $authorization, $subscription)
+
+Cambia el estatus de la suscripción
+
+Se cambia el estatus de la suscripción, los posibles valores son ACTIVE ó INACTIVE
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\SuscripcionesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\SubscriptionChangeStatusRequest(); // \mx\wire4\client\model\SubscriptionChangeStatusRequest | request
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | subscription
+
+try {
+    $apiInstance->changeSubscriptionStatusUsingPUT($body, $authorization, $subscription);
+} catch (Exception $e) {
+    echo 'Exception when calling SuscripcionesApi->changeSubscriptionStatusUsingPUT: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\mx\wire4\client\model\SubscriptionChangeStatusRequest**](../Model/SubscriptionChangeStatusRequest.md)| request |
+ **authorization** | **string**| Header para token |
+ **subscription** | **string**| subscription |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **preEnrollmentMonexUserUsingPOST**
 > \mx\wire4\client\model\PreEnrollmentResponse preEnrollmentMonexUserUsingPOST($body, $authorization)

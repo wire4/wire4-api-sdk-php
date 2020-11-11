@@ -1,6 +1,6 @@
 <?php
 /**
- * ItemTest
+ * SubscriptionChangeStatusRequestTest
  *
  * PHP version 5
  *
@@ -29,15 +29,15 @@
 namespace mx\wire4;
 
 /**
- * ItemTest Class Doc Comment
+ * SubscriptionChangeStatusRequestTest Class Doc Comment
  *
  * @category    Class
- * @description Cada Item especifica el valor configurado para limite de monto permitido o número de operaciones permitidas. Debe especificar un item por cada configuración
+ * @description SubscriptionChangeStatusRequest
  * @package     mx\wire4
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ItemTest extends \PHPUnit_Framework_TestCase
+class SubscriptionChangeStatusRequestTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -69,30 +69,16 @@ class ItemTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Item"
+     * Test "SubscriptionChangeStatusRequest"
      */
-    public function testItem()
+    public function testSubscriptionChangeStatusRequest()
     {
     }
 
     /**
-     * Test attribute "key"
+     * Test attribute "status"
      */
-    public function testPropertyKey()
-    {
-    }
-
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
-    {
-    }
-
-    /**
-     * Test attribute "value"
-     */
-    public function testPropertyValue()
+    public function testPropertyStatus()
     {
     }
 }

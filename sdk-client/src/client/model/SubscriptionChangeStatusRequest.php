@@ -1,6 +1,6 @@
 <?php
 /**
- * Item
+ * SubscriptionChangeStatusRequest
  *
  * PHP version 5
  *
@@ -32,15 +32,14 @@ use \ArrayAccess;
 use \mx\wire4\ObjectSerializer;
 
 /**
- * Item Class Doc Comment
+ * SubscriptionChangeStatusRequest Class Doc Comment
  *
  * @category Class
- * @description Cada Item especifica el valor configurado para limite de monto permitido o número de operaciones permitidas. Debe especificar un item por cada configuración
  * @package  mx\wire4
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Item implements ModelInterface, ArrayAccess
+class SubscriptionChangeStatusRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class Item implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Item';
+    protected static $swaggerModelName = 'SubscriptionChangeStatusRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +56,7 @@ class Item implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'key' => 'string',
-'type' => 'string',
-'value' => 'string'    ];
+        'status' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -67,9 +64,7 @@ class Item implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'key' => null,
-'type' => null,
-'value' => null    ];
+        'status' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -98,9 +93,7 @@ class Item implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-'type' => 'type',
-'value' => 'value'    ];
+        'status' => 'status'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -108,9 +101,7 @@ class Item implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-'type' => 'setType',
-'value' => 'setValue'    ];
+        'status' => 'setStatus'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -118,9 +109,7 @@ class Item implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-'type' => 'getType',
-'value' => 'getValue'    ];
+        'status' => 'getStatus'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -163,7 +152,20 @@ class Item implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
+    const STATUS_ACTIVE = 'ACTIVE';
+const STATUS_INACTIVE = 'INACTIVE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ACTIVE,
+self::STATUS_INACTIVE,        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -180,9 +182,7 @@ class Item implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -193,6 +193,17 @@ class Item implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -210,73 +221,34 @@ class Item implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets key
+     * Gets status
      *
      * @return string
      */
-    public function getKey()
+    public function getStatus()
     {
-        return $this->container['key'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets key
+     * Sets status
      *
-     * @param string $key Debe ser BY_AMOUNT para indicar la configuración por monto o BY_OPERATION para indicar la configuración por número de operaciones
+     * @param string $status status
      *
      * @return $this
      */
-    public function setKey($key)
+    public function setStatus($status)
     {
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type El tipo de dato del grupo de configuraciones.
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string $value Valor configurado
-     *
-     * @return $this
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

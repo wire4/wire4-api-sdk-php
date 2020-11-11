@@ -1756,5 +1756,41 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         }
 
     }
+    //Verified
+    public function testChangeSubscriptionStatusUsingPUT() {
+
+        $accessToken= "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken= $oauth->obtainAccessTokenApp("general");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\SuscripcionesApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client()
+        );
+        $requestDto = new \mx\wire4\client\model\SubscriptionChangeStatusRequest(); // \mx\wire4\client\model\ContactRequest | Información del contacto
+        $requestDto->setStatus(\mx\wire4\client\model\SubscriptionChangeStatusRequest::STATUS_INACTIVE);
+
+        try {
+            $apiInstance->changeSubscriptionStatusUsingPUTWithHttpInfo($requestDto,$accessToken, Wire4ApiTest::SUBSCRIPTION);
+            echo "El contacto se envio satisfactoriamente";
+        } catch (Exception $e) {
+            echo 'Exception when calling ContactoApi->sendContactUsingPOST: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
 
 }
