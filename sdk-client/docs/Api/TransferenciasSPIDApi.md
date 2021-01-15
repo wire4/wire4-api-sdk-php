@@ -4,15 +4,15 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getSpidClassificationsUsingGET**](TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta las clasificaciones para operaciones con SPID
-[**registerOutgoingSpidTransactionUsingPOST**](TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID
+[**getSpidClassificationsUsingGET**](TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta de clasificaciones para operaciones SPID®
+[**registerOutgoingSpidTransactionUsingPOST**](TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID®
 
 # **getSpidClassificationsUsingGET**
 > \mx\wire4\client\model\SpidClassificationsResponseDTO getSpidClassificationsUsingGET($authorization, $subscription)
 
-Consulta las clasificaciones para operaciones con SPID
+Consulta de clasificaciones para operaciones SPID®
 
-Obtiene las clasificaciones para operaciones con dólares (SPID) de Monex.<br/>Este recurso se debe invocar previo al realizar una operación SPID.<br/>Se requiere que el token de autenticación se genere con scope spid_admin.
+Obtiene las clasificaciones para operaciones con dólares (SPID®) de Monex.<br/><br/>Este recurso se debe invocar previo al realizar una operación SPID.<br/><br/>
 
 ### Example
 ```php
@@ -25,7 +25,7 @@ $apiInstance = new mx\wire4\client\api\TransferenciasSPIDApi(
     new GuzzleHttp\Client()
 );
 $authorization = "authorization_example"; // string | Header para token
-$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
 
 try {
     $result = $apiInstance->getSpidClassificationsUsingGET($authorization, $subscription);
@@ -41,7 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
- **subscription** | **string**| El identificador de la suscripción a esta API |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
 
 ### Return type
 
@@ -61,9 +61,9 @@ No authorization required
 # **registerOutgoingSpidTransactionUsingPOST**
 > \mx\wire4\client\model\TokenRequiredResponse registerOutgoingSpidTransactionUsingPOST($body, $authorization, $subscription)
 
-Registro de transferencias SPID
+Registro de transferencias SPID®
 
-Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción, las transferencias deben ser confirmadas por el cliente para que se efectuen.
+Registra un conjunto de transferencias a realizar en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).
 
 ### Example
 ```php
@@ -77,7 +77,7 @@ $apiInstance = new mx\wire4\client\api\TransferenciasSPIDApi(
 );
 $body = new \mx\wire4\client\model\TransactionOutgoingSpid(); // \mx\wire4\client\model\TransactionOutgoingSpid | Información de las transferencias SPID de salida
 $authorization = "authorization_example"; // string | Header para token
-$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
 
 try {
     $result = $apiInstance->registerOutgoingSpidTransactionUsingPOST($body, $authorization, $subscription);
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\mx\wire4\client\model\TransactionOutgoingSpid**](../Model/TransactionOutgoingSpid.md)| Información de las transferencias SPID de salida |
  **authorization** | **string**| Header para token |
- **subscription** | **string**| El identificador de la suscripción a esta API |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
 
 ### Return type
 

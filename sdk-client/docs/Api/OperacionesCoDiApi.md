@@ -4,14 +4,14 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**consultCodiOperations**](OperacionesCoDiApi.md#consultcodioperations) | **POST** /codi/charges | Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+[**consultCodiOperations**](OperacionesCoDiApi.md#consultcodioperations) | **POST** /codi/charges | Consulta de operaciones
 
 # **consultCodiOperations**
 > \mx\wire4\client\model\PagerResponseDto consultCodiOperations($authorization, $body, $company_id, $page, $sales_point_id, $size)
 
-Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+Consulta de operaciones
 
-Obtiene las operaciones generadas a partir de peticiones de pago CoDi® de forma paginada, pudiendo aplicar filtros
+Obtiene las operaciones generadas a partir de peticiones de pago CODI® de forma paginada, pudiendo aplicar filtros.
 
 ### Example
 ```php
@@ -25,10 +25,10 @@ $apiInstance = new mx\wire4\client\api\OperacionesCoDiApi(
 );
 $authorization = "authorization_example"; // string | Header para token
 $body = new \mx\wire4\client\model\CodiOperationsFiltersRequestDTO(); // \mx\wire4\client\model\CodiOperationsFiltersRequestDTO | Filtros de busqueda
-$company_id = "company_id_example"; // string | Identificador de empresa CoDi
-$page = "page_example"; // string | Número de pago
-$sales_point_id = "sales_point_id_example"; // string | Identificador del punto de venta
-$size = "size_example"; // string | Tamaño de pagina
+$company_id = "company_id_example"; // string | Es el identificador de empresa CODI®.
+$page = "page_example"; // string | Es el número de pago.
+$sales_point_id = "sales_point_id_example"; // string | Es el identificador del punto de venta.
+$size = "size_example"; // string | Es el tamaño de página.
 
 try {
     $result = $apiInstance->consultCodiOperations($authorization, $body, $company_id, $page, $sales_point_id, $size);
@@ -45,10 +45,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
  **body** | [**\mx\wire4\client\model\CodiOperationsFiltersRequestDTO**](../Model/CodiOperationsFiltersRequestDTO.md)| Filtros de busqueda | [optional]
- **company_id** | **string**| Identificador de empresa CoDi | [optional]
- **page** | **string**| Número de pago | [optional]
- **sales_point_id** | **string**| Identificador del punto de venta | [optional]
- **size** | **string**| Tamaño de pagina | [optional]
+ **company_id** | **string**| Es el identificador de empresa CODI®. | [optional]
+ **page** | **string**| Es el número de pago. | [optional]
+ **sales_point_id** | **string**| Es el identificador del punto de venta. | [optional]
+ **size** | **string**| Es el tamaño de página. | [optional]
 
 ### Return type
 

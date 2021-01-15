@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 Consulta los saldo de una cuenta
 
-Obtiene el de las divisas que se manejen en el contrato.
+Obtiene el saldo de un contrato, según las divisas que se manejen en dicho contrato, ya sea peso mexicano (MXP) o dólar estadounidense (USD).
 
 ### Example
 ```php
@@ -24,7 +24,7 @@ $apiInstance = new mx\wire4\client\api\SaldoApi(
     new GuzzleHttp\Client()
 );
 $authorization = "authorization_example"; // string | Header para token
-$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
 
 try {
     $result = $apiInstance->getBalanceUsingGET($authorization, $subscription);
@@ -40,7 +40,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
- **subscription** | **string**| El identificador de la suscripción a esta API |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
 
 ### Return type
 

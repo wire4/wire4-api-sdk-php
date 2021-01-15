@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Consulta de cuentas de depositantes
 
-Obtiene una lista de depositantes asociados al contrato relacionado a la subscripción.
+Obtiene una lista de depositantes asociados al contrato relacionado a la suscripción.
 
 ### Example
 ```php
@@ -25,7 +25,7 @@ $apiInstance = new mx\wire4\client\api\DepositantesApi(
     new GuzzleHttp\Client()
 );
 $authorization = "authorization_example"; // string | Header para token
-$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
 
 try {
     $result = $apiInstance->getDepositantsUsingGET($authorization, $subscription);
@@ -41,7 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
- **subscription** | **string**| El identificador de la suscripción a esta API |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
 
 ### Return type
 
@@ -63,7 +63,7 @@ No authorization required
 
 Registra un nuevo depositante
 
-Registra un nuevo depositante en el contrato asociado a la subscripción.
+Registra un nuevo depositante en el contrato asociado a la suscripción.
 
 ### Example
 ```php
@@ -77,7 +77,7 @@ $apiInstance = new mx\wire4\client\api\DepositantesApi(
 );
 $body = new \mx\wire4\client\model\DepositantsRegister(); // \mx\wire4\client\model\DepositantsRegister | Depositant info
 $authorization = "authorization_example"; // string | Header para token
-$subscription = "subscription_example"; // string | El identificador de la suscripción a esta API
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
 
 try {
     $result = $apiInstance->registerDepositantsUsingPOST($body, $authorization, $subscription);
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\mx\wire4\client\model\DepositantsRegister**](../Model/DepositantsRegister.md)| Depositant info |
  **authorization** | **string**| Header para token |
- **subscription** | **string**| El identificador de la suscripción a esta API |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
 
 ### Return type
 
