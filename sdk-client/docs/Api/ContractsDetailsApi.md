@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAuthorization**](ContractsDetailsApi.md#createauthorization) | **POST** /onboarding/accounts/authorize | Devuelve la URL para autorización del usuario Monex
 [**obtainAuthorizedUsers**](ContractsDetailsApi.md#obtainauthorizedusers) | **GET** /onboarding/accounts/{requestId}/authorized-users | Obtiene los usuarios autorizados
+[**obtainAuthorizedUsersByContract**](ContractsDetailsApi.md#obtainauthorizedusersbycontract) | **GET** /onboarding/accounts/authorized-users | Obtiene los usuarios autorizados por contrato
 [**obtainContractDetails**](ContractsDetailsApi.md#obtaincontractdetails) | **POST** /onboarding/accounts/details | Obtiene los detalles de la empresa del contrato
 
 # **createAuthorization**
@@ -96,6 +97,59 @@ Name | Type | Description  | Notes
  **authorization** | **string**| Header para token |
  **x_access_key** | **string**| La llave de acceso de la aplicación |
  **request_id** | **string**| El identificador de la petición a esta API |
+
+### Return type
+
+[**\mx\wire4\client\model\AuthorizedUsers[]**](../Model/AuthorizedUsers.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **obtainAuthorizedUsersByContract**
+> \mx\wire4\client\model\AuthorizedUsers[] obtainAuthorizedUsersByContract($authorization, $x_access_key, $contract)
+
+Obtiene los usuarios autorizados por contrato
+
+Obtienen los detalles de los usuarios autorizados por contrato Monex.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\ContractsDetailsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$x_access_key = "x_access_key_example"; // string | La llave de acceso de la aplicación
+$contract = "contract_example"; // string | El contrato Monex
+
+try {
+    $result = $apiInstance->obtainAuthorizedUsersByContract($authorization, $x_access_key, $contract);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContractsDetailsApi->obtainAuthorizedUsersByContract: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
+ **x_access_key** | **string**| La llave de acceso de la aplicación |
+ **contract** | **string**| El contrato Monex | [optional]
 
 ### Return type
 

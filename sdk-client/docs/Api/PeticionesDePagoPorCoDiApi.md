@@ -4,15 +4,15 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**consultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
-[**generateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera un código QR para un pago mediante CODI®
+[**consultCodiRequestByOrderId**](PeticionesDePagoPorCoDiApi.md#consultcodirequestbyorderid) | **GET** /codi/sales-point/charges | Consulta información de petición por orderId
+[**generateCodiCodeQR**](PeticionesDePagoPorCoDiApi.md#generatecodicodeqr) | **POST** /codi/sales-point/charges | Genera código QR
 
 # **consultCodiRequestByOrderId**
 > \mx\wire4\client\model\PaymentRequestCodiResponseDTO consultCodiRequestByOrderId($authorization, $order_id, $sales_point_id)
 
-Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+Consulta información de petición por orderId
 
-Obtiene la información de una petición de pago CODI® por orderId para un punto de venta
+Obtiene la información de una petición de pago CODI® por orderId para un punto de venta.
 
 ### Example
 ```php
@@ -63,7 +63,7 @@ No authorization required
 # **generateCodiCodeQR**
 > \mx\wire4\client\model\CodiCodeQrResponseDTO generateCodiCodeQR($body, $authorization, $sales_point_id)
 
-Genera un código QR para un pago mediante CODI®
+Genera código QR
 
 Genera un código QR solicitado por un punto de venta para un pago mediante CODI®
 

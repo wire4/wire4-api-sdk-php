@@ -4,15 +4,15 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registra un punto de venta asociado a una empresa
-[**obtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Obtiene los puntos de venta asociados a una empresa
+[**createSalesPoint**](PuntosDeVentaCoDiApi.md#createsalespoint) | **POST** /codi/companies/salespoint | Registro de punto de venta.
+[**obtainSalePoints**](PuntosDeVentaCoDiApi.md#obtainsalepoints) | **GET** /codi/companies/salespoint | Consulta de puntos de venta
 
 # **createSalesPoint**
 > \mx\wire4\client\model\SalesPointRespose createSalesPoint($body, $authorization, $company_id)
 
-Registra un punto de venta asociado a una empresa
+Registro de punto de venta.
 
-Registra un punto de venta desde donde se emitaran los cobros CODI®, el punto de venta se debe asociar a un cuenta cableregistrada previamente ante Banxico para realizar cobros con CODI®
+Se registra un punto de venta (TPV) desde donde se emitarán los cobros CODI®. El punto de venta se debe asociar a un cuenta CLABE registrada previamente ante Banxico para realizar cobros con CODI®.
 
 ### Example
 ```php
@@ -24,9 +24,9 @@ $apiInstance = new mx\wire4\client\api\PuntosDeVentaCoDiApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \mx\wire4\client\model\SalesPointRequest(); // \mx\wire4\client\model\SalesPointRequest | Información del punto de venta CODI®
+$body = new \mx\wire4\client\model\SalesPointRequest(); // \mx\wire4\client\model\SalesPointRequest | Es el objeto que contiene información del punto de venta CODI®.
 $authorization = "authorization_example"; // string | Header para token
-$company_id = "company_id_example"; // string | El identificador de la empresa
+$company_id = "company_id_example"; // string | Es el identificador de la empresa.
 
 try {
     $result = $apiInstance->createSalesPoint($body, $authorization, $company_id);
@@ -41,9 +41,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\mx\wire4\client\model\SalesPointRequest**](../Model/SalesPointRequest.md)| Información del punto de venta CODI® |
+ **body** | [**\mx\wire4\client\model\SalesPointRequest**](../Model/SalesPointRequest.md)| Es el objeto que contiene información del punto de venta CODI®. |
  **authorization** | **string**| Header para token |
- **company_id** | **string**| El identificador de la empresa |
+ **company_id** | **string**| Es el identificador de la empresa. |
 
 ### Return type
 
@@ -63,9 +63,9 @@ No authorization required
 # **obtainSalePoints**
 > \mx\wire4\client\model\SalesPointFound[] obtainSalePoints($authorization, $company_id)
 
-Obtiene los puntos de venta asociados a una empresa
+Consulta de puntos de venta
 
-Obtiene los puntos de venta asociados a una empresa en las cuales se hacen operaciones CODI®
+Obtiene los puntos de venta asociados a una empresa en las cuales se hacen operaciones CODI®.
 
 ### Example
 ```php
@@ -78,7 +78,7 @@ $apiInstance = new mx\wire4\client\api\PuntosDeVentaCoDiApi(
     new GuzzleHttp\Client()
 );
 $authorization = "authorization_example"; // string | Header para token
-$company_id = "company_id_example"; // string | El identificador de la empresa
+$company_id = "company_id_example"; // string | Es el identificador de la empresa. Ejemplo: 8838d513-5916-4662-bb30-2448f0f543ed
 
 try {
     $result = $apiInstance->obtainSalePoints($authorization, $company_id);
@@ -94,7 +94,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
- **company_id** | **string**| El identificador de la empresa |
+ **company_id** | **string**| Es el identificador de la empresa. Ejemplo: 8838d513-5916-4662-bb30-2448f0f543ed |
 
 ### Return type
 

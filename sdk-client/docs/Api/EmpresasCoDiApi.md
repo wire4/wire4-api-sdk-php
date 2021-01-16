@@ -4,15 +4,15 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**obtainCompanies**](EmpresasCoDiApi.md#obtaincompanies) | **GET** /codi/companies | Consulta de empresas CODI
-[**registerCompanyUsingPOST**](EmpresasCoDiApi.md#registercompanyusingpost) | **POST** /codi/companies | Registro de empresas CODI
+[**obtainCompanies**](EmpresasCoDiApi.md#obtaincompanies) | **GET** /codi/companies | Consulta de empresas CODI®
+[**registerCompanyUsingPOST**](EmpresasCoDiApi.md#registercompanyusingpost) | **POST** /codi/companies | Registro de empresas CODI®
 
 # **obtainCompanies**
 > \mx\wire4\client\model\CompanyRegistered[] obtainCompanies($authorization)
 
-Consulta de empresas CODI
+Consulta de empresas CODI®
 
-Consulta de empresas CODI registradas para la aplicación.
+Consulta de empresas CODI® registradas para la aplicación.
 
 ### Example
 ```php
@@ -59,9 +59,9 @@ No authorization required
 # **registerCompanyUsingPOST**
 > \mx\wire4\client\model\CompanyRegistered registerCompanyUsingPOST($body, $authorization)
 
-Registro de empresas CODI
+Registro de empresas CODI®
 
-Registra una empresa para hacer uso de operaciones CODI. Es requerido tener el certificado emitido por BANXICO® asi como el Nombre de la empresa, Nombre comercial y RFC de la empresa.<br/>
+Registra una empresa para hacer uso de operaciones CODI®.<br><br> <b>Nota:<b> Es requerido tener el certificado emitido por BANXICO® asi como el Nombre de la empresa, Nombre comercial y el Registro Federal de Contribuyentes (RFC) de la empresa.<br/>
 
 ### Example
 ```php

@@ -5,11 +5,11 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
-[**getWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta de Webhooks
+[**getWebhooks**](WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta la lista de Webhooks
 [**registerWebhook**](WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
 
 # **getWebhook**
-> \mx\wire4\client\model\WebhookResponse getWebhook($authorization, $id)
+> \mx\wire4\client\model\WebhookResponse getWebhook($authorization, $webhook_id)
 
 Consulta de Webhook
 
@@ -26,10 +26,10 @@ $apiInstance = new mx\wire4\client\api\WebhooksApi(
     new GuzzleHttp\Client()
 );
 $authorization = "authorization_example"; // string | Header para token
-$id = "id_example"; // string | Identificador del webhook
+$webhook_id = "webhook_id_example"; // string | Es el identificador del webhook. Ejemplo: wh_54a932866f784b439bc625c0f4e04e12
 
 try {
-    $result = $apiInstance->getWebhook($authorization, $id);
+    $result = $apiInstance->getWebhook($authorization, $webhook_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->getWebhook: ', $e->getMessage(), PHP_EOL;
@@ -42,7 +42,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
- **id** | **string**| Identificador del webhook |
+ **webhook_id** | **string**| Es el identificador del webhook. Ejemplo: wh_54a932866f784b439bc625c0f4e04e12 |
 
 ### Return type
 
@@ -62,9 +62,9 @@ No authorization required
 # **getWebhooks**
 > \mx\wire4\client\model\WebhooksList getWebhooks($authorization)
 
-Consulta de Webhooks
+Consulta la lista de Webhooks
 
-Obtiene los webhooks registrados en la plataforma que tengan estatus 'ACTIVE' e 'INACTIVE'.
+Obtiene una lista de los webhooks registrados en la plataforma que tengan el estado (estatus)  Activo (ACTIVE) e Inactivo (INACTIVE).
 
 ### Example
 ```php
@@ -113,7 +113,7 @@ No authorization required
 
 Alta de Webhook
 
-Registra un webhook en la plataforma para su uso como notificador de eventos cuando estos ocurran.
+Registra un webhook en la plataforma para su uso como notificador de eventos, cuándo estos ocurran.
 
 ### Example
 ```php

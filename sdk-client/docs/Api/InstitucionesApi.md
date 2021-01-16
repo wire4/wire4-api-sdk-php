@@ -4,12 +4,14 @@ All URIs are relative to *https://sandbox-api.wire4.mx/wire4/1.0.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllInstitutionsUsingGET**](InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Información de instituciones bancarias.
+[**getAllInstitutionsUsingGET**](InstitucionesApi.md#getallinstitutionsusingget) | **GET** /institutions | Consulta de instituciones bancarias
 
 # **getAllInstitutionsUsingGET**
 > \mx\wire4\client\model\InstitutionsList getAllInstitutionsUsingGET($authorization)
 
-Información de instituciones bancarias.
+Consulta de instituciones bancarias
+
+Se obtiene un listado de las instituciones bancarias y la información de cada una de estas.
 
 ### Example
 ```php
