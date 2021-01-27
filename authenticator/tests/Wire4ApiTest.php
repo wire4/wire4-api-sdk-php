@@ -193,6 +193,48 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
     }
 
+    public function testChangeSubscriptionUseUsingPATCH(){
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                \mx\wire4\auth\Environment::SANDBOX);
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\SuscripcionesApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client()
+        );
+        $account = "112680000156896531"; // string | La cuenta del beneciario que será eliminada
+        $subscription_id = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API //REPLACE THIS WITH YOUR DATA
+        $body = new \mx\wire4\client\model\ServiceBanking();
+        $spei = new mx\wire4\client\model\UseServiceBanking();
+        $spei->setStatus("ACTIVE");
+        $spei->setUse("WITHDRAWAL");
+        $body->setSpei($spei);
+        $spid = new mx\wire4\client\model\UseServiceBanking();
+        $spid->setStatus("INACTIVE");
+        $spid->setUse("WITHDRAWAL_DEPOSIT");
+        $body->setSpid($spid);
+        try {
+            $result = $apiInstance->changeSubscriptionUseUsingPATCH($body,$accessToken,$subscription_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling CuentasDeBeneficiariosSPEIApi->deleteAccountUsingDELETE: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+
     //Verified
     public function testGetAvailableRelationshipsMonexUsingGET() {
 
