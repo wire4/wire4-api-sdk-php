@@ -5,7 +5,7 @@
  * Date: 2020-09-01
  * Time: 13:17
  */
-include_once ("Wire4ApiTest.php");
+include_once("Wire4ApiTest.php");
 class Wire4ApiMultipleScopesTest extends PHPUnit\Framework\TestCase {
 
     const OAUTH_CONSUMER_KEY = "vfRyDiLwEmVjweHrZt9dLmqfov0a";

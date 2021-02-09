@@ -1,0 +1,17 @@
+{
+    "name": "wire4/examples",
+    "description": "Ejemplos de implementacion del api Wire4 con el sdk para php",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Wire4",
+            "email": "speiok-team@tcpip.tech"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "wire4/wire4-api-sdk-php": "dev-master",
+        "phpunit/phpunit": "9.5.x-dev"
+    }
+}
