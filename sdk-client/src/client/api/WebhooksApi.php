@@ -12,7 +12,7 @@
 /**
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -310,7 +310,7 @@ class WebhooksApi
             );
         }
 
-        $resourcePath = '/webhooks/{webhook_id}';
+        $resourcePath = '/webhooks/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

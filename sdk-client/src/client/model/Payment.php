@@ -13,7 +13,7 @@
 /**
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -317,7 +317,7 @@ class Payment implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param string $account Es la uenta emisora.
+     * @param string $account Es la cuenta emisora.
      *
      * @return $this
      */
