@@ -870,6 +870,9 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API //REPLACE THIS WITH YOUR DATA
 
         try {
+            // Filtering by date is optional, but both parameters must be present when use filter by date:
+            // begin date, end date,
+            // Formato 'yyyy-MM-dd'
             $result = $apiInstance->incomingSpeiTransactionsReportUsingGET($accessToken,$subscription);
             print_r($result);
         } catch (Exception $e) {
