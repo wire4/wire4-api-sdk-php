@@ -27,7 +27,7 @@ class OAuthWire4 {
             $this->tokenUrl = $url;
         } else {
 
-            throw new Exception("Environment enum value is required...");
+            throw new \Exception("Environment is required...");
         }
 
     }
@@ -39,7 +39,7 @@ class OAuthWire4 {
 
             if (empty($scope)) {
 
-                throw new Exception("A least one scope is required...",401 );
+                throw new \Exception("A least one scope is required...",401 );
             }
 
 
@@ -65,7 +65,7 @@ class OAuthWire4 {
 
             curl_close ($ch);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
             throw $e;
         }
@@ -112,7 +112,7 @@ class OAuthWire4 {
                     !isset($accessToken->error_description) ? "Ocurrio un error inesperado, por favor contacte al administrados":$accessToken->error_description,400);
             }
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw $e;
             exit(-1);
         }
