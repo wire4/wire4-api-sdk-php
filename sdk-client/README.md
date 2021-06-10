@@ -141,7 +141,7 @@ Class | Method | HTTP request | Description
 *TransferenciasSPEIApi* | [**registerOutgoingSpeiTransactionUsingPOST**](docs/Api/TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
 *TransferenciasSPIDApi* | [**getSpidClassificationsUsingGET**](docs/Api/TransferenciasSPIDApi.md#getspidclassificationsusingget) | **GET** /subscriptions/{subscription}/beneficiaries/spid/classifications | Consulta de clasificaciones para operaciones SPID®
 *TransferenciasSPIDApi* | [**registerOutgoingSpidTransactionUsingPOST**](docs/Api/TransferenciasSPIDApi.md#registeroutgoingspidtransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spid | Registro de transferencias SPID®
-*WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /webhooks/{id} | Consulta de Webhook
+*WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /webhooks/{webhook_id} | Consulta de Webhook
 *WebhooksApi* | [**getWebhooks**](docs/Api/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Consulta la lista de Webhooks
 *WebhooksApi* | [**registerWebhook**](docs/Api/WebhooksApi.md#registerwebhook) | **POST** /webhooks | Alta de Webhook
 

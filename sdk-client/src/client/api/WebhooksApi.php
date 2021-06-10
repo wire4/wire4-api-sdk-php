@@ -310,7 +310,7 @@ class WebhooksApi
             );
         }
 
-        $resourcePath = '/webhooks/{id}';
+        $resourcePath = '/webhooks/{webhook_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
