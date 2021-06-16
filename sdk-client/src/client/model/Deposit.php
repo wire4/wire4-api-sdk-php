@@ -13,7 +13,7 @@
 /**
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -66,6 +66,7 @@ class Deposit implements ModelInterface, ArrayAccess
 'currency_code' => 'string',
 'deposit_date' => '\DateTime',
 'depositant' => 'string',
+'depositant_alias' => 'string',
 'depositant_clabe' => 'string',
 'depositant_email' => 'string',
 'depositant_rfc' => 'string',
@@ -94,6 +95,7 @@ class Deposit implements ModelInterface, ArrayAccess
 'currency_code' => null,
 'deposit_date' => 'date-time',
 'depositant' => null,
+'depositant_alias' => null,
 'depositant_clabe' => null,
 'depositant_email' => null,
 'depositant_rfc' => null,
@@ -143,6 +145,7 @@ class Deposit implements ModelInterface, ArrayAccess
 'currency_code' => 'currency_code',
 'deposit_date' => 'deposit_date',
 'depositant' => 'depositant',
+'depositant_alias' => 'depositant_alias',
 'depositant_clabe' => 'depositant_clabe',
 'depositant_email' => 'depositant_email',
 'depositant_rfc' => 'depositant_rfc',
@@ -171,6 +174,7 @@ class Deposit implements ModelInterface, ArrayAccess
 'currency_code' => 'setCurrencyCode',
 'deposit_date' => 'setDepositDate',
 'depositant' => 'setDepositant',
+'depositant_alias' => 'setDepositantAlias',
 'depositant_clabe' => 'setDepositantClabe',
 'depositant_email' => 'setDepositantEmail',
 'depositant_rfc' => 'setDepositantRfc',
@@ -199,6 +203,7 @@ class Deposit implements ModelInterface, ArrayAccess
 'currency_code' => 'getCurrencyCode',
 'deposit_date' => 'getDepositDate',
 'depositant' => 'getDepositant',
+'depositant_alias' => 'getDepositantAlias',
 'depositant_clabe' => 'getDepositantClabe',
 'depositant_email' => 'getDepositantEmail',
 'depositant_rfc' => 'getDepositantRfc',
@@ -279,6 +284,7 @@ class Deposit implements ModelInterface, ArrayAccess
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
         $this->container['deposit_date'] = isset($data['deposit_date']) ? $data['deposit_date'] : null;
         $this->container['depositant'] = isset($data['depositant']) ? $data['depositant'] : null;
+        $this->container['depositant_alias'] = isset($data['depositant_alias']) ? $data['depositant_alias'] : null;
         $this->container['depositant_clabe'] = isset($data['depositant_clabe']) ? $data['depositant_clabe'] : null;
         $this->container['depositant_email'] = isset($data['depositant_email']) ? $data['depositant_email'] : null;
         $this->container['depositant_rfc'] = isset($data['depositant_rfc']) ? $data['depositant_rfc'] : null;
@@ -552,6 +558,30 @@ class Deposit implements ModelInterface, ArrayAccess
     public function setDepositant($depositant)
     {
         $this->container['depositant'] = $depositant;
+
+        return $this;
+    }
+
+    /**
+     * Gets depositant_alias
+     *
+     * @return string
+     */
+    public function getDepositantAlias()
+    {
+        return $this->container['depositant_alias'];
+    }
+
+    /**
+     * Sets depositant_alias
+     *
+     * @param string $depositant_alias Es el alias asignado a la cuenta CABLE del depositante.
+     *
+     * @return $this
+     */
+    public function setDepositantAlias($depositant_alias)
+    {
+        $this->container['depositant_alias'] = $depositant_alias;
 
         return $this;
     }

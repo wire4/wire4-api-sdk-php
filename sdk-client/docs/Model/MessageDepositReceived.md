@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **currency_code** | **string** | Es el código de divisa de la transferencia. Es en el formato estándar ISO 4217 y es de 3 dígitos. Puede ser \&quot;MXN\&quot; o \&quot;USD\&quot;. | [optional] 
 **deposit_date** | [**\DateTime**](\DateTime.md) | Es la fecha de recepción de la transferencia. | [optional] 
 **depositant** | **string** | Es el nombre del depositante en caso de que la transferencia se reciba en una cuenta de depositante. | [optional] 
+**depositant_alias** | **string** | Es el alias de la cuenta CLABE del depositante en caso que la transferencia se reciba de una cuenta de depositante | [optional] 
 **depositant_clabe** | **string** | Es la cuenta CLABE del depositante en caso que la transferencia se reciba en una cuenta de depositante | [optional] 
 **depositant_email** | **string** | Es el Correo electrónico (email) del depositante en caso que la transferencia se reciba en una cuenta de depositante | [optional] 
 **depositant_rfc** | **string** | Es el Registro Federal de Contribuyentes (RFC) del depositante, en caso que la transferencia se reciba en una cuenta de depositante. | [optional] 

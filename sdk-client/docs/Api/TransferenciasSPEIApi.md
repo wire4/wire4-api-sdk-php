@@ -119,11 +119,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **incomingSpeiTransactionsReportUsingGET**
-> \mx\wire4\client\model\Deposit[] incomingSpeiTransactionsReportUsingGET($authorization, $subscription)
+> \mx\wire4\client\model\Deposit[] incomingSpeiTransactionsReportUsingGET($authorization, $subscription, $begin_date, $end_date)
 
 Consulta de transferencias recibidas
 
-Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta.
+Realiza una consulta de las transferencias recibidas (depósitos) en la cuenta del cliente Monex relacionada a la suscripción, las transferencias que regresa este recuso son únicamente las transferencias  recibidas durante el día en el que se realiza la consulta. Para consultar transacciones que se encuentran en otras fechas se debe utilizar los parámetros de fecha inicial (beginDate) y fecha final (endDate), siempre deben de ir las dos ya que en caso de que falte una marcará error la consulta, si faltan las dos la consulta lanzará solo las del día, como se describe al inicio. El formato para las fechas es \"yyyy-MM-dd\"
 
 ### Example
 ```php
@@ -137,9 +137,11 @@ $apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
 );
 $authorization = "authorization_example"; // string | Header para token
 $subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
+$begin_date = "begin_date_example"; // string | Fecha inicial para filtrar los depósitos, se espera en formato 'yyyy-MM-dd'
+$end_date = "end_date_example"; // string | Fecha final para filtrar los depósitos, se espera en formato 'yyyy-MM-dd'
 
 try {
-    $result = $apiInstance->incomingSpeiTransactionsReportUsingGET($authorization, $subscription);
+    $result = $apiInstance->incomingSpeiTransactionsReportUsingGET($authorization, $subscription, $begin_date, $end_date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TransferenciasSPEIApi->incomingSpeiTransactionsReportUsingGET: ', $e->getMessage(), PHP_EOL;
@@ -153,6 +155,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **string**| Header para token |
  **subscription** | **string**| Es el identificador de la suscripción a esta API. |
+ **begin_date** | **string**| Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; | [optional]
+ **end_date** | **string**| Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; | [optional]
 
 ### Return type
 
