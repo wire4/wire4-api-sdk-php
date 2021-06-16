@@ -12,7 +12,7 @@
 /**
  * Wire4RestAPI
  *
- * Referencia de API. La API de Wire4 está organizada en torno a REST
+ * Referencia de la API de Wire4
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -684,14 +684,16 @@ class TransferenciasSPEIApi
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription Es el identificador de la suscripción a esta API. (required)
+     * @param  string $begin_date Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
+     * @param  string $end_date Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \mx\wire4\client\model\Deposit[]
      */
-    public function incomingSpeiTransactionsReportUsingGET($authorization, $subscription)
+    public function incomingSpeiTransactionsReportUsingGET($authorization, $subscription, $begin_date = null, $end_date = null)
     {
-        list($response) = $this->incomingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription);
+        list($response) = $this->incomingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription, $begin_date, $end_date);
         return $response;
     }
 
@@ -702,15 +704,17 @@ class TransferenciasSPEIApi
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription Es el identificador de la suscripción a esta API. (required)
+     * @param  string $begin_date Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
+     * @param  string $end_date Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
      *
      * @throws \mx\wire4\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \mx\wire4\client\model\Deposit[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function incomingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription)
+    public function incomingSpeiTransactionsReportUsingGETWithHttpInfo($authorization, $subscription, $begin_date = null, $end_date = null)
     {
         $returnType = '\mx\wire4\client\model\Deposit[]';
-        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription);
+        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription, $begin_date, $end_date);
 
         try {
             $options = $this->createHttpClientOption();
@@ -810,13 +814,15 @@ class TransferenciasSPEIApi
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription Es el identificador de la suscripción a esta API. (required)
+     * @param  string $begin_date Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
+     * @param  string $end_date Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function incomingSpeiTransactionsReportUsingGETAsync($authorization, $subscription)
+    public function incomingSpeiTransactionsReportUsingGETAsync($authorization, $subscription, $begin_date = null, $end_date = null)
     {
-        return $this->incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription)
+        return $this->incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription, $begin_date, $end_date)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -831,14 +837,16 @@ class TransferenciasSPEIApi
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription Es el identificador de la suscripción a esta API. (required)
+     * @param  string $begin_date Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
+     * @param  string $end_date Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription)
+    public function incomingSpeiTransactionsReportUsingGETAsyncWithHttpInfo($authorization, $subscription, $begin_date = null, $end_date = null)
     {
         $returnType = '\mx\wire4\client\model\Deposit[]';
-        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription);
+        $request = $this->incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription, $begin_date, $end_date);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -882,11 +890,13 @@ class TransferenciasSPEIApi
      *
      * @param  string $authorization Header para token (required)
      * @param  string $subscription Es el identificador de la suscripción a esta API. (required)
+     * @param  string $begin_date Fecha inicial para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
+     * @param  string $end_date Fecha final para filtrar los depósitos, se espera en formato &#x27;yyyy-MM-dd&#x27; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription)
+    protected function incomingSpeiTransactionsReportUsingGETRequest($authorization, $subscription, $begin_date = null, $end_date = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
@@ -908,6 +918,14 @@ class TransferenciasSPEIApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($begin_date !== null) {
+            $queryParams['beginDate'] = ObjectSerializer::toQueryValue($begin_date);
+        }
+        // query params
+        if ($end_date !== null) {
+            $queryParams['endDate'] = ObjectSerializer::toQueryValue($end_date);
+        }
         // header params
         if ($authorization !== null) {
             $headerParams['Authorization'] = ObjectSerializer::toHeaderValue($authorization);
