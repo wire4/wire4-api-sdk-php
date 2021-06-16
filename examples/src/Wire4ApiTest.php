@@ -157,8 +157,8 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
     }
 
-   //Verified
-  public function testdeleteAccountUsingDELETE(){
+    //Verified
+    public function testdeleteAccountUsingDELETE(){
 
         $accessToken = "";
         try {
@@ -730,7 +730,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             echo 'Exception when calling InstitucionesApi->getAllInstitutionsUsingGET: ', $e->getMessage(), PHP_EOL;
         }
     }
-   //Verified
+    //Verified
     public function testgetBalanceUsingGET() {
 
         $accessToken = "";
@@ -1687,7 +1687,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             $accessToken = $oauth->obtainAccessTokenAppUser(
                 Wire4ApiTest::CODI_KEY, //REPLACE THIS WITH YOUR DATA",
                 Wire4ApiTest::CODI_SECRET_KEY, //REPLACE THIS WITH YOUR DATA,
-                 "codi_admin");
+                "codi_admin");
 
 
         } catch(OAuthException $e) {

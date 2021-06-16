@@ -59,7 +59,4 @@ class Environment {
         return $this->urlToken;
     }
 
-
-
-
 }
