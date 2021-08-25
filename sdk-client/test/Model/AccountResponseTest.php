@@ -83,6 +83,13 @@ class AccountResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "authorization_date"
+     */
+    public function testPropertyAuthorizationDate()
+    {
+    }
+
+    /**
      * Test attribute "bank"
      */
     public function testPropertyBank()

@@ -58,6 +58,7 @@ class AccountReassigned implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'amount_limit' => 'float',
+'authorization_date' => '\DateTime',
 'bank' => '\mx\wire4\client\model\Institution',
 'beneficiary_account' => 'string',
 'currency_code' => 'string',
@@ -79,6 +80,7 @@ class AccountReassigned implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'amount_limit' => null,
+'authorization_date' => 'date-time',
 'bank' => null,
 'beneficiary_account' => null,
 'currency_code' => null,
@@ -121,6 +123,7 @@ class AccountReassigned implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'amount_limit' => 'amount_limit',
+'authorization_date' => 'authorization_date',
 'bank' => 'bank',
 'beneficiary_account' => 'beneficiary_account',
 'currency_code' => 'currency_code',
@@ -142,6 +145,7 @@ class AccountReassigned implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'amount_limit' => 'setAmountLimit',
+'authorization_date' => 'setAuthorizationDate',
 'bank' => 'setBank',
 'beneficiary_account' => 'setBeneficiaryAccount',
 'currency_code' => 'setCurrencyCode',
@@ -163,6 +167,7 @@ class AccountReassigned implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'amount_limit' => 'getAmountLimit',
+'authorization_date' => 'getAuthorizationDate',
 'bank' => 'getBank',
 'beneficiary_account' => 'getBeneficiaryAccount',
 'currency_code' => 'getCurrencyCode',
@@ -236,6 +241,7 @@ class AccountReassigned implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount_limit'] = isset($data['amount_limit']) ? $data['amount_limit'] : null;
+        $this->container['authorization_date'] = isset($data['authorization_date']) ? $data['authorization_date'] : null;
         $this->container['bank'] = isset($data['bank']) ? $data['bank'] : null;
         $this->container['beneficiary_account'] = isset($data['beneficiary_account']) ? $data['beneficiary_account'] : null;
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
@@ -310,6 +316,30 @@ class AccountReassigned implements ModelInterface, ArrayAccess
     public function setAmountLimit($amount_limit)
     {
         $this->container['amount_limit'] = $amount_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorization_date
+     *
+     * @return \DateTime
+     */
+    public function getAuthorizationDate()
+    {
+        return $this->container['authorization_date'];
+    }
+
+    /**
+     * Sets authorization_date
+     *
+     * @param \DateTime $authorization_date Es la fecha en la que se autorizó el registro del beneficiario. Ésta fecha viene en formato ISO 8601 con zona horaria, ejemplo: <strong>2020-10-27T11:03:15.000-06:00</strong>.
+     *
+     * @return $this
+     */
+    public function setAuthorizationDate($authorization_date)
+    {
+        $this->container['authorization_date'] = $authorization_date;
 
         return $this;
     }

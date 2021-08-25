@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AutorizacinDeDepsitosApi* | [**getDepositAuthConfigurations**](docs/Api/AutorizacinDeDepsitosApi.md#getdepositauthconfigurations) | **GET** /subscriptions/{subscription}/configurations/deposit-authorization | Consulta autorización de depósitos
 *AutorizacinDeDepsitosApi* | [**putDepositAuthConfigurations**](docs/Api/AutorizacinDeDepsitosApi.md#putdepositauthconfigurations) | **PUT** /subscriptions/{subscription}/configurations/deposit-authorization | Habilita / Deshabilita la autorización de depósitos
+*CargosRecurrentesApi* | [**registerRecurringChargeUsingPOST**](docs/Api/CargosRecurrentesApi.md#registerrecurringchargeusingpost) | **POST** /recurring-charge | Registro de cargos recurrentes
 *ComprobanteElectrnicoDePagoCEPApi* | [**obtainTransactionCepUsingPOST**](docs/Api/ComprobanteElectrnicoDePagoCEPApi.md#obtaintransactioncepusingpost) | **POST** /ceps | Consulta de CEP
 *ContactoApi* | [**sendContactUsingPOST**](docs/Api/ContactoApi.md#sendcontactusingpost) | **POST** /contact | Solicitud de contacto
 *ContractsDetailsApi* | [**createAuthorization**](docs/Api/ContractsDetailsApi.md#createauthorization) | **POST** /onboarding/accounts/authorize | Devuelve la URL para autorización del usuario Monex
@@ -176,9 +177,11 @@ Class | Method | HTTP request | Description
  - [CompanyRequested](docs/Model/CompanyRequested.md)
  - [Compay](docs/Model/Compay.md)
  - [ConfigurationsLimits](docs/Model/ConfigurationsLimits.md)
+ - [ConfirmRecurringCharge](docs/Model/ConfirmRecurringCharge.md)
  - [ContactRequest](docs/Model/ContactRequest.md)
  - [ContractDetailRequest](docs/Model/ContractDetailRequest.md)
  - [ContractDetailResponse](docs/Model/ContractDetailResponse.md)
+ - [Customer](docs/Model/Customer.md)
  - [Deposit](docs/Model/Deposit.md)
  - [DepositAuthorizationRequest](docs/Model/DepositAuthorizationRequest.md)
  - [Depositant](docs/Model/Depositant.md)
@@ -215,6 +218,8 @@ Class | Method | HTTP request | Description
  - [PreEnrollmentData](docs/Model/PreEnrollmentData.md)
  - [PreEnrollmentResponse](docs/Model/PreEnrollmentResponse.md)
  - [PreMonexAuthorization](docs/Model/PreMonexAuthorization.md)
+ - [Product](docs/Model/Product.md)
+ - [RecurringChargeRequest](docs/Model/RecurringChargeRequest.md)
  - [Relationship](docs/Model/Relationship.md)
  - [RelationshipsResponse](docs/Model/RelationshipsResponse.md)
  - [SalesPoint](docs/Model/SalesPoint.md)
