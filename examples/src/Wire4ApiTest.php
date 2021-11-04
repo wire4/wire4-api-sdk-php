@@ -611,6 +611,44 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
         }
     }
     //Verified
+    public function testgetDepositantsTotalsUsingGET() {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenAppUser(Wire4ApiTest::USER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::SECRET_KEY, //REPLACE THIS WITH YOUR DATA
+                "spei_admin");
+
+        } catch(OAuthException $e) {
+            echo "Respuesta: ". $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\DepositantesApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | El identificador de la suscripción a esta API //REPLACE THIS WITH YOUR DATA
+
+        try {
+            $result = $apiInstance->getDepositantsTotalsUsingGET($accessToken,$subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling DepositantesApi->getDepositantsTotalsUsingGET: ', $e->getMessage(), PHP_EOL;
+        }
+    }
+    //Verified
     public function testgetDepositantsUsingGET() {
 
         $accessToken = "";
