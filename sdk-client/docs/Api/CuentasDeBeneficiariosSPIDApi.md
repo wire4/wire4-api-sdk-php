@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**preRegisterAccountsUsingPOST1**](CuentasDeBeneficiariosSPIDApi.md#preregisteraccountsusingpost1) | **POST** /subscriptions/{subscription}/beneficiaries/spid | Pre-registro de cuentas de beneficiarios SPID®
 
 # **getSpidBeneficiariesForAccount**
-> \mx\wire4\client\model\SpidBeneficiariesResponse getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status)
+> \mx\wire4\client\model\SpidBeneficiariesResponse getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $page, $rfc, $size, $status)
 
 Consulta los beneficiarios SPID registrados
 
@@ -31,11 +31,13 @@ $beneficiary_bank = "beneficiary_bank_example"; // string | Es la clave del banc
 $beneficiary_name = "beneficiary_name_example"; // string | Es el nombre del beneficiario.
 $end_date = "end_date_example"; // string | Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy.
 $init_date = "init_date_example"; // string | Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy.
+$page = "0"; // string | Es el número de página.
 $rfc = "rfc_example"; // string | Es el Registro Federal de Contribuyentes (RFC) del beneficiario.
+$size = "20"; // string | Es el tamaño de página.
 $status = "status_example"; // string | Es el estado (estatus) de la cuenta, Los valores pueden ser <b>PENDING</b> y <b>REGISTERED</b>.
 
 try {
-    $result = $apiInstance->getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $rfc, $status);
+    $result = $apiInstance->getSpidBeneficiariesForAccount($authorization, $subscription, $account, $beneficiary_bank, $beneficiary_name, $end_date, $init_date, $page, $rfc, $size, $status);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CuentasDeBeneficiariosSPIDApi->getSpidBeneficiariesForAccount: ', $e->getMessage(), PHP_EOL;
@@ -54,7 +56,9 @@ Name | Type | Description  | Notes
  **beneficiary_name** | **string**| Es el nombre del beneficiario. | [optional]
  **end_date** | **string**| Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. | [optional]
  **init_date** | **string**| Es la fecha de inicio del periodo a filtrar en formato dd-mm-yyyy. | [optional]
+ **page** | **string**| Es el número de página. | [optional] [default to 0]
  **rfc** | **string**| Es el Registro Federal de Contribuyentes (RFC) del beneficiario. | [optional]
+ **size** | **string**| Es el tamaño de página. | [optional] [default to 20]
  **status** | **string**| Es el estado (estatus) de la cuenta, Los valores pueden ser &lt;b&gt;PENDING&lt;/b&gt; y &lt;b&gt;REGISTERED&lt;/b&gt;. | [optional]
 
 ### Return type

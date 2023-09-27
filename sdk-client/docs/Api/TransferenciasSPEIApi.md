@@ -8,8 +8,11 @@ Method | HTTP request | Description
 [**dropTransactionsPendingUsingDELETE**](TransferenciasSPEIApi.md#droptransactionspendingusingdelete) | **DELETE** /subscriptions/{subscription}/transactions/outcoming/spei/request/{requestId} | Eliminación de transferencias SPEI® pendientes
 [**incomingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#incomingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/incoming/spei | Consulta de transferencias recibidas
 [**outCommingSpeiRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeirequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei/{requestId} | Consulta de transferencias de salida por identificador de petición
+[**outCommingSpeiSpidOrderIdTransactionReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeispidorderidtransactionreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming | Consulta de transferencias realizadas por order_id
+[**outCommingSpeiSpidRequestIdTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outcommingspeispidrequestidtransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/{requestId} | Consulta de transferencias de salida por identificador de petición
 [**outgoingSpeiTransactionsReportUsingGET**](TransferenciasSPEIApi.md#outgoingspeitransactionsreportusingget) | **GET** /subscriptions/{subscription}/transactions/outcoming/spei | Consulta de transferencias realizadas
 [**registerOutgoingSpeiTransactionUsingPOST**](TransferenciasSPEIApi.md#registeroutgoingspeitransactionusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming/spei | Registro de transferencias
+[**registerSpeiSpidOutgoingTransactionsUsingPOST**](TransferenciasSPEIApi.md#registerspeispidoutgoingtransactionsusingpost) | **POST** /subscriptions/{subscription}/transactions/outcoming | Registro de transferencias SPEI y SPID
 
 # **createAuthorizationTransactionsGroup**
 > \mx\wire4\client\model\TokenRequiredResponse createAuthorizationTransactionsGroup($body, $authorization, $subscription)
@@ -226,6 +229,112 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **outCommingSpeiSpidOrderIdTransactionReportUsingGET**
+> \mx\wire4\client\model\PaymentsSpeiAndSpidOrderId outCommingSpeiSpidOrderIdTransactionReportUsingGET($authorization, $subscription, $order_id)
+
+Consulta de transferencias realizadas por order_id
+
+Consulta las transferencias que regresa este recuso son únicamente las transferencias recibidas en el día en el que se realiza la consulta o las transferencias identificadas con el <strong>order_id</strong> proporcionado, para este tipo de consultas no importa el día en el que se realizó la transferencia. <br> Es importante que conozca que la respuesta puede dar como resultado un objeto con una lista spei o una lista spid con el/los elementos ya que un identificador order_id solo puede pertenecer a una transacción sea spei o spid.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
+$order_id = "order_id_example"; // string | Es el identificador de la orden a buscar.
+
+try {
+    $result = $apiInstance->outCommingSpeiSpidOrderIdTransactionReportUsingGET($authorization, $subscription, $order_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransferenciasSPEIApi->outCommingSpeiSpidOrderIdTransactionReportUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
+ **order_id** | **string**| Es el identificador de la orden a buscar. | [optional]
+
+### Return type
+
+[**\mx\wire4\client\model\PaymentsSpeiAndSpidOrderId**](../Model/PaymentsSpeiAndSpidOrderId.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **outCommingSpeiSpidRequestIdTransactionsReportUsingGET**
+> \mx\wire4\client\model\PaymentsSpeiAndSpidRequestId outCommingSpeiSpidRequestIdTransactionsReportUsingGET($authorization, $request_id, $subscription)
+
+Consulta de transferencias de salida por identificador de petición
+
+Consulta las transferencias de salida registradas en una petición, las transferencias que regresa este recuso son únicamente las transferencias de salida agrupadas al identificador de la petición que se generó al hacer el registro de las transacciones el cuál se debe especificar como parte del path de este endpoint.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$authorization = "authorization_example"; // string | Header para token
+$request_id = "request_id_example"; // string | Identificador de la petición a buscar.
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
+
+try {
+    $result = $apiInstance->outCommingSpeiSpidRequestIdTransactionsReportUsingGET($authorization, $request_id, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransferenciasSPEIApi->outCommingSpeiSpidRequestIdTransactionsReportUsingGET: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **string**| Header para token |
+ **request_id** | **string**| Identificador de la petición a buscar. |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
+
+### Return type
+
+[**\mx\wire4\client\model\PaymentsSpeiAndSpidRequestId**](../Model/PaymentsSpeiAndSpidRequestId.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **outgoingSpeiTransactionsReportUsingGET**
 > \mx\wire4\client\model\Payment[] outgoingSpeiTransactionsReportUsingGET($authorization, $subscription, $order_id)
 
@@ -314,6 +423,59 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\mx\wire4\client\model\TransactionsOutgoingRegister**](../Model/TransactionsOutgoingRegister.md)| Información de las transferencias SPEI de salida |
+ **authorization** | **string**| Header para token |
+ **subscription** | **string**| Es el identificador de la suscripción a esta API. |
+
+### Return type
+
+[**\mx\wire4\client\model\TokenRequiredResponse**](../Model/TokenRequiredResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **registerSpeiSpidOutgoingTransactionsUsingPOST**
+> \mx\wire4\client\model\TokenRequiredResponse registerSpeiSpidOutgoingTransactionsUsingPOST($body, $authorization, $subscription)
+
+Registro de transferencias SPEI y SPID
+
+Se registra un conjunto de transferencias (una o más) tanto SPEI como SPID en una sola petición en la cuenta del cliente Monex relacionada a la suscripción. En la respuesta se proporcionará una dirección URL que lo llevará al centro de autorización para que las transferencias sean confirmadas (autorizadas) por el cliente para que se efectúen, para ello debe ingresar la llave electrónica (Token).<br>  Nota: Debe considerar que el concepto de cada una de las transacciones solo debe contener caracteres alfanuméricos por lo que en caso de que se reciban caracteres como ñ o acentos serán sustituidos por n o en su caso por la letra sin acento. Los caracteres no alfanuméricos como pueden ser caracteres especiales serán eliminados.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new mx\wire4\client\api\TransferenciasSPEIApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \mx\wire4\client\model\TransactionsRegister(); // \mx\wire4\client\model\TransactionsRegister | Información de las transferencias SPEI y SPID de salida
+$authorization = "authorization_example"; // string | Header para token
+$subscription = "subscription_example"; // string | Es el identificador de la suscripción a esta API.
+
+try {
+    $result = $apiInstance->registerSpeiSpidOutgoingTransactionsUsingPOST($body, $authorization, $subscription);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransferenciasSPEIApi->registerSpeiSpidOutgoingTransactionsUsingPOST: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\mx\wire4\client\model\TransactionsRegister**](../Model/TransactionsRegister.md)| Información de las transferencias SPEI y SPID de salida |
  **authorization** | **string**| Header para token |
  **subscription** | **string**| Es el identificador de la suscripción a esta API. |
 
