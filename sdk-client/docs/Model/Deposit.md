@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **sender_bank** | [**\mx\wire4\client\model\MessageInstitution**](MessageInstitution.md) |  | [optional] 
 **sender_name** | **string** | Es el nombre del ordenante. | [optional] 
 **sender_rfc** | **string** | Es el Registro Federal de Contribuyentes (RFC) de la cuenta ordenante. | [optional] 
+**status** | **string** | Es el estatus del depósito (COMPLETED/RETURNED). | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
