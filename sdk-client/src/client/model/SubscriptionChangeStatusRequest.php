@@ -168,7 +168,7 @@ class SubscriptionChangeStatusRequest implements ModelInterface, ArrayAccess
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_ACTIVE
+            self::STATUS_ACTIVE,
             self::STATUS_INACTIVE
         ];
     }
