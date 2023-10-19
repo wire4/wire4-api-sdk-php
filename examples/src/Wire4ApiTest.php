@@ -2005,4 +2005,358 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
     }
 
+    public function testObtainPaymentRequestByOrderIdUsingGET()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\ReporteDeSolicitudesDePagosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $order_id = ""; // string | Numero de orden de la solicitud de pago.
+
+        try {
+            $result = $apiInstance->paymentRequestIdReportByOrderIdUsingGET($accessToken, $order_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling ReporteDeSolicitudesDePagosApi->paymentRequestIdReportByOrderIdUsingGET: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testObtainPaymentRequestByRequestIdUsingGET()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\ReporteDeSolicitudesDePagosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $request_id = ""; // string | Numero de peticion de la solicitud de pago.
+
+        try {
+            $result = $apiInstance->paymentRequestIdReportUsingGET($accessToken, $request_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling ReporteDeSolicitudesDePagosApi->paymentRequestIdReportUsingGET: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testCreatePaymentRequestUsingPOST()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\SolicitudDePagosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $order_id = ""; // string | Numero de orden de la solicitud de pago.
+
+        $paymentReqData = new \mx\wire4\client\model\PaymentRequestReq(); // \mx\wire4\client\model\PaymentRequestReq
+        $customer = new \mx\wire4\client\model\Customer(); // \mx\wire4\client\model\Customer
+
+        $customer->setName("test name");
+        $customer->setEmail("test email");
+
+        $paymentReqData->setCustomer($customer);
+        $paymentReqData->setDescription("otro");
+        $paymentReqData->setDueDate("2023-10-21");
+        $paymentReqData->setAmount(8963.25);
+        $paymentReqData->setOrderId($order_id);
+        $paymentReqData->setCancelReturnUrl("https://wire4.mx");
+        $paymentReqData->setReturnUrl("https://wire4.mx");
+        $paymentReqData->setMethod("CARD");
+
+        try {
+            $result = $apiInstance->registerPaymentRequestUsingPOST($paymentReqData, $accessToken);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling SolicitudDePagosApi->registerPaymentRequestUsingPOST: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testCreateRecurringChargeUsingPOST()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("charges_general");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\CargosRecurrentesApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $order_id = ""; // string | Numero de orden de la solicitud de pago.
+
+        $chargeData = new \mx\wire4\client\model\RecurringChargeRequest(); // \mx\wire4\client\model\RecurringChargeRequest
+        $customer = new \mx\wire4\client\model\Customer(); // \mx\wire4\client\model\Customer
+        $product = new \mx\wire4\client\model\Product(); // \mx\wire4\client\model\Product
+
+        $customer->setName("test name");
+        $customer->setEmail("test email");
+
+        $product->setName("Prueba suscripcion");
+        $product->setAmount(2);
+        $product->setBillingPeriod("WEEKLY");
+        $product->setFrequency(1);
+
+
+        $chargeData->setCustomer($customer);
+        $chargeData->setProduct($product);
+        $chargeData->setFirstChargeDate("2022-12-23T00:00:00.000-06:00");
+        $chargeData->setCharges(5);
+        $chargeData->setOrderId($order_id);
+        $chargeData->setCancelReturnUrl("https://wire4.mx");
+        $chargeData->setReturnUrl("https://wire4.mx");
+
+        try {
+            $result = $apiInstance->registerRecurringChargeUsingPOST($chargeData, $accessToken);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling CargosRecurrentesApi->registerRecurringChargeUsingPOST: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testDeleteRecurringChargeUsingDELETE()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("charges_general");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\CargosRecurrentesApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $order_id = ""; // string | Numero de orden de los cargos recurrentes.
+
+
+        try {
+            $result = $apiInstance->deleteRecurringChargeUsingDELETE($accessToken, $order_id);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling CargosRecurrentesApi->deleteRecurringChargeUsingDELETE: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testDepositAutorization()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("spei_admin");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\AutorizacinDeDepsitosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | Numero de  subscription.
+
+
+        try {
+            $result = $apiInstance->getDepositAuthConfigurations($accessToken, $subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling AutorizacinDeDepsitosApi->getDepositAuthConfigurations: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testEnableDisableDepositAuthConfigurations()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("spei_admin");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\AutorizacinDeDepsitosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $depositReq = new \mx\wire4\client\model\DepositAuthorizationRequest(); // \mx\wire4\client\model\DepositAuthorizationRequest
+        $webhook = new \mx\wire4\client\model\WebHookDepositAuthorizationRequest(); // \mx\wire4\client\model\WebHookDepositAuthorizationRequest
+
+        $webhook->setName("mio");
+        $webhook->setUrl("https://tu-url-de-webhook");
+        $depositReq->setEnabled(true);
+        $depositReq->setWhUuid("wh_30bfe7b213ea49bca4a29cc7793dda41");
+        $depositReq->setWebhook($webhook);
+
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | Numero de  subscription.
+
+
+        try {
+            $result = $apiInstance->putDepositAuthConfigurations($depositReq, $accessToken, $subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling AutorizacinDeDepsitosApi->putDepositAuthConfigurations: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testGetOutcomingSPEISPIDByRequestId()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("spei_spid_admin");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\TransferenciasSPEIApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $requestId = ""; // string | Numero de  subscription.
+        $subscription = Wire4ApiTest::SUBSCRIPTION; // string | Numero de  subscription.
+
+
+        try {
+            $result = $apiInstance->outCommingSpeiSpidRequestIdTransactionsReportUsingGET($accessToken, $requestId, $subscription);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling TransferenciasSPEIApi->outCommingSpeiSpidRequestIdTransactionsReportUsingGET: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
 }
