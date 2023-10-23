@@ -232,9 +232,9 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_PUSH_NOTIFICATION
-            self::TYPE_QR_CODE
-            self::TYPE_UNKNOWN
+            self::TYPE_PUSH_NOTIFICATION,
+            self::TYPE_QR_CODE,
+            self::TYPE_UNKNOWN,
         ];
     }
 
@@ -276,9 +276,6 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
 
         if ($this->container['concept'] === null) {
             $invalidProperties[] = "'concept' can't be null";
-        }
-        if ($this->container['due_date'] === null) {
-            $invalidProperties[] = "'due_date' can't be null";
         }
         if ($this->container['order_id'] === null) {
             $invalidProperties[] = "'order_id' can't be null";

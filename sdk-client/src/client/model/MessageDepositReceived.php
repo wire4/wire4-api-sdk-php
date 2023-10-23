@@ -74,7 +74,10 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         'description' => 'string',
         'monex_description' => 'string',
         'monex_transaction_id' => 'string',
+        'order_id' => 'string',
         'reference' => 'string',
+        'request_id' => 'string',
+        'return_id_instruction' => 'int',
         'sender_account' => 'string',
         'sender_bank' => '\mx\wire4\client\model\MessageInstitution',
         'sender_name' => 'string',
@@ -104,7 +107,10 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         'description' => null,
         'monex_description' => null,
         'monex_transaction_id' => null,
+        'order_id' => null,
         'reference' => null,
+        'request_id' => null,
+        'return_id_instruction' => null,
         'sender_account' => null,
         'sender_bank' => null,
         'sender_name' => null,
@@ -155,7 +161,10 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         'description' => 'description',
         'monex_description' => 'monex_description',
         'monex_transaction_id' => 'monex_transaction_id',
+        'order_id' => 'order_id',
         'reference' => 'reference',
+        'request_id' => 'request_id',
+        'return_id_instruction' => 'return_id_instruction',
         'sender_account' => 'sender_account',
         'sender_bank' => 'sender_bank',
         'sender_name' => 'sender_name',
@@ -185,7 +194,10 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         'description' => 'setDescription',
         'monex_description' => 'setMonexDescription',
         'monex_transaction_id' => 'setMonexTransactionId',
+        'order_id' => 'setOrderId',
         'reference' => 'setReference',
+        'request_id' => 'setRequestId',
+        'return_id_instruction' => 'setReturnIdInstruction',
         'sender_account' => 'setSenderAccount',
         'sender_bank' => 'setSenderBank',
         'sender_name' => 'setSenderName',
@@ -215,7 +227,10 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         'description' => 'getDescription',
         'monex_description' => 'getMonexDescription',
         'monex_transaction_id' => 'getMonexTransactionId',
+        'order_id' => 'getOrderId',
         'reference' => 'getReference',
+        'request_id' => 'getRequestId',
+        'return_id_instruction' => 'getReturnIdInstruction',
         'sender_account' => 'getSenderAccount',
         'sender_bank' => 'getSenderBank',
         'sender_name' => 'getSenderName',
@@ -297,7 +312,10 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['monex_description'] = isset($data['monex_description']) ? $data['monex_description'] : null;
         $this->container['monex_transaction_id'] = isset($data['monex_transaction_id']) ? $data['monex_transaction_id'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['reference'] = isset($data['reference']) ? $data['reference'] : null;
+        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
+        $this->container['return_id_instruction'] = isset($data['return_id_instruction']) ? $data['return_id_instruction'] : null;
         $this->container['sender_account'] = isset($data['sender_account']) ? $data['sender_account'] : null;
         $this->container['sender_bank'] = isset($data['sender_bank']) ? $data['sender_bank'] : null;
         $this->container['sender_name'] = isset($data['sender_name']) ? $data['sender_name'] : null;
@@ -737,6 +755,30 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets order_id
+     *
+     * @return string
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string $order_id Número de orden asignado por el cliente de Wire4
+     *
+     * @return $this
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
      * Gets reference
      *
      * @return string
@@ -756,6 +798,54 @@ class MessageDepositReceived implements ModelInterface, ArrayAccess
     public function setReference($reference)
     {
         $this->container['reference'] = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string $request_id Es el identificador de la solicitud de cobro establecido por la aplicación.
+     *
+     * @return $this
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_id_instruction
+     *
+     * @return int
+     */
+    public function getReturnIdInstruction()
+    {
+        return $this->container['return_id_instruction'];
+    }
+
+    /**
+     * Sets return_id_instruction
+     *
+     * @param int $return_id_instruction Es el id de devolucion de la transaccion.
+     *
+     * @return $this
+     */
+    public function setReturnIdInstruction($return_id_instruction)
+    {
+        $this->container['return_id_instruction'] = $return_id_instruction;
 
         return $this;
     }

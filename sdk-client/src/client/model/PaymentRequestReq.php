@@ -60,8 +60,10 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         'amount' => 'float',
         'cancel_return_url' => 'string',
         'customer' => '\mx\wire4\client\model\Customer',
+        'depositant_account' => 'string',
         'description' => 'string',
         'due_date' => '\DateTime',
+        'from_date' => '\DateTime',
         'method' => 'string',
         'order_id' => 'string',
         'return_url' => 'string',
@@ -77,8 +79,10 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         'amount' => null,
         'cancel_return_url' => null,
         'customer' => null,
+        'depositant_account' => null,
         'description' => null,
         'due_date' => 'date',
+        'from_date' => 'date',
         'method' => null,
         'order_id' => null,
         'return_url' => null,
@@ -115,8 +119,10 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         'amount' => 'amount',
         'cancel_return_url' => 'cancel_return_url',
         'customer' => 'customer',
+        'depositant_account' => 'depositant_account',
         'description' => 'description',
         'due_date' => 'due_date',
+        'from_date' => 'from_date',
         'method' => 'method',
         'order_id' => 'order_id',
         'return_url' => 'return_url',
@@ -132,8 +138,10 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         'amount' => 'setAmount',
         'cancel_return_url' => 'setCancelReturnUrl',
         'customer' => 'setCustomer',
+        'depositant_account' => 'setDepositantAccount',
         'description' => 'setDescription',
         'due_date' => 'setDueDate',
+        'from_date' => 'setFromDate',
         'method' => 'setMethod',
         'order_id' => 'setOrderId',
         'return_url' => 'setReturnUrl',
@@ -149,8 +157,10 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         'amount' => 'getAmount',
         'cancel_return_url' => 'getCancelReturnUrl',
         'customer' => 'getCustomer',
+        'depositant_account' => 'getDepositantAccount',
         'description' => 'getDescription',
         'due_date' => 'getDueDate',
+        'from_date' => 'getFromDate',
         'method' => 'getMethod',
         'order_id' => 'getOrderId',
         'return_url' => 'getReturnUrl',
@@ -200,6 +210,7 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
 
     const METHOD_CARD = 'CARD';
     const METHOD_CASH = 'CASH';
+    const METHOD_SPEI = 'SPEI';
     const TYPE_RECURRENT = 'RECURRENT';
     const TYPE_ONE_OCCASION = 'ONE_OCCASION';
 
@@ -213,6 +224,7 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         return [
             self::METHOD_CARD,
             self::METHOD_CASH,
+            self::METHOD_SPEI,
         ];
     }
     /**
@@ -246,8 +258,10 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['cancel_return_url'] = isset($data['cancel_return_url']) ? $data['cancel_return_url'] : null;
         $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
+        $this->container['depositant_account'] = isset($data['depositant_account']) ? $data['depositant_account'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['due_date'] = isset($data['due_date']) ? $data['due_date'] : null;
+        $this->container['from_date'] = isset($data['from_date']) ? $data['from_date'] : null;
         $this->container['method'] = isset($data['method']) ? $data['method'] : null;
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['return_url'] = isset($data['return_url']) ? $data['return_url'] : null;
@@ -376,6 +390,30 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets depositant_account
+     *
+     * @return string
+     */
+    public function getDepositantAccount()
+    {
+        return $this->container['depositant_account'];
+    }
+
+    /**
+     * Sets depositant_account
+     *
+     * @param string $depositant_account Es el número de cuenta CLABE donde se realizará el deposito.
+     *
+     * @return $this
+     */
+    public function setDepositantAccount($depositant_account)
+    {
+        $this->container['depositant_account'] = $depositant_account;
+
+        return $this;
+    }
+
+    /**
      * Gets description
      *
      * @return string
@@ -419,6 +457,30 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
     public function setDueDate($due_date)
     {
         $this->container['due_date'] = $due_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_date
+     *
+     * @return \DateTime
+     */
+    public function getFromDate()
+    {
+        return $this->container['from_date'];
+    }
+
+    /**
+     * Sets from_date
+     *
+     * @param \DateTime $from_date Es la fecha de inicio de la solicitud de pago.
+     *
+     * @return $this
+     */
+    public function setFromDate($from_date)
+    {
+        $this->container['from_date'] = $from_date;
 
         return $this;
     }

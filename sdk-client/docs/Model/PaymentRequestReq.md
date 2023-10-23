@@ -6,8 +6,10 @@ Name | Type | Description | Notes
 **amount** | **float** | Es el monto de la solicitud de pago | 
 **cancel_return_url** | **string** | Es la dirección URL a la que se redirigirá en caso de que el usuario cancele. | [optional] 
 **customer** | [**\mx\wire4\client\model\Customer**](Customer.md) |  | [optional] 
+**depositant_account** | **string** | Es el número de cuenta CLABE donde se realizará el deposito. | [optional] 
 **description** | **string** | Es la descripción de la solicitud de pago. | [optional] 
 **due_date** | [**\DateTime**](\DateTime.md) | Es la fecha de operación de la solicitud de pago. | [optional] 
+**from_date** | [**\DateTime**](\DateTime.md) | Es la fecha de inicio de la solicitud de pago. | [optional] 
 **method** | **string** |  | 
 **order_id** | **string** | Número de orden asignado por el cliente de Wire4 | 
 **return_url** | **string** | Es la dirección URL a la que se redirigirá en caso de éxito. | [optional] 

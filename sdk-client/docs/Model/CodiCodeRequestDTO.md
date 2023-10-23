@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **amount** | **float** | Monto del pago CODI® | [optional] 
 **beneficiary2** | [**\mx\wire4\client\model\BeneficiaryDTO**](BeneficiaryDTO.md) |  | [optional] 
 **concept** | **string** | Descripción del pago CODI®, no debe contener letras con acentos ni caracteres especiales | 
-**due_date** | [**\DateTime**](\DateTime.md) | Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss | 
+**due_date** | [**\DateTime**](\DateTime.md) | Fecha de operación pago CODI®, formato: yyyy-MM-dd&#x27;T&#x27;HH:mm:ss | [optional] 
 **metadata** | **string** | Campo de metada CODI®, longitud máxima determinada por configuracion de la empresa, por defecto 100 caracteres | [optional] 
 **order_id** | **string** | Referencia de la transferencia asignada por el cliente | 
 **payment_type** | **string** | El tipo de pago ya sea en una ocasión (ONE_OCCASION) o recurrente (RECURRENT) | 
