@@ -197,9 +197,30 @@ class MessageDepositReceivedTest extends TestCase
     }
 
     /**
+     * Test attribute "order_id"
+     */
+    public function testPropertyOrderId()
+    {
+    }
+
+    /**
      * Test attribute "reference"
      */
     public function testPropertyReference()
+    {
+    }
+
+    /**
+     * Test attribute "request_id"
+     */
+    public function testPropertyRequestId()
+    {
+    }
+
+    /**
+     * Test attribute "return_id_instruction"
+     */
+    public function testPropertyReturnIdInstruction()
     {
     }
 

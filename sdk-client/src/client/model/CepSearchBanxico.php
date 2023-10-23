@@ -208,7 +208,7 @@ class CepSearchBanxico implements ModelInterface, ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_SPEI,
+            self::TYPE_SPEI
             self::TYPE_SPID
         ];
     }

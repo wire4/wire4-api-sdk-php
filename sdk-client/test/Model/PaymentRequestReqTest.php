@@ -99,6 +99,13 @@ class PaymentRequestReqTest extends TestCase
     }
 
     /**
+     * Test attribute "depositant_account"
+     */
+    public function testPropertyDepositantAccount()
+    {
+    }
+
+    /**
      * Test attribute "description"
      */
     public function testPropertyDescription()
@@ -109,6 +116,13 @@ class PaymentRequestReqTest extends TestCase
      * Test attribute "due_date"
      */
     public function testPropertyDueDate()
+    {
+    }
+
+    /**
+     * Test attribute "from_date"
+     */
+    public function testPropertyFromDate()
     {
     }
 

@@ -189,8 +189,8 @@ class UseServiceBanking implements ModelInterface, ArrayAccess
     public function getUseAllowableValues()
     {
         return [
-            self::MODEL_USE_WITHDRAWAL_DEPOSIT,
-            self::MODEL_USE_WITHDRAWAL,
+            self::MODEL_USE_WITHDRAWAL_DEPOSIT
+            self::MODEL_USE_WITHDRAWAL
             self::MODEL_USE_DEPOSIT
         ];
     }

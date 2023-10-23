@@ -277,9 +277,6 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
         if ($this->container['concept'] === null) {
             $invalidProperties[] = "'concept' can't be null";
         }
-        if ($this->container['due_date'] === null) {
-            $invalidProperties[] = "'due_date' can't be null";
-        }
         if ($this->container['order_id'] === null) {
             $invalidProperties[] = "'order_id' can't be null";
         }
