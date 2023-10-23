@@ -2081,7 +2081,7 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
 
     }
 
-    public function testCreatePaymentRequestUsingPOST()
+    public function testCreatePaymentRequestMethodCardUsingPOST()
     {
 
         $accessToken = "";
@@ -2129,7 +2129,60 @@ class Wire4ApiTest extends PHPUnit\Framework\TestCase {
             $result = $apiInstance->registerPaymentRequestUsingPOST($paymentReqData, $accessToken);
             print_r($result);
         } catch (Exception $e) {
-            echo 'Exception when calling SolicitudDePagosApi->registerPaymentRequestUsingPOST: ', $e->getMessage(), PHP_EOL;
+            echo 'Exception when calling SolicitudDePagosApi->testCreatePaymentRequestMethodCardUsingPOST: ', $e->getMessage(), PHP_EOL;
+        }
+
+    }
+
+    public function testCreatePaymentRequestMethodSPEIUsingPOST()
+    {
+
+        $accessToken = "";
+        try {
+
+            // Create the authenticator to obtain access token in correct environment
+            $environment = new \mx\wire4\auth\Environment(\mx\wire4\auth\Environment::SANDBOX);
+            $oauth = new \mx\wire4\auth\OAuthWire4 (
+                Wire4ApiTest::OAUTH_CONSUMER_KEY, //REPLACE THIS WITH YOUR DATA
+                Wire4ApiTest::OAUTH_CONSUMER_SECRET, //REPLACE THIS WITH YOUR DATA
+                $environment->getUrlToken()); // pass token url in environment
+
+            // Obtain an access token use application flow and scope "general"
+            $accessToken = $oauth->obtainAccessTokenApp("general");
+
+        } catch (\OAuthException $e) {
+            echo "Respuesta: " . $e->lastResponse . "\n";
+        }
+
+        $apiInstance = new \mx\wire4\client\api\SolicitudDePagosApi(
+        // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+        // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            \mx\wire4\Configuration::getDefaultConfiguration()->setHost($environment->getUrlServices()) // pass api url in environment
+        );
+
+        $order_id = ""; // string | Numero de orden de la solicitud de pago.
+
+        $paymentReqData = new \mx\wire4\client\model\PaymentRequestReq(); // \mx\wire4\client\model\PaymentRequestReq
+        $customer = new \mx\wire4\client\model\Customer(); // \mx\wire4\client\model\Customer
+
+        $customer->setName("test name");
+        $customer->setEmail("test email");
+
+        $paymentReqData->setCustomer($customer);
+        $paymentReqData->setDescription("otro");
+        $paymentReqData->setDueDate("2023-11-29");
+        $paymentReqData->setAmount(8963.25);
+        $paymentReqData->setOrderId($order_id);
+        $paymentReqData->setMethod("SPEI");
+        $paymentReqData->setDepositantAccount("112680000176543217");
+        $paymentReqData->setType("ONE_OCCASION");
+
+        try {
+            $result = $apiInstance->registerPaymentRequestUsingPOST($paymentReqData, $accessToken);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when calling SolicitudDePagosApi->testCreatePaymentRequestMethodSPEIUsingPOST: ', $e->getMessage(), PHP_EOL;
         }
 
     }

@@ -232,9 +232,9 @@ class CodiCodeRequestDTO implements ModelInterface, ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_PUSH_NOTIFICATION
-            self::TYPE_QR_CODE
-            self::TYPE_UNKNOWN
+            self::TYPE_PUSH_NOTIFICATION,
+            self::TYPE_QR_CODE,
+            self::TYPE_UNKNOWN,
         ];
     }
 

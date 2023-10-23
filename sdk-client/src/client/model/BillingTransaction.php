@@ -204,7 +204,7 @@ class BillingTransaction implements ModelInterface, ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_IN
+            self::TYPE_IN,
             self::TYPE_OUT
         ];
     }

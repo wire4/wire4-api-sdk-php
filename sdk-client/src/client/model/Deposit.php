@@ -282,11 +282,11 @@ class Deposit implements ModelInterface, ArrayAccess
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_PENDING
-            self::STATUS_COMPLETED
-            self::STATUS_FAILED
-            self::STATUS_CANCELLED
-            self::STATUS_AUTHORIZING
+            self::STATUS_PENDING,
+            self::STATUS_COMPLETED,
+            self::STATUS_FAILED,
+            self::STATUS_CANCELLED,
+            self::STATUS_AUTHORIZING,
             self::STATUS_REJECTED
         ];
     }

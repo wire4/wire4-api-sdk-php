@@ -200,13 +200,13 @@ class PaymentCODI implements ModelInterface, ArrayAccess
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_ACCEPTED
-            self::STATUS_RECEIVED
-            self::STATUS_COMPLETED
-            self::STATUS_CANCELLED
-            self::STATUS_POSTPONED
-            self::STATUS_REJECTED
-            self::STATUS_REVERSED
+            self::STATUS_ACCEPTED,
+            self::STATUS_RECEIVED,
+            self::STATUS_COMPLETED,
+            self::STATUS_CANCELLED,
+            self::STATUS_POSTPONED,
+            self::STATUS_REJECTED,
+            self::STATUS_REVERSED,
             self::STATUS_PENDING
         ];
     }

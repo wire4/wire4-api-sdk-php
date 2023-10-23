@@ -173,7 +173,7 @@ class SuccessDataDTO implements ModelInterface, ArrayAccess
     public function getMethodAllowableValues()
     {
         return [
-            self::METHOD_CARD
+            self::METHOD_CARD,
             self::METHOD_CASH
         ];
     }

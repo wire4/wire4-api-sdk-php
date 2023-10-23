@@ -235,7 +235,7 @@ class PaymentRequestReq implements ModelInterface, ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_RECURRENT
+            self::TYPE_RECURRENT,
             self::TYPE_ONE_OCCASION
         ];
     }
